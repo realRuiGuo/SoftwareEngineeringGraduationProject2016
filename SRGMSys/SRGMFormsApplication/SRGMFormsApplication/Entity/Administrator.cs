@@ -6,39 +6,45 @@ using System.Web;
 /// <summary>
 /// 系统管理员实体类
 /// </summary>
-public class Administrator : Account{
 
-	private String m_name ;
-	private String m_phoneNum ;
-
-	// List<Record> records ;
-
-    /// <summary>
-    /// 姓名
-    /// </summary>
-    public String Name
+namespace SRGMFormsApplication.Entity
+{
+    public class Administrator : Account
     {
-        get
+
+        private String m_name;
+        private String m_phoneNum;
+
+        // List<Record> records ;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public String Name
         {
-            return this.m_name;
+            get
+            {
+                return this.m_name;
+            }
+            set
+            {
+                this.m_name = value;
+            }
         }
-        set
+        /// <summary>
+        ///电话号码
+        /// </summary>
+        public String PhoneNum
         {
-            this.m_name = value;
+            get
+            {
+                return this.m_phoneNum;
+            }
+            set
+            {
+                this.m_phoneNum = value;
+            }
         }
     }
-    /// <summary>
-    ///电话号码
-    /// </summary>
-    public String PhoneNum
-    {
-        get
-        {
-            return this.m_phoneNum;
-        }
-        set
-        {
-            this.m_phoneNum = value;
-        }
-    }
+
 }

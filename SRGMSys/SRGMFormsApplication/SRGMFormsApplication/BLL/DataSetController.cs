@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Data;
+using SRGMFormsApplication.Entity;
 using SRGMFormsApplication.DAL;
 using System.Collections.Generic;
 
@@ -10,6 +11,11 @@ namespace SRGMFormsApplication.BLL
     public class DataSetController
     {
         static FDataSetDB dsDB = new FDataSetDB();
+
+        public FDataSet getDataSetByid(string p_id)
+        {
+            return dsDB.getDataSetByid(p_id);
+        }
         /// <summary>
         /// 返回系统失效数据集;  DataSet形式
         /// </summary>
@@ -36,7 +42,7 @@ namespace SRGMFormsApplication.BLL
         public int addDataSetstoSystem(FDataSet p_dataSet,String p_filePath)
         {
             //设置数据集路径
-            p_dataSet.Path = "\\DataSet\\" + p_dataSet.Name + ".txt";
+            p_dataSet.Path = "\\DS\\" + p_dataSet.Name + ".txt";
             //复制文件到指定目录
             FileHelper.Copy(p_filePath, System.Environment.CurrentDirectory + p_dataSet.Path);
 
@@ -49,13 +55,13 @@ namespace SRGMFormsApplication.BLL
         /// <param name="p_account"></param>
         /// <param name="p_userType"></param>
         /// <returns></returns>
-        public int addDataSetsforUser(FDataSet p_dataSet, Account p_account, int p_userType)
+        public int addDataSetsforUser(FDataSet p_dataSet, Account p_account, int p_userType,String p_filePath)
         {
             //设置数据集路径
-            p_dataSet.Path = "\\DataSet\\" + p_account.UserName + p_userType.ToString() + "\\"+
+            p_dataSet.Path = "\\DS\\" + p_account.UserName + p_userType.ToString() + "\\"+
                 p_dataSet.Name + ".txt";
             //复制文件到指定目录
-            FileHelper.Copy(p_dataSet.Path,System.Environment.CurrentDirectory + p_dataSet.Path);
+            FileHelper.Copy(p_filePath, System.Environment.CurrentDirectory + p_dataSet.Path);
             return dsDB.addDataSetsforUser(p_dataSet, p_account, p_userType);
         }
 

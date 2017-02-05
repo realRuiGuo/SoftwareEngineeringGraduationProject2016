@@ -3,39 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-/// <summary>
-/// SRGM研究人员实体类
-/// </summary>
-public class SRGMResearch : Account{
-	private List<Model> m_models ;
-	private List<FDataSet> m_dataSets ;
+namespace SRGMFormsApplication.Entity
+{
+    /// <summary>
+    /// SRGM研究人员实体类
+    /// </summary>
+    public class SRGMResearch : Account
+    {
+        private List<Model> m_models;
+        private List<FDataSet> m_dataSets;
 
-    /// <summary>
-    /// 拥有的模型列表
-    /// </summary>
-    public List<Model> Models
-    {
-        get
+        /// <summary>
+        /// 拥有的模型列表
+        /// </summary>
+        public List<Model> Models
         {
-            return this.m_models;
+            get
+            {
+                return this.m_models;
+            }
+            set
+            {
+                this.m_models = value;
+            }
         }
-        set
+        /// <summary>
+        /// 拥有的数据集列表
+        /// </summary>
+        public List<FDataSet> DataSets
         {
-            this.m_models = value;
+            get
+            {
+                return this.m_dataSets;
+            }
+            set
+            {
+                this.m_dataSets = value;
+            }
         }
     }
-    /// <summary>
-    /// 拥有的数据集列表
-    /// </summary>
-    public List<FDataSet> DataSets
-    {
-        get
-        {
-            return this.m_dataSets;
-        }
-        set
-        {
-            this.m_dataSets = value;
-        }
-    }
+
 }

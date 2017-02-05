@@ -3,14 +3,23 @@ using System.Collections;
 using System.Linq;
 using System.Data;
 using SRGMFormsApplication.DAL;
+using SRGMFormsApplication.Entity;
 using System.Collections.Generic;
 
 namespace SRGMFormsApplication.BLL
 {
     public class ModelController
     {
-
         static ModelDB modelDB = new ModelDB();
+        public DataSet getModelType()
+        {
+            return modelDB.getModelType();
+        }
+
+        public Model getModelByid(string p_id)
+        {
+            return modelDB.getModelByid(p_id);
+        }
         /// <summary>
         /// 返回系统自带模型
         /// </summary>

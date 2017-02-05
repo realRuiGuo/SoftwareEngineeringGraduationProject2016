@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MWArray.dll</HintPath>
     </Reference>
+    <Reference Include="SRGM, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SRGM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -49,10 +53,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="T1fnDSnFit, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\T1fnDSnFit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\AccountController.cs" />
@@ -75,6 +75,24 @@
     <Compile Include="Entity\Parameter.cs" />
     <Compile Include="Entity\SoftwareEngineer.cs" />
     <Compile Include="Entity\SRGMResearch.cs" />
+    <Compile Include="UI\DisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DisplayForm.Designer.cs">
+      <DependentUpon>DisplayForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DisplayMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DisplayMDI.Designer.cs">
+      <DependentUpon>DisplayMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FitForm.Designer.cs">
+      <DependentUpon>FitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +107,39 @@
     <Compile Include="UI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\DataSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DataSetForm.Designer.cs">
+      <DependentUpon>DataSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ModelForm.Designer.cs">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReForm.Designer.cs">
+      <DependentUpon>ReForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectForm.Designer.cs">
+      <DependentUpon>SelectForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\DisplayForm.resx">
+      <DependentUpon>DisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DisplayMDI.resx">
+      <DependentUpon>DisplayMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FitForm.resx">
+      <DependentUpon>FitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +156,18 @@
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\DataSetForm.resx">
+      <DependentUpon>DataSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ModelForm.resx">
+      <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReForm.resx">
+      <DependentUpon>ReForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectForm.resx">
+      <DependentUpon>SelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,9 +183,17 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="UI\Resources\添加.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="UI\Resources\bj.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UI\Resources\删除.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UI\Resources\menu_bt.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

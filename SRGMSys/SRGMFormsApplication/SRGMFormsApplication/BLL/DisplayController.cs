@@ -3,18 +3,19 @@ using System.Collections;
 using System.Linq;
 using System.Data;
 using SRGMFormsApplication.DAL;
+using SRGMFormsApplication.Entity;
 using System.Collections.Generic;
 using MathWorks.MATLAB.NET.Arrays;
 using MathWorks.MATLAB.NET.Utility;
 
-using T1fnDSnFit;
+
 
 namespace SRGMFormsApplication.BLL
 {
     public class DisplayController
     {
         static DisplayDB dDB = new DisplayDB();
-        static T1 T1fnDSnFit = new T1();
+        //static T1 T1fnDSnFit = new T1();
         String CurrentPath = System.Environment.CurrentDirectory;//当前路径
         /// <summary>
         /// 返回与模型相匹配的数据集集合   --dataset 用于显示

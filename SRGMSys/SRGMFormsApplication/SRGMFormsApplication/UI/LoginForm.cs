@@ -11,11 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using SRGMFormsApplication.DAL;
 using SRGMFormsApplication.BLL;
-
-using MathWorks.MATLAB.NET.Arrays;
-using MathWorks.MATLAB.NET.Utility;
-
-using T1fnDSnFit;
+using SRGMFormsApplication.Entity;
 
 namespace SRGMFormsApplication.UI
 {
@@ -23,6 +19,8 @@ namespace SRGMFormsApplication.UI
     {
         Account account;
         int userType = 3;//初学者
+        string loginTime;
+
         public Account Account
         {
             get { return account; }
@@ -32,6 +30,11 @@ namespace SRGMFormsApplication.UI
         {
             get { return userType; }
             set { userType = value; }
+        }
+        public string LoginTime
+        {
+            get { return loginTime; }
+            set { loginTime = value; }
         }
 
         public LoginForm()
@@ -130,9 +133,11 @@ namespace SRGMFormsApplication.UI
         }
         private void loginButton_Click(object sender, EventArgs e)
         {
+            loginTime = DateTime.Now.ToString();
             if (3 == userType)//初学者无需用户名、密码
             {
                 MainForm main = new MainForm();
+                main.LoginTime = this.LoginTime;
                 main.Account = null;
                 main.UserType = this.UserType;
                 main.Show();
@@ -149,6 +154,7 @@ namespace SRGMFormsApplication.UI
                 {
                     MessageBox.Show("用户名不存在！！", "提示",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cancelButton_Click(sender,e);
                 }
                 else
                 {
@@ -156,10 +162,12 @@ namespace SRGMFormsApplication.UI
                     {
                         MessageBox.Show("密码错误！！", "提示",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cancelButton_Click(sender, e);
                     }
                     else
                     {
                         MainForm main = new MainForm();
+                        main.LoginTime = this.LoginTime;
                         main.Account = this.Account;
                         main.UserType = this.UserType;
                         main.Show();

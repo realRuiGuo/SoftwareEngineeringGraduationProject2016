@@ -3,37 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-public class InitialValue {
-    private float m_value0;  //参数初值
-    private FDataSet m_dataSet;
-
-   /// <summary>
-   /// 初始值
-   /// </summary>
-    public float Value0
+namespace SRGMFormsApplication.Entity
+{
+    public class InitialValue
     {
-        get
-        { 
-            return m_value0; 
-        }
-        set
+        private float m_value0;  //参数初值
+        private FDataSet m_dataSet;
+
+        /// <summary>
+        /// 初始值
+        /// </summary>
+        public float Value0
         {
-            m_value0 = value;
+            get
+            {
+                return m_value0;
+            }
+            set
+            {
+                m_value0 = value;
+            }
+        }
+
+        /// <summary>
+        /// 初值对应的失效数据集
+        /// </summary>
+        public FDataSet DataSet
+        {
+            get
+            {
+                return m_dataSet;
+            }
+            set
+            {
+                m_dataSet = value;
+            }
         }
     }
 
-    /// <summary>
-    /// 初值对应的失效数据集
-    /// </summary>
-    public FDataSet DataSet
-    {
-        get
-        { 
-            return m_dataSet;
-        }
-        set 
-        {
-            m_dataSet = value; 
-        }
-    }
 }

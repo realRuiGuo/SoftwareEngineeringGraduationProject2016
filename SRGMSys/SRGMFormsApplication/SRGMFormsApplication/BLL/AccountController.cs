@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Data;
 using SRGMFormsApplication.DAL;
+using SRGMFormsApplication.Entity;
 
 /// <summary>
 /// ÕË»§¿ØÖÆÀà

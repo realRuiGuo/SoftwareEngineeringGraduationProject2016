@@ -5,12 +5,24 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using SRGMFormsApplication.Entity;
 
 namespace SRGMFormsApplication.DAL
 {
     public class FDataSetDB
     {
-
+        public FDataSet getDataSetByid(string p_dsName)
+        {
+            FDataSet dataSet = new FDataSet();
+            dataSet.Name = p_dsName;
+            string sql = "select * from dataset" +
+               " where dsname=@dsname";
+            SqlParameter sp1 = new SqlParameter("@dsname",p_dsName);
+            SqlParameter[] para = new SqlParameter[] { sp1};
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
+            dataSet.Path = ds.Tables[0].Rows[0]["path"].ToString();
+            return dataSet;
+        }
         #region 得到系统自带FDataSet信息，返回DataSet
         /// <summary>
         /// 得到系统自带FDataSet信息
@@ -19,11 +31,8 @@ namespace SRGMFormsApplication.DAL
         public DataSet getDataSetsforSystem()
         {
             string sql = "select dsname as 名称,source as 来源,date as 发布日期,typeID as 类型 from dataset" +
-               " where permission=@permission" ;
-
-            SqlParameter sp = new SqlParameter("@permission", 0);
-
-            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, sp);
+               " where permission= 0" ;
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
             return ds;
         }
         #endregion
@@ -86,9 +95,9 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp2 = new SqlParameter("@path", p_dataSet.Path);
             SqlParameter sp3 = new SqlParameter("@source", p_dataSet.Source);
             SqlParameter sp4 = new SqlParameter("@date", p_dataSet.PostDate);
-            SqlParameter sp5 = new SqlParameter("@permission", 0);
-            SqlParameter sp6 = new SqlParameter("@username", null);
-            SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type);
+            SqlParameter sp5 = new SqlParameter("@permission", Convert.ToInt32(0));
+            SqlParameter sp6 = new SqlParameter("@username", (object)DBNull.Value);
+            SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type.TypeID);
 
             SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6, sp7 };
 
@@ -111,7 +120,7 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp4 = new SqlParameter("@date", p_dataSet.PostDate);
             SqlParameter sp5 = new SqlParameter("@permission", p_userType);
             SqlParameter sp6 = new SqlParameter("@username", p_account.UserName);
-            SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type);
+            SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type.TypeID);
 
             SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6,sp7 };
 
@@ -126,12 +135,12 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public int deleteDataSetsforSystem(FDataSet p_dataSet)
         {
-            string sqlFDS = "delete from dataset where dsname=@dsname and username=@username and permission=@permission";
+            string sqlFDS = "delete from dataset where dsname=@dsname and username is null and permission=@permission";
             SqlParameter spFDS1 = new SqlParameter("@dsname", p_dataSet.Name);
-            SqlParameter spFDS2 = new SqlParameter("@username",null);
-            SqlParameter spFDS3 = new SqlParameter("@permission", 0);
+            //SqlParameter spFDS2 = new SqlParameter("@username", (object)DBNull.Value);
+            SqlParameter spFDS3 = new SqlParameter("@permission", Convert.ToInt32(0));
 
-            SqlParameter[] para = new SqlParameter[] { spFDS1, spFDS2, spFDS3 };
+            SqlParameter[] para = new SqlParameter[] { spFDS1, spFDS3 };
 
             return SqlHelper.ExecuteNonQuery(sqlFDS, para);
         }

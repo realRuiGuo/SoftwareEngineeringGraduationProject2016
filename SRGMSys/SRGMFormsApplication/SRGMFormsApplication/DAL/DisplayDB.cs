@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
-
+using SRGMFormsApplication.Entity;
 
 namespace SRGMFormsApplication.DAL
 {
