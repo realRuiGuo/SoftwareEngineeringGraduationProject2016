@@ -16,45 +16,13 @@ namespace SRGMFormsApplication.UI
         private static DisplayForm instance = null;
         Account account;
         int userType;
-        List<Model> modelList;
-        List<FDataSet> dataSetList;
+        List<Model> modelList = new List<Model>();
+        List<FDataSet> dataSetList = new List<FDataSet>();
 
         SelectForm frmSelect;
         FitForm frmFit;
         ReForm frmRe;
-        private float X;
-        private float Y;
 
-        private void setTag(Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
-                if (con.Controls.Count > 0)
-                    setTag(con);
-            }
-        }
-        private void setControls(float newx, float newy, Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
-                float a = Convert.ToSingle(mytag[0]) * newx;
-                con.Width = (int)a;
-                a = Convert.ToSingle(mytag[1]) * newy;
-                con.Height = (int)(a);
-                a = Convert.ToSingle(mytag[2]) * newx;
-                con.Left = (int)(a);
-                a = Convert.ToSingle(mytag[3]) * newy;
-                con.Top = (int)(a);
-                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
-                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
-                if (con.Controls.Count > 0)
-                {
-                    setControls(newx, newy, con);
-                }
-            }
-        }
         public static DisplayForm Instance//单例
         {
             set { }
@@ -96,8 +64,6 @@ namespace SRGMFormsApplication.UI
         {
             InitializeComponent();
             instance = this;
-            X = this.Width;
-            Y = this.Height;  
         }
 
         private void selectLabel_Click(object sender, EventArgs e)
@@ -121,10 +87,10 @@ namespace SRGMFormsApplication.UI
             frmSelect.Show();
         }
 
-        private void fitLabel_Click(object sender, EventArgs e)
+        public void fitLabel_Click(object sender, EventArgs e)
         {
             frmFit = FitForm.Instance;
-            frmFit.MdiParent = this;
+            //frmFit.MdiParent = this;
             frmFit.TopLevel = false;
             frmFit.FormBorderStyle = FormBorderStyle.None;
             frmFit.Dock = DockStyle.Fill;
@@ -150,16 +116,8 @@ namespace SRGMFormsApplication.UI
 
         private void DisplayForm_Load(object sender, System.EventArgs e)
         {
-            this.Resize += new EventHandler(DisplayForm_Resize);
-            setTag(this);
-            //SelectForm_Resize(new object(), new EventArgs());//x,y可在实例化时赋值,最后这句是新加的，在MDI时有用
+
         }
 
-        private void DisplayForm_Resize(object sender, System.EventArgs e)
-        {
-            float newx = (this.Width) / X;
-            float newy = this.Height / Y;
-            setControls(newx, newy, this);
-        }
     }
 }

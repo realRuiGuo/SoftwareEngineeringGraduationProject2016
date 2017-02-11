@@ -148,7 +148,7 @@ namespace SRGMFormsApplication.UI
         }
         private void 模型评测演示ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DisplayMDI displayForm = DisplayMDI.Instance;
+            DisplayForm displayForm = DisplayForm.Instance;
             displayForm.Account = this.Account;
             displayForm.UserType = this.UserType;
             displayForm.Show();
@@ -167,7 +167,8 @@ namespace SRGMFormsApplication.UI
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UserForm userForm = UserForm.Instance;
+            userForm.Show();
         }
 
         private void 系统模型管理ToolStripMenuItem_Click(object sender, EventArgs e)

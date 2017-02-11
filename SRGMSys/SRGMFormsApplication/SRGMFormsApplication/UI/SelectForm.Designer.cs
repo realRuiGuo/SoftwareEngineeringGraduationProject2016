@@ -42,6 +42,8 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.startButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -193,6 +195,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.modelcomboBox);
             this.panel1.Controls.Add(this.startButton);
             this.panel1.Controls.Add(this.dataSetdataGridView);
@@ -209,14 +213,33 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(715, 478);
+            this.panel1.Size = new System.Drawing.Size(724, 512);
             this.panel1.TabIndex = 15;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(12, 441);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 15;
+            this.resetButton.Text = "重置";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 491);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(365, 12);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "注：点击重置后，再点击左侧功能按钮，可进行（显示）新的验证。";
             // 
             // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 478);
+            this.ClientSize = new System.Drawing.Size(724, 512);
             this.Controls.Add(this.panel1);
             this.Name = "SelectForm";
             this.Text = "SelectForm";
@@ -225,6 +248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -244,5 +268,7 @@
         private System.Windows.Forms.Button dataSetbutton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Label label2;
     }
 }

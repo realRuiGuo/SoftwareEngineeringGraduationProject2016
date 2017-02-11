@@ -57,30 +57,55 @@ namespace SRGMFormsApplication.DAL
         }
         #endregion
 
-        //#region 得到当前用户拥有的FDataSet信息，返回List集合，断开式
-        ///// <summary>
-        ///// 得到当前用户拥有的FDataSet信息
-        ///// </summary>
-        ///// <param name="p_account"></param>
-        ///// <param name="p_type"></param>
-        ///// <returns></returns>
-        //public List<FDataSet> getDataSetsforUser(Account p_account, int p_type)
-        //{
-        //    List<FDataSet> list = new List<FDataSet>();
-        //    string sql = "select FDataSetId,Username,Pwd,RoleInfoId from FDataSet";
-        //    DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
-        //    foreach (DataRow dr in ds.Tables[0].Rows)
-        //    {
-        //        FDataSet FDataSet = new FDataSet();
-        //        FDataSet.FDataSetId = (int)dr["FDataSetId"];
-        //        FDataSet.Username = dr["Username"].ToString();
-        //        FDataSet.Pwd = dr["Pwd"].ToString();
-        //        FDataSet.RoleInfo = new RoleInfoService().GetRoleInfoById((int)dr["FDataSetId"]);
-        //        list.Add(FDataSet);
-        //    }
-        //    return list;
-        //}
-        //#endregion
+        #region 得到系统的FDataSet信息，返回List集合，断开式
+        /// <summary>
+        /// 得到系统的FDataSet信息
+        /// </summary>
+        /// <returns></returns>
+        public List<FDataSet> getDataSetsforSystemL()
+        {
+            List<FDataSet> list = new List<FDataSet>();
+            string sql = "select * from dataset" +
+               " where permission= 0";
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                FDataSet FDataSet = new FDataSet();
+                FDataSet.Name = dr["dsname"].ToString();
+
+                list.Add(FDataSet);
+            }
+            return list;
+        }
+        #endregion
+
+        #region 得到当前用户拥有的FDataSet信息，返回List集合，断开式
+        /// <summary>
+        /// 得到当前用户拥有的FDataSet信息
+        /// </summary>
+        /// <param name="p_account"></param>
+        /// <param name="p_type"></param>
+        /// <returns></returns>
+        public List<FDataSet> getDataSetsforUserL(Account p_account, int p_type)
+        {
+            List<FDataSet> list = new List<FDataSet>();
+            string sql = "select * from dataset" +
+                " where username=@userName and permission=@permission";
+            SqlParameter sp1 = new SqlParameter("@userName", p_account.UserName);
+            SqlParameter sp2 = new SqlParameter("@permission", p_type);
+
+            SqlParameter[] para = new SqlParameter[] { sp1, sp2 };
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                FDataSet FDataSet = new FDataSet();
+                FDataSet.Name = dr["dsname"].ToString();
+                
+                list.Add(FDataSet);
+            }
+            return list;
+        }
+        #endregion
 
         /// <summary>
         /// 为系统添加数据集

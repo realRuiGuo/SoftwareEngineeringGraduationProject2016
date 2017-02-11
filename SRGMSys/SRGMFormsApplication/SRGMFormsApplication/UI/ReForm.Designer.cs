@@ -34,6 +34,10 @@
             this.modelcomboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rePictureBox = new System.Windows.Forms.PictureBox();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.rePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,15 +88,57 @@
             // 
             this.rePictureBox.Location = new System.Drawing.Point(71, 45);
             this.rePictureBox.Name = "rePictureBox";
-            this.rePictureBox.Size = new System.Drawing.Size(475, 283);
+            this.rePictureBox.Size = new System.Drawing.Size(527, 330);
+            this.rePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rePictureBox.TabIndex = 26;
             this.rePictureBox.TabStop = false;
+            // 
+            // OKButton
+            // 
+            this.OKButton.Location = new System.Drawing.Point(408, 4);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.TabIndex = 27;
+            this.OKButton.Text = "确定";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(523, 4);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 28;
+            this.resetButton.Text = "重置";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(71, 390);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(527, 162);
+            this.richTextBox1.TabIndex = 29;
+            this.richTextBox1.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(69, 575);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(365, 12);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "注：点击重置后，再点击左侧功能按钮，可进行（显示）新的验证。";
             // 
             // ReForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 327);
+            this.ClientSize = new System.Drawing.Size(610, 596);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.resetButton);
+            this.Controls.Add(this.OKButton);
             this.Controls.Add(this.rePictureBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataSetLabel);
@@ -102,6 +148,7 @@
             this.Name = "ReForm";
             this.Text = "ReForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReForm_FormClosed);
+            this.Load += new System.EventHandler(this.ReForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +163,9 @@
         private System.Windows.Forms.ComboBox modelcomboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox rePictureBox;
+        private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

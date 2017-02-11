@@ -33,8 +33,16 @@
             this.addbutton = new System.Windows.Forms.Button();
             this.delbutton = new System.Windows.Forms.Button();
             this.modelTypedataGridView = new System.Windows.Forms.DataGridView();
+            this.valueLabel = new System.Windows.Forms.Label();
+            this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
+            this.dataSetLabel = new System.Windows.Forms.Label();
+            this.value0Label = new System.Windows.Forms.Label();
+            this.value0TextBox = new System.Windows.Forms.TextBox();
+            this.OKButton = new System.Windows.Forms.Button();
+            this.value0dataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // modeldataGridView
@@ -44,7 +52,7 @@
             this.modeldataGridView.Location = new System.Drawing.Point(14, 24);
             this.modeldataGridView.Name = "modeldataGridView";
             this.modeldataGridView.RowTemplate.Height = 23;
-            this.modeldataGridView.Size = new System.Drawing.Size(410, 249);
+            this.modeldataGridView.Size = new System.Drawing.Size(301, 249);
             this.modeldataGridView.TabIndex = 15;
             // 
             // label1
@@ -73,7 +81,7 @@
             // 
             this.delbutton.Image = global::SRGMFormsApplication.Properties.Resources.删除;
             this.delbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delbutton.Location = new System.Drawing.Point(90, 279);
+            this.delbutton.Location = new System.Drawing.Point(239, 279);
             this.delbutton.Name = "delbutton";
             this.delbutton.Size = new System.Drawing.Size(53, 29);
             this.delbutton.TabIndex = 17;
@@ -87,18 +95,87 @@
             this.modelTypedataGridView.AllowUserToAddRows = false;
             this.modelTypedataGridView.AllowUserToDeleteRows = false;
             this.modelTypedataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.modelTypedataGridView.Location = new System.Drawing.Point(453, 24);
+            this.modelTypedataGridView.Location = new System.Drawing.Point(321, 24);
             this.modelTypedataGridView.Name = "modelTypedataGridView";
             this.modelTypedataGridView.ReadOnly = true;
             this.modelTypedataGridView.RowTemplate.Height = 23;
-            this.modelTypedataGridView.Size = new System.Drawing.Size(267, 249);
+            this.modelTypedataGridView.Size = new System.Drawing.Size(261, 249);
             this.modelTypedataGridView.TabIndex = 18;
+            // 
+            // valueLabel
+            // 
+            this.valueLabel.AutoSize = true;
+            this.valueLabel.Location = new System.Drawing.Point(12, 356);
+            this.valueLabel.Name = "valueLabel";
+            this.valueLabel.Size = new System.Drawing.Size(89, 12);
+            this.valueLabel.TabIndex = 19;
+            this.valueLabel.Text = "参数初值设置：";
+            // 
+            // dataSetcomboBox
+            // 
+            this.dataSetcomboBox.FormattingEnabled = true;
+            this.dataSetcomboBox.Location = new System.Drawing.Point(107, 353);
+            this.dataSetcomboBox.Name = "dataSetcomboBox";
+            this.dataSetcomboBox.Size = new System.Drawing.Size(90, 20);
+            this.dataSetcomboBox.TabIndex = 20;
+            // 
+            // dataSetLabel
+            // 
+            this.dataSetLabel.AutoSize = true;
+            this.dataSetLabel.Location = new System.Drawing.Point(105, 328);
+            this.dataSetLabel.Name = "dataSetLabel";
+            this.dataSetLabel.Size = new System.Drawing.Size(71, 12);
+            this.dataSetLabel.TabIndex = 21;
+            this.dataSetLabel.Text = "失效数据集:";
+            // 
+            // value0Label
+            // 
+            this.value0Label.AutoSize = true;
+            this.value0Label.Location = new System.Drawing.Point(217, 328);
+            this.value0Label.Name = "value0Label";
+            this.value0Label.Size = new System.Drawing.Size(137, 12);
+            this.value0Label.TabIndex = 22;
+            this.value0Label.Text = "参数初值（空格隔开）：";
+            // 
+            // value0TextBox
+            // 
+            this.value0TextBox.Location = new System.Drawing.Point(219, 352);
+            this.value0TextBox.Name = "value0TextBox";
+            this.value0TextBox.Size = new System.Drawing.Size(240, 21);
+            this.value0TextBox.TabIndex = 23;
+            // 
+            // OKButton
+            // 
+            this.OKButton.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.menu_bt;
+            this.OKButton.Location = new System.Drawing.Point(503, 347);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(79, 29);
+            this.OKButton.TabIndex = 24;
+            this.OKButton.Text = "确定";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // value0dataGridView
+            // 
+            this.value0dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.value0dataGridView.Location = new System.Drawing.Point(107, 382);
+            this.value0dataGridView.Name = "value0dataGridView";
+            this.value0dataGridView.RowTemplate.Height = 23;
+            this.value0dataGridView.Size = new System.Drawing.Size(388, 161);
+            this.value0dataGridView.TabIndex = 25;
             // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 321);
+            this.ClientSize = new System.Drawing.Size(600, 571);
+            this.Controls.Add(this.value0dataGridView);
+            this.Controls.Add(this.OKButton);
+            this.Controls.Add(this.value0TextBox);
+            this.Controls.Add(this.value0Label);
+            this.Controls.Add(this.dataSetLabel);
+            this.Controls.Add(this.dataSetcomboBox);
+            this.Controls.Add(this.valueLabel);
             this.Controls.Add(this.modelTypedataGridView);
             this.Controls.Add(this.modeldataGridView);
             this.Controls.Add(this.label1);
@@ -111,6 +188,7 @@
             this.Resize += new System.EventHandler(this.ModelForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +201,12 @@
         private System.Windows.Forms.Button addbutton;
         private System.Windows.Forms.Button delbutton;
         private System.Windows.Forms.DataGridView modelTypedataGridView;
+        private System.Windows.Forms.Label valueLabel;
+        private System.Windows.Forms.ComboBox dataSetcomboBox;
+        private System.Windows.Forms.Label dataSetLabel;
+        private System.Windows.Forms.Label value0Label;
+        private System.Windows.Forms.TextBox value0TextBox;
+        private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.DataGridView value0dataGridView;
     }
 }

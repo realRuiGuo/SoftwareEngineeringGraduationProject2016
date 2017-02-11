@@ -148,5 +148,38 @@ namespace SRGMFormsApplication.DAL
             return SqlHelper.ExecuteNonQuery(sql, para);
         }
         #endregion
+
+        public DataSet getAllValue0()
+        {
+            string sql = "select modelname as 模型,dsname as 数据集,value0 as 参数初值 from value0 ";
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
+            return ds;
+        }
+
+
+        public DataSet getValue0(FDataSet p_dataSet,Model p_model)
+        {
+            string sql = "select * from value0 where modelname=@modelname and dsname=@dsname";
+            SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
+            SqlParameter sp2 = new SqlParameter("@dsname", p_dataSet.Name);
+
+            SqlParameter[] para = new SqlParameter[] { sp1, sp2 };
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
+            return ds;
+        }
+
+
+        public int addValue0(Model p_model, FDataSet p_dataSet, string value0)
+        {
+            string sql = "insert into value0 values(@modelname,@dsname,@value0,@value)";
+
+            SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
+            SqlParameter sp2 = new SqlParameter("@dsname", p_dataSet.Name);
+            SqlParameter sp3 = new SqlParameter("@value0", value0);
+            SqlParameter sp4 = new SqlParameter("@value", (object)DBNull.Value);
+
+            SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3,sp4 };
+            return SqlHelper.ExecuteNonQuery(sql, para);
+        }
     }
 }

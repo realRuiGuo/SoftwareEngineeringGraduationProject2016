@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.Entity;
+using SRGMFormsApplication.BLL;
 
 namespace SRGMFormsApplication.UI
 {
     public partial class FitForm : Form
     {
         private static FitForm instance = null;
-        List<Model> modelList;
-        List<FDataSet> dataSetList;
+        List<Model> modelList = new List<Model>();
+        List<FDataSet> dataSetList = new List<FDataSet>();
         public static FitForm Instance//单例
         {
             set { }
@@ -46,16 +47,52 @@ namespace SRGMFormsApplication.UI
             InitializeComponent();
             instance = this;
         }
-
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void FitForm_Load(object sender, EventArgs e)
         {
-
-            //显示图片
-            string imagePath = "\\Picture\\T1_DS10_fmodel0_Mt.png";
-            this.fitPictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);  
+            //初始化comboBox
+            foreach (Model model in this.ModelList)
+            {
+                this.modelcomboBox.Items.Add(model.Name);
+            }
+            foreach (FDataSet dataSet in this.DataSetList)
+            {
+                this.dataSetcomboBox.Items.Add(dataSet.Name);
+            }
         }
 
-        
+        /// <summary>
+        /// 根据所选模型、数据集的组合，显示相应的结果
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            string modelName = this.modelcomboBox.SelectedItem.ToString();
+            string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
+            if ("" != modelName && "" != dataSetName && null != modelName && null != dataSetName)
+            {
+                //显示图片
+                string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_Mt.png";
+                this.fitPictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);  
+                //显示文本
+                string filePath = System.Environment.CurrentDirectory + 
+                    "\\Result\\" + dataSetName + "_" + modelName + "_FitRes.txt";
+                if(FileHelper.IsExistFile (filePath))
+                {
+                    this.richTextBox1.Text = FileHelper.FileToString(filePath);
+                }              
+            }
+
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            instance = null;
+        }
+
+
+
+
 
     }
 }

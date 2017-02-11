@@ -28,14 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.selectLabel = new System.Windows.Forms.ToolStripLabel();
             this.fitLabel = new System.Windows.Forms.ToolStripLabel();
             this.reLabel = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(51, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(527, 342);
+            this.panel1.TabIndex = 6;
+            // 
+            // selectLabel
+            // 
+            this.selectLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.selectLabel.Name = "selectLabel";
+            this.selectLabel.Size = new System.Drawing.Size(48, 25);
+            this.selectLabel.Text = "选择";
+            this.selectLabel.Click += new System.EventHandler(this.selectLabel_Click);
+            // 
+            // fitLabel
+            // 
+            this.fitLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fitLabel.Name = "fitLabel";
+            this.fitLabel.Size = new System.Drawing.Size(48, 25);
+            this.fitLabel.Text = "拟合";
+            this.fitLabel.Click += new System.EventHandler(this.fitLabel_Click);
+            // 
+            // reLabel
+            // 
+            this.reLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.reLabel.Name = "reLabel";
+            this.reLabel.Size = new System.Drawing.Size(48, 25);
+            this.reLabel.Text = "预测";
+            this.reLabel.Click += new System.EventHandler(this.reLabel_Click);
             // 
             // toolStrip1
             // 
@@ -44,51 +75,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectLabel,
             this.fitLabel,
-            this.reLabel,
-            this.toolStripLabel1});
+            this.reLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(97, 342);
+            this.toolStrip1.Size = new System.Drawing.Size(51, 342);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // selectLabel
-            // 
-            this.selectLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.selectLabel.Name = "selectLabel";
-            this.selectLabel.Size = new System.Drawing.Size(94, 25);
-            this.selectLabel.Text = "选择";
-            this.selectLabel.Click += new System.EventHandler(this.selectLabel_Click);
-            // 
-            // fitLabel
-            // 
-            this.fitLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.fitLabel.Name = "fitLabel";
-            this.fitLabel.Size = new System.Drawing.Size(94, 25);
-            this.fitLabel.Text = "拟合";
-            this.fitLabel.Click += new System.EventHandler(this.fitLabel_Click);
-            // 
-            // reLabel
-            // 
-            this.reLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.reLabel.Name = "reLabel";
-            this.reLabel.Size = new System.Drawing.Size(94, 25);
-            this.reLabel.Text = "预测";
-            this.reLabel.Click += new System.EventHandler(this.reLabel_Click);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(94, 17);
-            this.toolStripLabel1.Text = "toolStripLabel1";
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(97, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(481, 342);
-            this.panel1.TabIndex = 6;
             // 
             // DisplayForm
             // 
@@ -101,7 +93,6 @@
             this.Text = "DisplayForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisplayForm_FormClosed);
             this.Load += new System.EventHandler(this.DisplayForm_Load);
-            this.Resize += new System.EventHandler(this.DisplayForm_Resize);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -111,11 +102,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripLabel selectLabel;
         private System.Windows.Forms.ToolStripLabel fitLabel;
         private System.Windows.Forms.ToolStripLabel reLabel;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

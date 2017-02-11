@@ -93,6 +93,28 @@ namespace SRGMFormsApplication.BLL
             return modelDB.deleteModelsforUser(p_model, p_account, p_userType);
         }
 
+        public DataSet getAllValue0()
+        {
+            return modelDB.getAllValue0();
+        }
+
+        public int addValue0(Model p_model,FDataSet p_dataSet,string value0)
+        {
+            return modelDB.addValue0(p_model, p_dataSet, value0);
+        }
+
+        /// <summary>
+        /// 得到指定的参数初值字符串
+        /// </summary>
+        /// <param name="p_dataSet"></param>
+        /// <param name="p_model"></param>
+        /// <returns></returns>
+        public string getValue0(FDataSet p_dataSet,Model p_model)
+        {
+            DataSet ds = modelDB.getValue0(p_dataSet, p_model);
+            return ds.Tables[0].Rows[0]["value0"].ToString();
+        }
+
         public void changeModels(List<Model> models)
         {
         }

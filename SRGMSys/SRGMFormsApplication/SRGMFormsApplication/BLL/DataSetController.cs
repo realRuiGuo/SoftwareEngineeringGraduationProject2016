@@ -24,6 +24,12 @@ namespace SRGMFormsApplication.BLL
         {
             return dsDB.getDataSetsforSystem();
         }
+
+        public List<FDataSet> getDataSetsforSystemL()
+        {
+            return dsDB.getDataSetsforSystemL();
+        }
+
         /// <summary>
         /// 返回当前用户的失效数据集
         /// </summary>
@@ -34,6 +40,12 @@ namespace SRGMFormsApplication.BLL
         {
             return dsDB.getDataSetsforUser(p_account, p_type);
         }
+
+        public List<FDataSet> getDataSetsfoUserL(Account p_account, int p_type)
+        {
+            return dsDB.getDataSetsforUserL(p_account, p_type);
+        }
+
         /// <summary>
         /// 系统管理员为系统添加失效数据集
         /// </summary>

@@ -10,16 +10,19 @@ using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
 using MathWorks.MATLAB.NET.Arrays;
 using MathWorks.MATLAB.NET.Utility;
-using SRGM;
+using Matlab;
 
 namespace SRGMFormsApplication.UI
 {
     public partial class SelectForm : Form
     {
         private static SelectForm instance = null;
+        static ModelController mc = new ModelController();
         Account account;
         int userType;
-        
+        List<Model> modelList = new List<Model>();
+        List<FDataSet> dataSetList = new List<FDataSet>();
+
         public static SelectForm Instance//单例
         {
             set { }
@@ -46,6 +49,16 @@ namespace SRGMFormsApplication.UI
             get { return userType; }
             set { userType = value; }
         }
+        public List<Model> ModelList
+        {
+            get { return modelList; }
+            set { modelList = value; }
+        }
+        public List<FDataSet> DataSetList
+        {
+            get { return dataSetList; }
+            set { dataSetList = value; }
+        }
         public SelectForm()
         {
             InitializeComponent();
@@ -65,6 +78,11 @@ namespace SRGMFormsApplication.UI
                     modelcomboBox.Items.Add("用户模型");
                 }
             }
+
+            this.modelcomboBox.Text = "系统模型";
+            this.dataSetcomboBox.Text = "系统数据集";
+            this.modelcomboBox_SelectedIndexChanged(sender,e);
+            this.dataSetcomboBox_SelectedIndexChanged(sender, e);
         }
 
         private void modelcomboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,27 +155,86 @@ namespace SRGMFormsApplication.UI
             }
         }
 
+        /// <summary>
+        /// 确认所选模型
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modelbutton_Click(object sender, EventArgs e)
         {
+            //Button设为不可用
+            //this.addModelbutton.Enabled = false;
+            //this.delModelbutton.Enabled = false;
 
-            //
-            DisplayMDI frmDisplay = (DisplayMDI)this.Owner;
-
+            //设置modelList
+            foreach (string modelName in modellistBox.Items)
+            {
+                Model modelItem = new Model();
+                modelItem.Name = modelName.Trim();
+                this.modelList.Add(modelItem);
+            }
+            //传递modelList到父窗口
+            DisplayForm frmDisplay = (DisplayForm)this.Owner;
+            frmDisplay.ModelList = this.ModelList;
         }
 
+        /// <summary>
+        /// 确认所选数据集
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataSetbutton_Click(object sender, EventArgs e)
         {
-
-            DisplayMDI frmDisplay = (DisplayMDI)this.Owner;
+            //设置dataSetList
+            foreach (string dataSetName in datasetlistBox.Items)
+            {
+                FDataSet dataSetItem = new FDataSet();
+                dataSetItem.Name = dataSetName.Trim();
+                this.dataSetList.Add(dataSetItem);
+            }
+            //传递dataSetList到父窗口
+            DisplayForm frmDisplay = (DisplayForm)this.Owner;
+            frmDisplay.DataSetList = this.DataSetList;
         }
 
+        /// <summary>
+        /// 调用DLL文件，执行所选模型的验证，打开拟合窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void startButton_Click(object sender, EventArgs e)
         {
             MnDSn t1 = new MnDSn();
-            MWCharArray modelName = "fmodel0".Trim();
-            MWCharArray dataSetName = "DS10".Trim();
-            MWNumericArray xmd0 = new double[] { 22.878, 0.00397 };
-            t1.T1MnDSn(modelName,dataSetName, xmd0);
+
+            foreach (FDataSet dataSet in this.DataSetList)
+            {
+                foreach (Model model in this.ModelList)
+                {
+                    MWCharArray modelName = model.Name.Trim();
+                    MWCharArray dataSetName = dataSet.Name.Trim();
+
+                    //取初值字符串，按空格分隔成double
+                    string value0 = mc.getValue0(dataSet, model);
+
+                    string[] values = value0.Split(' ');
+                    double[] parameter = Array.ConvertAll(values, v1 => double.Parse(v1));
+
+                    MWNumericArray xmd0 = parameter;
+
+                    //判断匹配（数据集）类型，调用相应的方法
+
+                    t1.T1MnDSn(modelName, dataSetName, xmd0);
+                }
+            }
+
+            //打开拟合窗口
+            DisplayForm frmDisplay = (DisplayForm)this.Owner;
+            frmDisplay.fitLabel_Click(sender, e);
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            instance = null;
         }
     }
 }
