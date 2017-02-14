@@ -28,6 +28,8 @@ namespace SRGMFormsApplication.DAL
             SqlParameter[] para = new SqlParameter[] { sp1 };
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
             model.Path = ds.Tables[0].Rows[0]["path"].ToString();
+            model.Type = new ModelType();
+            model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
             return model;
         }
         #region 得到系统自带Model信息，返回DataSet

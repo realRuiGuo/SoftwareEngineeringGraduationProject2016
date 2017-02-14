@@ -162,7 +162,10 @@ namespace SRGMFormsApplication.UI
 
         private void 数据集管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DataSetForm dataSetForm = DataSetForm.Instance;
+            dataSetForm.Account = this.Account;
+            dataSetForm.UserType = this.UserType;
+            dataSetForm.Show();
         }
 
         private void 用户管理ToolStripMenuItem_Click(object sender, EventArgs e)

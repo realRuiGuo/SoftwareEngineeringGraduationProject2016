@@ -11,6 +11,13 @@ namespace SRGMFormsApplication.DAL
 {
     public class FDataSetDB
     {
+        public DataSet getDataSetType()
+        {
+            string sql = "select dt.typeID as 编号,dt.wt as 有无wt,dt.ct as 有无ct from dstype dt";
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
+            return ds;
+        }
+
         public FDataSet getDataSetByid(string p_dsName)
         {
             FDataSet dataSet = new FDataSet();
@@ -21,6 +28,8 @@ namespace SRGMFormsApplication.DAL
             SqlParameter[] para = new SqlParameter[] { sp1};
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
             dataSet.Path = ds.Tables[0].Rows[0]["path"].ToString();
+            dataSet.Type = new FDataSetType();
+            dataSet.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
             return dataSet;
         }
         #region 得到系统自带FDataSet信息，返回DataSet

@@ -33,7 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addbutton = new System.Windows.Forms.Button();
             this.delbutton = new System.Windows.Forms.Button();
+            this.typeDataGridView = new System.Windows.Forms.DataGridView();
+            this.typeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // dataSetdataGridView
@@ -66,6 +69,7 @@
             this.addbutton.Text = "添加";
             this.addbutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addbutton.UseVisualStyleBackColor = true;
+            this.addbutton.Click += new System.EventHandler(this.addbutton_Click);
             // 
             // delbutton
             // 
@@ -78,13 +82,37 @@
             this.delbutton.Text = "删除";
             this.delbutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.delbutton.UseVisualStyleBackColor = true;
+            this.delbutton.Click += new System.EventHandler(this.delbutton_Click);
+            // 
+            // typeDataGridView
+            // 
+            this.typeDataGridView.AllowUserToAddRows = false;
+            this.typeDataGridView.AllowUserToDeleteRows = false;
+            this.typeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.typeDataGridView.Location = new System.Drawing.Point(592, 26);
+            this.typeDataGridView.Name = "typeDataGridView";
+            this.typeDataGridView.ReadOnly = true;
+            this.typeDataGridView.RowTemplate.Height = 23;
+            this.typeDataGridView.Size = new System.Drawing.Size(292, 249);
+            this.typeDataGridView.TabIndex = 14;
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(590, 11);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(77, 12);
+            this.typeLabel.TabIndex = 15;
+            this.typeLabel.Text = "数据集类型：";
             // 
             // DataSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(597, 320);
+            this.ClientSize = new System.Drawing.Size(896, 325);
+            this.Controls.Add(this.typeLabel);
+            this.Controls.Add(this.typeDataGridView);
             this.Controls.Add(this.dataSetdataGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addbutton);
@@ -97,6 +125,7 @@
             this.Load += new System.EventHandler(this.DataSetForm_Load);
             this.Resize += new System.EventHandler(this.DataSetForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.typeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +137,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addbutton;
         private System.Windows.Forms.Button delbutton;
+        private System.Windows.Forms.DataGridView typeDataGridView;
+        private System.Windows.Forms.Label typeLabel;
 
     }
 }

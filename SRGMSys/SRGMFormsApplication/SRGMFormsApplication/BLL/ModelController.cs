@@ -43,13 +43,35 @@ namespace SRGMFormsApplication.BLL
         /// </summary>
         /// <param name="p_model"></param>
         /// <returns></returns>
-        public int addModelstoSystem(Model p_model,String p_filePath)
+        public int addModelstoSystem(Model p_model,List<string> p_filePath)
         {
             //设置导入后模型的路径
-            p_model.Path = "\\Model\\" + p_model.Name + ".m";
-            //复制文件到指定目录
-            FileHelper.Copy(p_filePath,
-                System.Environment.CurrentDirectory + p_model.Path);
+            if (p_model.Name.IndexOf(";") > -1)//多文件模型
+            {
+                string[] name = p_model.Name.Split(';');
+                
+                foreach(string modelName in name)
+                {                   
+                    string pathtemp = "\\Model\\" + modelName + ".m ";
+                    p_model.Path += pathtemp;//存入DB的累加路径
+                    //复制文件到指定目录
+                    foreach (string path in p_filePath)
+                    {
+                        FileHelper.Copy(path,
+                        System.Environment.CurrentDirectory + pathtemp);
+                    }
+                }
+            }
+            else
+            {
+                p_model.Path = "\\Model\\" + p_model.Name + ".m";
+                //复制文件到指定目录
+                foreach (string path in p_filePath)
+                {
+                    FileHelper.Copy(path,
+                    System.Environment.CurrentDirectory + p_model.Path);
+                }
+            }
             return modelDB.addDataSetsforSystem(p_model);
         }
         /// <summary>

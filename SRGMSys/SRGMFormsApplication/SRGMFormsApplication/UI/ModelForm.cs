@@ -127,23 +127,28 @@ namespace SRGMFormsApplication.UI
             fileDialog.Filter = "(*.m)|*.m";
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = fileDialog.FileName;
-                string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
-                MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                List<string> fullPath = new List<string>();
+                foreach (string filePath in fileDialog.FileNames)
+                {
+                    fullPath.Add(filePath);
+                    string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
+                    MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 Model model = new Model();
-                model.Name = fileNameWithoutExtension;
+                
                 if (null != modeldataGridView.CurrentRow)
                 {
                     int row = modeldataGridView.CurrentRow.Index;
+                    model.Name = modeldataGridView.Rows[row].Cells[0].Value.ToString();
                     model.Type = new ModelType();
                     model.Type.TypeID = int.Parse(modeldataGridView.Rows[row].Cells[1].Value.ToString());
                     if (0 == this.UserType)
                     {
-                        mc.addModelstoSystem(model, filePath);
+                        mc.addModelstoSystem(model, fullPath);
                     }
                     else
                     {
-                        mc.addModelsforUser(model, this.Account, this.UserType, filePath);
+                        //mc.addModelsforUser(model, this.Account, this.UserType, fullPath);
                     }
                     updateGridView();
                 }

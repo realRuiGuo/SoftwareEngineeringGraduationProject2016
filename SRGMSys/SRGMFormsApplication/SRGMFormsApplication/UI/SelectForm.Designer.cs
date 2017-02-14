@@ -42,8 +42,12 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.startButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.resetButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.modelrichTextBox = new System.Windows.Forms.RichTextBox();
+            this.dataSetrichTextBox = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -77,7 +81,7 @@
             // 
             this.modellistBox.FormattingEnabled = true;
             this.modellistBox.ItemHeight = 12;
-            this.modellistBox.Location = new System.Drawing.Point(12, 249);
+            this.modellistBox.Location = new System.Drawing.Point(12, 423);
             this.modellistBox.Name = "modellistBox";
             this.modellistBox.Size = new System.Drawing.Size(330, 124);
             this.modellistBox.TabIndex = 4;
@@ -86,7 +90,7 @@
             // 
             this.datasetlistBox.FormattingEnabled = true;
             this.datasetlistBox.ItemHeight = 12;
-            this.datasetlistBox.Location = new System.Drawing.Point(364, 249);
+            this.datasetlistBox.Location = new System.Drawing.Point(364, 423);
             this.datasetlistBox.Name = "datasetlistBox";
             this.datasetlistBox.Size = new System.Drawing.Size(330, 124);
             this.datasetlistBox.TabIndex = 5;
@@ -94,7 +98,7 @@
             // dataSetbutton
             // 
             this.dataSetbutton.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.menu_bt;
-            this.dataSetbutton.Location = new System.Drawing.Point(593, 382);
+            this.dataSetbutton.Location = new System.Drawing.Point(593, 553);
             this.dataSetbutton.Name = "dataSetbutton";
             this.dataSetbutton.Size = new System.Drawing.Size(101, 29);
             this.dataSetbutton.TabIndex = 11;
@@ -105,7 +109,7 @@
             // modelbutton
             // 
             this.modelbutton.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.menu_bt;
-            this.modelbutton.Location = new System.Drawing.Point(241, 382);
+            this.modelbutton.Location = new System.Drawing.Point(241, 553);
             this.modelbutton.Name = "modelbutton";
             this.modelbutton.Size = new System.Drawing.Size(101, 29);
             this.modelbutton.TabIndex = 10;
@@ -117,7 +121,7 @@
             // 
             this.delDataSetbutton.Image = global::SRGMFormsApplication.Properties.Resources.删除;
             this.delDataSetbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delDataSetbutton.Location = new System.Drawing.Point(364, 382);
+            this.delDataSetbutton.Location = new System.Drawing.Point(364, 553);
             this.delDataSetbutton.Name = "delDataSetbutton";
             this.delDataSetbutton.Size = new System.Drawing.Size(53, 29);
             this.delDataSetbutton.TabIndex = 9;
@@ -130,7 +134,7 @@
             // 
             this.delModelbutton.Image = global::SRGMFormsApplication.Properties.Resources.删除;
             this.delModelbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delModelbutton.Location = new System.Drawing.Point(12, 382);
+            this.delModelbutton.Location = new System.Drawing.Point(12, 553);
             this.delModelbutton.Name = "delModelbutton";
             this.delModelbutton.Size = new System.Drawing.Size(53, 29);
             this.delModelbutton.TabIndex = 8;
@@ -143,7 +147,7 @@
             // 
             this.addDataSetbutton.Image = global::SRGMFormsApplication.Properties.Resources.添加;
             this.addDataSetbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addDataSetbutton.Location = new System.Drawing.Point(364, 214);
+            this.addDataSetbutton.Location = new System.Drawing.Point(364, 388);
             this.addDataSetbutton.Name = "addDataSetbutton";
             this.addDataSetbutton.Size = new System.Drawing.Size(53, 29);
             this.addDataSetbutton.TabIndex = 7;
@@ -156,7 +160,7 @@
             // 
             this.addModelbutton.Image = global::SRGMFormsApplication.Properties.Resources.添加;
             this.addModelbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addModelbutton.Location = new System.Drawing.Point(12, 214);
+            this.addModelbutton.Location = new System.Drawing.Point(12, 388);
             this.addModelbutton.Name = "addModelbutton";
             this.addModelbutton.Size = new System.Drawing.Size(53, 29);
             this.addModelbutton.TabIndex = 6;
@@ -185,7 +189,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(312, 438);
+            this.startButton.Location = new System.Drawing.Point(309, 614);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(96, 28);
             this.startButton.TabIndex = 14;
@@ -195,6 +199,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.dataSetrichTextBox);
+            this.panel1.Controls.Add(this.modelrichTextBox);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.resetButton);
             this.panel1.Controls.Add(this.modelcomboBox);
@@ -213,12 +221,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(724, 512);
+            this.panel1.Size = new System.Drawing.Size(724, 690);
             this.panel1.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 669);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(365, 12);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "注：点击重置后，再点击左侧功能按钮，可进行（显示）新的验证。";
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(12, 441);
+            this.resetButton.Location = new System.Drawing.Point(12, 617);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(75, 23);
             this.resetButton.TabIndex = 15;
@@ -226,20 +243,49 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // label2
+            // modelrichTextBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 491);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(365, 12);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "注：点击重置后，再点击左侧功能按钮，可进行（显示）新的验证。";
+            this.modelrichTextBox.Location = new System.Drawing.Point(12, 250);
+            this.modelrichTextBox.Name = "modelrichTextBox";
+            this.modelrichTextBox.ReadOnly = true;
+            this.modelrichTextBox.Size = new System.Drawing.Size(339, 132);
+            this.modelrichTextBox.TabIndex = 32;
+            this.modelrichTextBox.Text = "";
+            // 
+            // dataSetrichTextBox
+            // 
+            this.dataSetrichTextBox.Location = new System.Drawing.Point(364, 250);
+            this.dataSetrichTextBox.Name = "dataSetrichTextBox";
+            this.dataSetrichTextBox.ReadOnly = true;
+            this.dataSetrichTextBox.Size = new System.Drawing.Size(330, 132);
+            this.dataSetrichTextBox.TabIndex = 33;
+            this.dataSetrichTextBox.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(14, 214);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "显示模型信息";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(364, 214);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "显示数据集信息";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 512);
+            this.ClientSize = new System.Drawing.Size(724, 690);
             this.Controls.Add(this.panel1);
             this.Name = "SelectForm";
             this.Text = "SelectForm";
@@ -270,5 +316,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox dataSetrichTextBox;
+        private System.Windows.Forms.RichTextBox modelrichTextBox;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -18,6 +18,7 @@ namespace SRGMFormsApplication.UI
     {
         private static SelectForm instance = null;
         static ModelController mc = new ModelController();
+        static DataSetController dc = new DataSetController();
         Account account;
         int userType;
         List<Model> modelList = new List<Model>();
@@ -87,7 +88,6 @@ namespace SRGMFormsApplication.UI
 
         private void modelcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ModelController mc = new ModelController();
             if ("系统模型" == modelcomboBox.SelectedItem.ToString())
             {
                 modeldataGridView.DataSource = mc.getModelsforSystem().Tables[0];
@@ -100,7 +100,6 @@ namespace SRGMFormsApplication.UI
 
         private void dataSetcomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataSetController dc = new DataSetController();
             if ("系统数据集" == this.dataSetcomboBox.SelectedItem.ToString())
             {
                 dataSetdataGridView.DataSource = dc.getDataSetsforSystem().Tables[0];
@@ -170,7 +169,7 @@ namespace SRGMFormsApplication.UI
             foreach (string modelName in modellistBox.Items)
             {
                 Model modelItem = new Model();
-                modelItem.Name = modelName.Trim();
+                modelItem = mc.getModelByid(modelName);
                 this.modelList.Add(modelItem);
             }
             //传递modelList到父窗口
@@ -189,7 +188,8 @@ namespace SRGMFormsApplication.UI
             foreach (string dataSetName in datasetlistBox.Items)
             {
                 FDataSet dataSetItem = new FDataSet();
-                dataSetItem.Name = dataSetName.Trim();
+                //从数据库中取得dataSet,目的是设置type属性
+                dataSetItem = dc.getDataSetByid(dataSetName);
                 this.dataSetList.Add(dataSetItem);
             }
             //传递dataSetList到父窗口
@@ -210,20 +210,49 @@ namespace SRGMFormsApplication.UI
             {
                 foreach (Model model in this.ModelList)
                 {
+
                     MWCharArray modelName = model.Name.Trim();
                     MWCharArray dataSetName = dataSet.Name.Trim();
 
-                    //取初值字符串，按空格分隔成double
+                    //取初值字符串
                     string value0 = mc.getValue0(dataSet, model);
 
-                    string[] values = value0.Split(' ');
-                    double[] parameter = Array.ConvertAll(values, v1 => double.Parse(v1));
-
-                    MWNumericArray xmd0 = parameter;
-
-                    //判断匹配（数据集）类型，调用相应的方法
-
-                    t1.T1MnDSn(modelName, dataSetName, xmd0);
+                    //判断匹配（数据集）类型，调用相应的方法                
+                    if (1 == model.Type.TypeID || 2 == model.Type.TypeID)//完美和ID模型
+                    {
+                        if (1 == dataSet.Type.TypeID)
+                        {
+                            MWCharArray xmd0 = value0;
+                            t1.T1MnDSn(modelName, dataSetName, xmd0);
+                        }
+                    }
+                    else if(3 == model.Type.TypeID || 4 == model.Type.TypeID)
+                    {
+                        if(2 == dataSet.Type.TypeID)
+                        {
+                            string[] name = model.Name.Split(';');
+                            string wt = null;
+                            string mt = null;
+                            foreach(string item in name)
+                            {
+                                if(item.IndexOf("wt") > -1)
+                                {
+                                    wt = item;
+                                }
+                                if (item.IndexOf("mt") > -1)
+                                {
+                                    mt = item;
+                                }
+                            }
+                            MWCharArray modelwtName = wt.Trim();
+                            MWCharArray modelmtName = mt.Trim();
+                            string[] xmd = value0.Split(';');
+                            MWCharArray xmd0wtString = xmd[0];
+                            MWCharArray xmd0mtString = xmd[1];
+                            MWArray paraNum = 3;
+                            t1.T2MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum);
+                        }
+                    }
                 }
             }
 
@@ -235,6 +264,45 @@ namespace SRGMFormsApplication.UI
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
+        }
+        /// <summary>
+        /// 显示模型文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (null != modeldataGridView.CurrentRow)
+            {
+                int row = modeldataGridView.CurrentRow.Index;
+                string modelName = modeldataGridView.Rows[row].Cells[0].Value.ToString();
+                Model model = mc.getModelByid(modelName);
+                String modelFilePath = System.Environment.CurrentDirectory + model.Path;
+                if (FileHelper.IsExistFile(modelFilePath))
+                {
+                    this.modelrichTextBox.Text = FileHelper.FileToString(modelFilePath);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 显示数据集文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (null != dataSetdataGridView.CurrentRow)
+            {
+                int row = dataSetdataGridView.CurrentRow.Index;
+                string dataSetName = dataSetdataGridView.Rows[row].Cells[0].Value.ToString();
+                FDataSet dataSet = dc.getDataSetByid(dataSetName);
+                String dataSetFilePath = System.Environment.CurrentDirectory + dataSet.Path;
+                if (FileHelper.IsExistFile(dataSetFilePath))
+                {
+                    this.dataSetrichTextBox.Text = FileHelper.FileToString(dataSetFilePath);
+                }
+            }
         }
     }
 }

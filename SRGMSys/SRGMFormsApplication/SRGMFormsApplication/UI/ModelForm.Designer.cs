@@ -40,6 +40,7 @@
             this.value0TextBox = new System.Windows.Forms.TextBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.value0dataGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).BeginInit();
@@ -133,9 +134,9 @@
             this.value0Label.AutoSize = true;
             this.value0Label.Location = new System.Drawing.Point(217, 328);
             this.value0Label.Name = "value0Label";
-            this.value0Label.Size = new System.Drawing.Size(137, 12);
+            this.value0Label.Size = new System.Drawing.Size(377, 12);
             this.value0Label.TabIndex = 22;
-            this.value0Label.Text = "参数初值（空格隔开）：";
+            this.value0Label.Text = "参数初值（同一函数的空格隔开;不同函数的；隔开。顺序：wt;mt）：";
             // 
             // value0TextBox
             // 
@@ -164,11 +165,21 @@
             this.value0dataGridView.Size = new System.Drawing.Size(388, 161);
             this.value0dataGridView.TabIndex = 25;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(156, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 12);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "请输入类型编号：";
+            // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 571);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.value0dataGridView);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.value0TextBox);
@@ -208,5 +219,6 @@
         private System.Windows.Forms.TextBox value0TextBox;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.DataGridView value0dataGridView;
+        private System.Windows.Forms.Label label2;
     }
 }

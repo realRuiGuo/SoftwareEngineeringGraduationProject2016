@@ -90,6 +90,7 @@ namespace SRGMFormsApplication.UI
             this.Resize += new EventHandler(DataSetForm_Resize);
             setTag(this);
             //DataSetForm_Resize(new object(), new EventArgs());//x,y可在实例化时赋值,最后这句是新加的，在MDI时有用
+            this.typeDataGridView.DataSource = dc.getDataSetType().Tables[0];
             if(0 == this.UserType)
             {
                 this.label1.Text = "系统数据集";
@@ -114,7 +115,7 @@ namespace SRGMFormsApplication.UI
         private void addbutton_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Multiselect = true;
+            fileDialog.Multiselect = false;
             fileDialog.Title = "请选择文件";
             fileDialog.Filter = "(*.txt)|*.txt"; 
             if (fileDialog.ShowDialog() == DialogResult.OK)
@@ -150,16 +151,20 @@ namespace SRGMFormsApplication.UI
             if (null != dataSetdataGridView.CurrentRow)
             {
                 int row = dataSetdataGridView.CurrentRow.Index;
-                dataset = dc.getDataSetByid(dataSetdataGridView.Rows[row].Cells[0].Value.ToString().Trim());
-                if (0 == this.UserType)
+                string dataSetName = dataSetdataGridView.Rows[row].Cells[0].Value.ToString().Trim();
+                if ("" != dataSetName && null != dataSetName)
                 {
-                    dc.deleteDataSetsfromSystem(dataset);
-                }
-                else
-                {
-                    dc.deleteDataSetsforUser(dataset, this.Account, this.UserType);
-                }
-                updateGridView();
+                    dataset = dc.getDataSetByid(dataSetName);
+                    if (0 == this.UserType)
+                    {
+                        dc.deleteDataSetsfromSystem(dataset);
+                    }
+                    else
+                    {
+                        dc.deleteDataSetsforUser(dataset, this.Account, this.UserType);
+                    }
+                    updateGridView();
+                }     
             }
         }
 

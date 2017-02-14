@@ -12,6 +12,11 @@ namespace SRGMFormsApplication.BLL
     {
         static FDataSetDB dsDB = new FDataSetDB();
 
+        public DataSet getDataSetType()
+        {
+            return dsDB.getDataSetType();
+        }
+
         public FDataSet getDataSetByid(string p_id)
         {
             return dsDB.getDataSetByid(p_id);
@@ -72,6 +77,9 @@ namespace SRGMFormsApplication.BLL
             //设置数据集路径
             p_dataSet.Path = "\\DS\\" + p_account.UserName + p_userType.ToString() + "\\"+
                 p_dataSet.Name + ".txt";
+            string directory = "\\DS\\" + p_account.UserName + p_userType.ToString();
+            //不存在则新建文件夹
+            FileHelper.CreateDirectory(System.Environment.CurrentDirectory + directory);
             //复制文件到指定目录
             FileHelper.Copy(p_filePath, System.Environment.CurrentDirectory + p_dataSet.Path);
             return dsDB.addDataSetsforUser(p_dataSet, p_account, p_userType);

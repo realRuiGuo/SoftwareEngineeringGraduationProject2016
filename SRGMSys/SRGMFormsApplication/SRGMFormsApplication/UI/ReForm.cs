@@ -66,16 +66,47 @@ namespace SRGMFormsApplication.UI
             string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
             if ("" != modelName && "" != dataSetName && null != modelName && null != dataSetName)
             {
-                //显示图片
-                string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
-                this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
-                //显示文本
-                string filePath = System.Environment.CurrentDirectory + 
-                    "\\Result\\" + dataSetName + "_" + modelName + "_ReRes.txt";
-                if (FileHelper.IsExistFile(filePath))
+                if (modelName.IndexOf(";") > -1)
                 {
-                    this.richTextBox1.Text = FileHelper.FileToString(filePath);
-                }            
+                    string[] name = modelName.Split(';');
+                    string wt = null;
+                    string mt = null;
+                    foreach (string item in name)
+                    {
+                        if (item.IndexOf("wt") > -1)
+                        {
+                            wt = item;
+                        }
+                        if (item.IndexOf("mt") > -1)
+                        {
+                            mt = item;
+                        }
+                    }
+                    //显示图片
+                    string imagePath_mt = "\\Picture\\" + dataSetName + "_" + mt + "_RE.png";
+                    this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_mt, false);
+
+                    //显示文本
+                    string filePath = System.Environment.CurrentDirectory +
+                        "\\Result\\" + dataSetName + "_" + mt + "_RERes.txt";
+                    if (FileHelper.IsExistFile(filePath))
+                    {
+                        this.richTextBox1.Text = FileHelper.FileToString(filePath);
+                    }
+                }
+                else
+                {
+                    //显示图片
+                    string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
+                    this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
+                    //显示文本
+                    string filePath = System.Environment.CurrentDirectory +
+                        "\\Result\\" + dataSetName + "_" + modelName + "_RERes.txt";
+                    if (FileHelper.IsExistFile(filePath))
+                    {
+                        this.richTextBox1.Text = FileHelper.FileToString(filePath);
+                    }            
+                }             
             }
         }
 
