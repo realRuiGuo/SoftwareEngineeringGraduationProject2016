@@ -99,14 +99,16 @@ namespace SRGMFormsApplication.UI
             this.modelTypedataGridView.DataSource = mc.getModelType().Tables[0];
             this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
             updateGridView();
-            //初始化dataSetLabel
+
+            //初始化dataSetcomboBox
             List<FDataSet> DataSet = new List<FDataSet>();
             DataSet = dc.getDataSetsforSystemL();
+            this.dataSetcomboBox.Items.Add("请选择");
             foreach (FDataSet ds in DataSet)
             {
                 this.dataSetcomboBox.Items.Add(ds.Name);
             }
-
+            this.dataSetcomboBox.SelectedIndex = 0;
         }
         public void updateGridView()
         {
@@ -131,7 +133,7 @@ namespace SRGMFormsApplication.UI
                 foreach (string filePath in fileDialog.FileNames)
                 {
                     fullPath.Add(filePath);
-                    string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
+                    //string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
                     MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 Model model = new Model();
@@ -142,6 +144,7 @@ namespace SRGMFormsApplication.UI
                     model.Name = modeldataGridView.Rows[row].Cells[0].Value.ToString();
                     model.Type = new ModelType();
                     model.Type.TypeID = int.Parse(modeldataGridView.Rows[row].Cells[1].Value.ToString());
+                    model.ParaNum = int.Parse(modeldataGridView.Rows[row].Cells[2].Value.ToString()); 
                     if (0 == this.UserType)
                     {
                         mc.addModelstoSystem(model, fullPath);
@@ -191,9 +194,15 @@ namespace SRGMFormsApplication.UI
             {
                 string modelName = this.modeldataGridView.Rows[row].Cells[0].Value.ToString();
                 model.Name = modelName;
-                dataSet.Name = this.dataSetcomboBox.SelectedItem.ToString();
-                string value0 = this.value0TextBox.Text.ToString().Trim();
-                mc.addValue0(model, dataSet, value0);
+                if (dataSetcomboBox.SelectedIndex != 0)
+                {
+                    dataSet.Name = this.dataSetcomboBox.SelectedItem.ToString();
+                }
+                if (this.value0TextBox.Text.ToString() != "")
+                {
+                    string value0 = this.value0TextBox.Text.ToString().Trim();
+                    mc.addValue0(model, dataSet, value0);
+                }
                 this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
             }
         }

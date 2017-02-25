@@ -75,11 +75,10 @@ namespace SRGMFormsApplication.BLL
         public int addDataSetsforUser(FDataSet p_dataSet, Account p_account, int p_userType,String p_filePath)
         {
             //设置数据集路径
-            p_dataSet.Path = "\\DS\\" + p_account.UserName + p_userType.ToString() + "\\"+
-                p_dataSet.Name + ".txt";
-            string directory = "\\DS\\" + p_account.UserName + p_userType.ToString();
-            //不存在则新建文件夹
-            FileHelper.CreateDirectory(System.Environment.CurrentDirectory + directory);
+            p_dataSet.Path = "\\DS\\" + p_dataSet.Name + ".txt";
+            //string directory = "\\DS\\" + p_account.UserName + p_userType.ToString();
+            ////不存在则新建文件夹
+            //FileHelper.CreateDirectory(System.Environment.CurrentDirectory + directory);
             //复制文件到指定目录
             FileHelper.Copy(p_filePath, System.Environment.CurrentDirectory + p_dataSet.Path);
             return dsDB.addDataSetsforUser(p_dataSet, p_account, p_userType);

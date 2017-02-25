@@ -83,7 +83,7 @@ namespace SRGMFormsApplication.DAL
 
        #region 登陆方法
        /// <summary>
-       /// 登陆方法，通过用户名和密码登陆，Account状态为空时表示没有这个用户，如果password=null,表示密码错误，登陆成功返回完整的Account信息
+       /// 登陆方法，通过用户名和密码登陆，Account=null表示没有这个用户，如果password=null,表示密码错误，登陆成功返回完整的Account信息
        /// </summary>
        /// <param name="username"></param>
        /// <param name="pwd"></param>

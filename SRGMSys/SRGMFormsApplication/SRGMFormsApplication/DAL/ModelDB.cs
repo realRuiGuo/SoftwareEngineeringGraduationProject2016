@@ -18,6 +18,11 @@ namespace SRGMFormsApplication.DAL
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
             return ds;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p_modelName"></param>
+        /// <returns></returns>
         public Model getModelByid(string p_modelName)
         {
             Model model = new Model();
@@ -30,6 +35,7 @@ namespace SRGMFormsApplication.DAL
             model.Path = ds.Tables[0].Rows[0]["path"].ToString();
             model.Type = new ModelType();
             model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
+            model.ParaNum = (int)ds.Tables[0].Rows[0]["paranum"];
             return model;
         }
         #region 得到系统自带Model信息，返回DataSet
@@ -39,10 +45,32 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public DataSet getModelsforSystem()
         {
-            string sql = "select m.modelname as 名称,mt.name as 类型 from model m,modeltype mt" +
+            string sql = "select m.modelname as 名称,mt.name as 类型,m.paranum as param0个数 from model m,modeltype mt" +
                " where m.permission=0 and m.typeID=mt.typeID";
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
             return ds;
+        }
+
+        #endregion
+        #region 得到系统的Model信息，返回List集合，断开式
+        /// <summary>
+        /// 得到系统的Model信息
+        /// </summary>
+        /// <returns></returns>
+        public List<Model> getModelsforSystemL()
+        {
+            List<Model> list = new List<Model>();
+            string sql = "select * from model" +
+               " where permission= 0";
+            DataSet ds = SqlHelper.ExecuteReaderDataSet(sql);
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Model model = new Model();
+                model.Name = dr["modelname"].ToString();
+
+                list.Add(model);
+            }
+            return list;
         }
         #endregion
 
@@ -55,7 +83,7 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public DataSet getModelsforUser(Account p_account, int p_type)
         {
-            string sql = "select m.modelname as 名称,mt.name as 类型 from model m,modeltype mt" +
+            string sql = "select m.modelname as 名称,mt.name as 类型,m.paranum as param0个数 from model m,modeltype mt" +
                 " where m.username=@userName and m.permission=@permission and m.typeID=mt.typeID ";
             SqlParameter sp1 = new SqlParameter("@userName", p_account.UserName);
             SqlParameter sp2 = new SqlParameter("@permission", p_type);
@@ -73,7 +101,7 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public int addDataSetsforSystem(Model p_model)
         {
-            string sql = "insert into model values(@modelname,@path,@permission,@username,@shape,@typeID,@parameters)";
+            string sql = "insert into model values(@modelname,@path,@permission,@username,@shape,@typeID,@parameters,@paranum)";
 
             SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
             SqlParameter sp2 = new SqlParameter("@path", p_model.Path);
@@ -82,8 +110,9 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp5 = new SqlParameter("@shape",(object)DBNull.Value);
             SqlParameter sp6 = new SqlParameter("@typeID", p_model.Type.TypeID);
             SqlParameter sp7 = new SqlParameter("@parameters", (object)DBNull.Value);
+            SqlParameter sp8 = new SqlParameter("@paranum", p_model.ParaNum);
 
-            SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6,sp7 };
+            SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6,sp7,sp8 };
 
             return SqlHelper.ExecuteNonQuery(sql, para);
         }
@@ -119,6 +148,8 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public int deleteModelsforSystem(Model p_model)
         {
+            //删除初值记录
+            deleteValue0forModel(p_model);
             string sql = "delete from model where modelname=@modelname and username is null and permission=@permission";
             SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
            // SqlParameter sp2 = new SqlParameter("@username", (object)DBNull.Value);
@@ -181,6 +212,16 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp4 = new SqlParameter("@value", (object)DBNull.Value);
 
             SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3,sp4 };
+            return SqlHelper.ExecuteNonQuery(sql, para);
+        }
+
+        public int deleteValue0forModel(Model p_model)
+        {
+            string sql = "delete from value0 where modelname = @modelname";
+
+            SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
+
+            SqlParameter[] para = new SqlParameter[] { sp1 };
             return SqlHelper.ExecuteNonQuery(sql, para);
         }
     }

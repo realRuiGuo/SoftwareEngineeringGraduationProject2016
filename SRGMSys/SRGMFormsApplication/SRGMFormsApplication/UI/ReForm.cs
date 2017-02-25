@@ -84,8 +84,11 @@ namespace SRGMFormsApplication.UI
                     }
                     //显示图片
                     string imagePath_mt = "\\Picture\\" + dataSetName + "_" + mt + "_RE.png";
-                    this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_mt, false);
-
+                    if (FileHelper.IsExistFile(imagePath_mt))
+                    {
+                        this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_mt, false);
+                    }
+                
                     //显示文本
                     string filePath = System.Environment.CurrentDirectory +
                         "\\Result\\" + dataSetName + "_" + mt + "_RERes.txt";

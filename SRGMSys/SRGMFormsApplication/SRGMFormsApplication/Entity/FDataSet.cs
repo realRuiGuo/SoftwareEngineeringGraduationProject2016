@@ -11,12 +11,13 @@ namespace SRGMFormsApplication.Entity
 {
     public class FDataSet
     {
-        private String m_name;
-        private String m_sourse;
-        private String m_postDate;
-        private String m_path;
+        private string m_name;
+        private string m_sourse;
+        private string m_postDate;
+        private string m_path;
         private int m_owner;
         private FDataSetType m_type;
+        private int m_cp;
 
         /// <summary>
         /// 数据集名
@@ -102,6 +103,14 @@ namespace SRGMFormsApplication.Entity
                 m_type = value;
             }
         }
+
+        public int Cp
+        {
+            get { return m_cp; }
+            set { m_cp = value; }
+        }
+
+
     }
 
 }

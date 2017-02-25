@@ -15,6 +15,7 @@ namespace SRGMFormsApplication.UI
     {
         private static DataSetForm instance = null;
         static DataSetController dc = new DataSetController();
+        static ModelController mc = new ModelController();
         Account account;
         int userType;
         private float X;
@@ -91,6 +92,17 @@ namespace SRGMFormsApplication.UI
             setTag(this);
             //DataSetForm_Resize(new object(), new EventArgs());//x,y可在实例化时赋值,最后这句是新加的，在MDI时有用
             this.typeDataGridView.DataSource = dc.getDataSetType().Tables[0];
+
+            //初始化modelcomboBox
+            List<Model> model = new List<Model>();
+            this.modelcomboBox.Items.Add("请选择");
+            model = mc.getModelsforSystemL();
+            foreach (Model item in model)
+            {
+                this.modelcomboBox.Items.Add(item.Name);
+            }
+            this.modelcomboBox.SelectedIndex = 0;
+
             if(0 == this.UserType)
             {
                 this.label1.Text = "系统数据集";
@@ -100,6 +112,7 @@ namespace SRGMFormsApplication.UI
                 this.label1.Text = "用户数据集";
             }
             updateGridView();
+
         }
         public void updateGridView()
         {
@@ -124,7 +137,7 @@ namespace SRGMFormsApplication.UI
                 string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
                 MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FDataSet dataset = new FDataSet();
-                dataset.Name = fileNameWithoutExtension;
+                dataset.Name = this.Account.UserName + this.UserType.ToString() + "_" + fileNameWithoutExtension;
                 if (null != dataSetdataGridView.CurrentRow)
                 {
                     int row = dataSetdataGridView.CurrentRow.Index;
@@ -132,6 +145,7 @@ namespace SRGMFormsApplication.UI
                     dataset.PostDate = dataSetdataGridView.Rows[row].Cells[2].Value.ToString();
                     dataset.Type = new FDataSetType();
                     dataset.Type.TypeID = int.Parse(dataSetdataGridView.Rows[row].Cells[3].Value.ToString());
+                    dataset.Cp = int.Parse(dataSetdataGridView.Rows[row].Cells[4].Value.ToString());
                     if(0 == this.UserType)
                     {
                         dc.addDataSetstoSystem(dataset,filePath);
@@ -175,5 +189,33 @@ namespace SRGMFormsApplication.UI
             setControls(newx, newy, this);
             //this.Text = this.Width.ToString() + " " + this.Height.ToString();
         }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            Model model = new Model();
+            FDataSet dataSet = new FDataSet();
+            int row = this.dataSetdataGridView.CurrentRow.Index;
+            if (row >= 0)
+            {
+                string dataSetName = this.dataSetdataGridView.Rows[row].Cells[0].Value.ToString();
+                dataSet.Name = dataSetName;
+                if (modelcomboBox.SelectedIndex != 0)
+                {
+                    model.Name = this.modelcomboBox.SelectedItem.ToString();
+                }
+                if (this.value0TextBox.Text.ToString() != "")
+                {
+                    string value0 = this.value0TextBox.Text.ToString().Trim();
+                    mc.addValue0(model, dataSet, value0);
+                }
+                this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
+            }
+        }
+
+        private void delValue0Button_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

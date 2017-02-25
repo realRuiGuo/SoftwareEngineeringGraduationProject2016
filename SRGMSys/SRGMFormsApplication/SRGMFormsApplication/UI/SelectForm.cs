@@ -82,7 +82,7 @@ namespace SRGMFormsApplication.UI
 
             this.modelcomboBox.Text = "系统模型";
             this.dataSetcomboBox.Text = "系统数据集";
-            this.modelcomboBox_SelectedIndexChanged(sender,e);
+            this.modelcomboBox_SelectedIndexChanged(sender, e);
             this.dataSetcomboBox_SelectedIndexChanged(sender, e);
         }
 
@@ -165,7 +165,7 @@ namespace SRGMFormsApplication.UI
             //this.addModelbutton.Enabled = false;
             //this.delModelbutton.Enabled = false;
 
-            //设置modelList
+            //设置modelList（含属性值）
             foreach (string modelName in modellistBox.Items)
             {
                 Model modelItem = new Model();
@@ -216,26 +216,29 @@ namespace SRGMFormsApplication.UI
 
                     //取初值字符串
                     string value0 = mc.getValue0(dataSet, model);
+                    if (value0 == null)
+                    {
 
-                    //判断匹配（数据集）类型，调用相应的方法                
-                    if (1 == model.Type.TypeID || 2 == model.Type.TypeID)//完美和ID模型
-                    {
-                        if (1 == dataSet.Type.TypeID)
-                        {
-                            MWCharArray xmd0 = value0;
-                            t1.T1MnDSn(modelName, dataSetName, xmd0);
-                        }
                     }
-                    else if(3 == model.Type.TypeID || 4 == model.Type.TypeID)
+                    else
                     {
-                        if(2 == dataSet.Type.TypeID)
+                        //判断匹配（数据集）类型，调用相应的方法                
+                        if (1 == model.Type.TypeID || 2 == model.Type.TypeID)//完美和ID模型
+                        {
+                            if (1 == dataSet.Type.TypeID)
+                            {
+                                MWCharArray xmd0 = value0;
+                                t1.T1MnDSn(modelName, dataSetName, xmd0);
+                            }
+                        }
+                        else if (3 == model.Type.TypeID || 4 == model.Type.TypeID || 5 == model.Type.TypeID)
                         {
                             string[] name = model.Name.Split(';');
                             string wt = null;
                             string mt = null;
-                            foreach(string item in name)
+                            foreach (string item in name)
                             {
-                                if(item.IndexOf("wt") > -1)
+                                if (item.IndexOf("wt") > -1)
                                 {
                                     wt = item;
                                 }
@@ -249,8 +252,16 @@ namespace SRGMFormsApplication.UI
                             string[] xmd = value0.Split(';');
                             MWCharArray xmd0wtString = xmd[0];
                             MWCharArray xmd0mtString = xmd[1];
-                            MWArray paraNum = 3;
-                            t1.T2MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum);
+                            MWArray paraNum = model.ParaNum;
+                            if (2 == dataSet.Type.TypeID)
+                            {
+                                t1.T2MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum);
+                            }
+                            else if (3 == dataSet.Type.TypeID)
+                            {
+                                MWArray cp = dataSet.Cp;
+                                t1.T3MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum,cp);
+                            }
                         }
                     }
                 }
@@ -272,15 +283,20 @@ namespace SRGMFormsApplication.UI
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            this.modelrichTextBox.Text = null;
             if (null != modeldataGridView.CurrentRow)
             {
                 int row = modeldataGridView.CurrentRow.Index;
                 string modelName = modeldataGridView.Rows[row].Cells[0].Value.ToString();
                 Model model = mc.getModelByid(modelName);
-                String modelFilePath = System.Environment.CurrentDirectory + model.Path;
-                if (FileHelper.IsExistFile(modelFilePath))
+                string[] FilePath = model.Path.Split(' ');
+                foreach (string item in FilePath)
                 {
-                    this.modelrichTextBox.Text = FileHelper.FileToString(modelFilePath);
+                    string modelFilePath = System.Environment.CurrentDirectory + item;
+                    if (FileHelper.IsExistFile(modelFilePath))
+                    {
+                        this.modelrichTextBox.Text += FileHelper.FileToString(modelFilePath) + "\n";
+                    }
                 }
             }
         }

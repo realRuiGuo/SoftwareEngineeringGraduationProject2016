@@ -53,7 +53,7 @@
             this.modeldataGridView.Location = new System.Drawing.Point(14, 24);
             this.modeldataGridView.Name = "modeldataGridView";
             this.modeldataGridView.RowTemplate.Height = 23;
-            this.modeldataGridView.Size = new System.Drawing.Size(301, 249);
+            this.modeldataGridView.Size = new System.Drawing.Size(327, 249);
             this.modeldataGridView.TabIndex = 15;
             // 
             // label1
@@ -96,11 +96,11 @@
             this.modelTypedataGridView.AllowUserToAddRows = false;
             this.modelTypedataGridView.AllowUserToDeleteRows = false;
             this.modelTypedataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.modelTypedataGridView.Location = new System.Drawing.Point(321, 24);
+            this.modelTypedataGridView.Location = new System.Drawing.Point(347, 24);
             this.modelTypedataGridView.Name = "modelTypedataGridView";
             this.modelTypedataGridView.ReadOnly = true;
             this.modelTypedataGridView.RowTemplate.Height = 23;
-            this.modelTypedataGridView.Size = new System.Drawing.Size(261, 249);
+            this.modelTypedataGridView.Size = new System.Drawing.Size(247, 249);
             this.modelTypedataGridView.TabIndex = 18;
             // 
             // valueLabel

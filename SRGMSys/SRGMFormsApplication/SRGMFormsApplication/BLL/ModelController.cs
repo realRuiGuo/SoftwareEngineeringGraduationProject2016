@@ -28,6 +28,12 @@ namespace SRGMFormsApplication.BLL
         {
             return modelDB.getModelsforSystem();
         }
+
+        public List<Model> getModelsforSystemL()
+        {
+            return modelDB.getModelsforSystemL();
+        }
+
         /// <summary>
         /// 返回当前用户拥有的模型
         /// </summary>
@@ -49,17 +55,15 @@ namespace SRGMFormsApplication.BLL
             if (p_model.Name.IndexOf(";") > -1)//多文件模型
             {
                 string[] name = p_model.Name.Split(';');
-                
+                int i = 0;
                 foreach(string modelName in name)
                 {                   
                     string pathtemp = "\\Model\\" + modelName + ".m ";
                     p_model.Path += pathtemp;//存入DB的累加路径
                     //复制文件到指定目录
-                    foreach (string path in p_filePath)
-                    {
-                        FileHelper.Copy(path,
+                    FileHelper.Copy(p_filePath[i],
                         System.Environment.CurrentDirectory + pathtemp);
-                    }
+                    i++;
                 }
             }
             else
@@ -133,8 +137,16 @@ namespace SRGMFormsApplication.BLL
         /// <returns></returns>
         public string getValue0(FDataSet p_dataSet,Model p_model)
         {
-            DataSet ds = modelDB.getValue0(p_dataSet, p_model);
-            return ds.Tables[0].Rows[0]["value0"].ToString();
+            DataSet ds = null;
+            ds = modelDB.getValue0(p_dataSet, p_model);
+            if (ds == null)
+            {
+                return null;
+            }
+            else
+            {
+                return ds.Tables[0].Rows[0]["value0"].ToString();
+            }
         }
 
         public void changeModels(List<Model> models)

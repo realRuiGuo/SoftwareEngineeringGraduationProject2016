@@ -8,13 +8,14 @@ namespace SRGMFormsApplication.Entity
     public class Model
     {
 
-        private String m_name;
-        private String m_path;
-        private String m_expression;
+        private string m_name;
+        private string m_path;
+        private string m_expression;
         private List<Parameter> m_parameters;
         private ModelType m_type;
         private int m_owner;
-        private String m_shape;
+        private string m_shape;
+        private int m_paraNum;
 
         /// <summary>
         /// Ä£ÐÍÃû³Æ
@@ -97,6 +98,13 @@ namespace SRGMFormsApplication.Entity
             get { return m_shape; }
             set { m_shape = value; }
         }
-    }
 
+        public int ParaNum
+        {
+            get { return m_paraNum; }
+            set { m_paraNum = value; }
+        }
+
+
+    }
 }

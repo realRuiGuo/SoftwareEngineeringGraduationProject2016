@@ -20,6 +20,7 @@ namespace SRGMFormsApplication.UI
         Account account;
         int userType = 3;//初学者
         string loginTime;
+        static AccountController ac = new AccountController();
 
         public Account Account
         {
@@ -148,7 +149,6 @@ namespace SRGMFormsApplication.UI
                 account = new Account();
                 account.UserName = nameTextBox.Text.Trim();
                 account.Password = passwordTextBox.Text.Trim();
-                AccountController ac = new AccountController();
                 Account user = ac.login(account, userType);
                 if (user == null)
                 {
@@ -187,7 +187,6 @@ namespace SRGMFormsApplication.UI
                 account = new Account();
                 account.UserName = nameTextBox.Text.Trim();
                 account.Password = passwordTextBox.Text.Trim();
-                AccountController ac = new AccountController();
                 string result = ac.signin(account, userType);
                 MessageBox.Show(result, "提示",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
