@@ -41,6 +41,7 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.value0dataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.delValue0Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).BeginInit();
@@ -174,11 +175,25 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "请输入类型编号：";
             // 
+            // delValue0Button
+            // 
+            this.delValue0Button.Image = global::SRGMFormsApplication.Properties.Resources.删除;
+            this.delValue0Button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.delValue0Button.Location = new System.Drawing.Point(503, 514);
+            this.delValue0Button.Name = "delValue0Button";
+            this.delValue0Button.Size = new System.Drawing.Size(54, 29);
+            this.delValue0Button.TabIndex = 34;
+            this.delValue0Button.Text = "删除";
+            this.delValue0Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.delValue0Button.UseVisualStyleBackColor = true;
+            this.delValue0Button.Click += new System.EventHandler(this.delValue0Button_Click);
+            // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 571);
+            this.Controls.Add(this.delValue0Button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.value0dataGridView);
             this.Controls.Add(this.OKButton);
@@ -220,5 +235,6 @@
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.DataGridView value0dataGridView;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button delValue0Button;
     }
 }

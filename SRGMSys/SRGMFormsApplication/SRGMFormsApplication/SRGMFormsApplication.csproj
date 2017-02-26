@@ -58,7 +58,7 @@
     <Compile Include="BLL\AccountController.cs" />
     <Compile Include="BLL\DataSetController.cs" />
     <Compile Include="BLL\DisplayController.cs" />
-    <Compile Include="BLL\FileHelper.cs" />
+    <Compile Include="DAL\FileHelper.cs" />
     <Compile Include="BLL\ModelController.cs" />
     <Compile Include="DAL\AccountDB.cs" />
     <Compile Include="DAL\DisplayDB.cs" />
@@ -119,6 +119,12 @@
     <Compile Include="UI\ModelForm.Designer.cs">
       <DependentUpon>ModelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ProcessBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProcessBar.Designer.cs">
+      <DependentUpon>ProcessBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ModelForm.resx">
       <DependentUpon>ModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProcessBar.resx">
+      <DependentUpon>ProcessBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReForm.resx">
       <DependentUpon>ReForm.cs</DependentUpon>

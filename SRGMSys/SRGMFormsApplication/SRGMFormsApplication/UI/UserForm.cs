@@ -47,11 +47,10 @@ namespace SRGMFormsApplication.UI
 
         private void seDelButton_Click(object sender, EventArgs e)
         {
-            SoftwareEngineer se = new SoftwareEngineer();
             if (null != seDataGridView.CurrentRow)
             {
                 int row = seDataGridView.CurrentRow.Index;
-                se.UserName = seDataGridView.Rows[row].Cells[0].Value.ToString();
+                SoftwareEngineer se = new SoftwareEngineer(seDataGridView.Rows[row].Cells[0].Value.ToString());
                 ac.deleteSE(se);
                 this.seDataGridView.DataSource = ac.getSoftwareEngineer().Tables[0];
             }

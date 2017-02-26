@@ -137,9 +137,8 @@ namespace SRGMFormsApplication.BLL
         /// <returns></returns>
         public string getValue0(FDataSet p_dataSet,Model p_model)
         {
-            DataSet ds = null;
-            ds = modelDB.getValue0(p_dataSet, p_model);
-            if (ds == null)
+            DataSet ds = modelDB.getValue0(p_dataSet, p_model);
+            if (!IfExitData(ds,0))
             {
                 return null;
             }
@@ -149,9 +148,29 @@ namespace SRGMFormsApplication.BLL
             }
         }
 
-        public void changeModels(List<Model> models)
+        public int deleteValue0Item(Model p_model,FDataSet p_dataSet,string p_value0)
         {
+            return modelDB.deleteValue0Item(p_model, p_dataSet, p_value0);
         }
+
+        /// <summary>
+        /// 检查一个DataSet 里面是否含有数据
+        /// </summary>
+        /// <param name="ds">要检测的DataSet</param>
+        /// <param name="tableIndex">DataSet里Table的索引</param>
+        /// <returns>True: 里面有数据。 False：里面没有数据</returns>
+        public static bool IfExitData(DataSet ds, int tableIndex)
+        {
+            if (ds != null && ds.Tables[tableIndex].Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 
 }

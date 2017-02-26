@@ -92,6 +92,7 @@ namespace SRGMFormsApplication.UI
             setTag(this);
             //DataSetForm_Resize(new object(), new EventArgs());//x,y可在实例化时赋值,最后这句是新加的，在MDI时有用
             this.typeDataGridView.DataSource = dc.getDataSetType().Tables[0];
+            this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
 
             //初始化modelcomboBox
             List<Model> model = new List<Model>();
@@ -103,7 +104,7 @@ namespace SRGMFormsApplication.UI
             }
             this.modelcomboBox.SelectedIndex = 0;
 
-            if(0 == this.UserType)
+            if (0 == this.UserType)
             {
                 this.label1.Text = "系统数据集";
             }
@@ -127,41 +128,63 @@ namespace SRGMFormsApplication.UI
         }
         private void addbutton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Multiselect = false;
-            fileDialog.Title = "请选择文件";
-            fileDialog.Filter = "(*.txt)|*.txt"; 
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            if (null != dataSetdataGridView.CurrentRow)
             {
-                string filePath  = fileDialog.FileName;
-                string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
-                MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FDataSet dataset = new FDataSet();
-                dataset.Name = this.Account.UserName + this.UserType.ToString() + "_" + fileNameWithoutExtension;
-                if (null != dataSetdataGridView.CurrentRow)
+                int row = dataSetdataGridView.CurrentRow.Index;
+                if (row == this.dataSetdataGridView.Rows.Count - 2)//所选行 为新输入行
                 {
-                    int row = dataSetdataGridView.CurrentRow.Index;
                     dataset.Source = dataSetdataGridView.Rows[row].Cells[1].Value.ToString();
                     dataset.PostDate = dataSetdataGridView.Rows[row].Cells[2].Value.ToString();
                     dataset.Type = new FDataSetType();
-                    dataset.Type.TypeID = int.Parse(dataSetdataGridView.Rows[row].Cells[3].Value.ToString());
-                    dataset.Cp = int.Parse(dataSetdataGridView.Rows[row].Cells[4].Value.ToString());
-                    if(0 == this.UserType)
+                    if (string.Empty != dataSetdataGridView.Rows[row].Cells[3].Value.ToString())
                     {
-                        dc.addDataSetstoSystem(dataset,filePath);
+                        dataset.Type.TypeID = int.Parse(dataSetdataGridView.Rows[row].Cells[3].Value.ToString());
+                        if ("" != dataSetdataGridView.Rows[row].Cells[4].Value.ToString())
+                        {
+                            dataset.Cp = int.Parse(dataSetdataGridView.Rows[row].Cells[4].Value.ToString());
+                        }
+                        OpenFileDialog fileDialog = new OpenFileDialog();
+                        fileDialog.Multiselect = false;
+                        fileDialog.Title = "请选择文件";
+                        fileDialog.Filter = "(*.txt)|*.txt";
+                        if (fileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string filePath = fileDialog.FileName;
+                            string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
+                            MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            dataset.Name = this.Account.UserName + this.UserType.ToString() + "_" + fileNameWithoutExtension;
+
+                            if (0 == this.UserType)
+                            {
+                                dc.addDataSetstoSystem(dataset, filePath);
+                            }
+                            else
+                            {
+                                dc.addDataSetsforUser(dataset, this.Account, this.UserType, filePath);
+                            }
+                            updateGridView();
+                        }
                     }
                     else
                     {
-                        dc.addDataSetsforUser(dataset, this.Account, this.UserType, filePath);
+                        MessageBox.Show("类型为必填项，请填入！", "提示",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    updateGridView();
                 }
+            }
+            else
+            {
+                MessageBox.Show("请选择有数据的行！", "提示",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+
         private void delbutton_Click(object sender, EventArgs e)
         {
-            FDataSet dataset = new FDataSet();        
+            FDataSet dataset = new FDataSet();
             if (null != dataSetdataGridView.CurrentRow)
             {
                 int row = dataSetdataGridView.CurrentRow.Index;
@@ -178,7 +201,7 @@ namespace SRGMFormsApplication.UI
                         dc.deleteDataSetsforUser(dataset, this.Account, this.UserType);
                     }
                     updateGridView();
-                }     
+                }
             }
         }
 
@@ -194,28 +217,41 @@ namespace SRGMFormsApplication.UI
         {
             Model model = new Model();
             FDataSet dataSet = new FDataSet();
-            int row = this.dataSetdataGridView.CurrentRow.Index;
-            if (row >= 0)
+            if (null != this.dataSetdataGridView.CurrentRow)
             {
-                string dataSetName = this.dataSetdataGridView.Rows[row].Cells[0].Value.ToString();
-                dataSet.Name = dataSetName;
-                if (modelcomboBox.SelectedIndex != 0)
+                int row = this.dataSetdataGridView.CurrentRow.Index;
+                if (row >= 0)
                 {
-                    model.Name = this.modelcomboBox.SelectedItem.ToString();
+                    string dataSetName = this.dataSetdataGridView.Rows[row].Cells[0].Value.ToString();
+                    dataSet.Name = dataSetName;
+                    if (modelcomboBox.SelectedIndex != 0)
+                    {
+                        model.Name = this.modelcomboBox.SelectedItem.ToString();
+                    }
+                    if (this.value0TextBox.Text.ToString() != "")
+                    {
+                        string value0 = this.value0TextBox.Text.ToString().Trim();
+                        mc.addValue0(model, dataSet, value0);
+                    }
                 }
-                if (this.value0TextBox.Text.ToString() != "")
-                {
-                    string value0 = this.value0TextBox.Text.ToString().Trim();
-                    mc.addValue0(model, dataSet, value0);
-                }
-                this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
             }
+            this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
         }
 
         private void delValue0Button_Click(object sender, EventArgs e)
         {
+            Model model = new Model();
+            FDataSet dataSet = new FDataSet();
 
+            int row = this.value0dataGridView.CurrentRow.Index;
+            if (row >= 0)
+            {
+                model.Name = this.value0dataGridView.Rows[row].Cells[0].Value.ToString();
+                dataSet.Name = this.value0dataGridView.Rows[row].Cells[1].Value.ToString();
+                string value0 = this.value0dataGridView.Rows[row].Cells[2].Value.ToString();
+                mc.deleteValue0Item(model, dataSet, value0);
+                this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
+            }
         }
-
     }
 }

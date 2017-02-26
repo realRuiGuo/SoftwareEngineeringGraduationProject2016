@@ -159,11 +159,25 @@ namespace SRGMFormsApplication.DAL
        public int DeleteSE(SoftwareEngineer m_SE)
        {
            //step1 删除SE拥有的FDataSets
+           //删除初值记录
+           string sqlValue0 = "delete from value0 where dsname = (select dsname from dataset where username=@username and permission=@permission)";
+           SqlParameter spValue01 = new SqlParameter("@username", m_SE.UserName);
+           SqlParameter spValue02 = new SqlParameter("@permission", 1);
+           SqlParameter[] paraValue0 = new SqlParameter[] { spValue01, spValue02 };
+           SqlHelper.ExecuteNonQuery(sqlValue0, paraValue0);
+
+           //删除数据集
            string sqlFDS = "delete from dataset where username=@username and permission=@permission";
            SqlParameter spFDS1 = new SqlParameter("@username", m_SE.UserName);
            SqlParameter spFDS2 = new SqlParameter("@permission", 1);
            SqlParameter[] para = new SqlParameter[] { spFDS1, spFDS2 };
            SqlHelper.ExecuteNonQuery(sqlFDS, para);
+           
+           //删除数据集txt文件
+           foreach(FDataSet dataSet in m_SE.DataSets)
+           {
+               FileHelper.DeleteFile(System.Environment.CurrentDirectory + dataSet.Path);
+           }
 
            //step2 删除SE用户
            string sqlSE = "delete from se where username=@username";

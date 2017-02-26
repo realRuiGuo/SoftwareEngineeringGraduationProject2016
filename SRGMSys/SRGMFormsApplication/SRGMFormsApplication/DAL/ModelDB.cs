@@ -35,7 +35,10 @@ namespace SRGMFormsApplication.DAL
             model.Path = ds.Tables[0].Rows[0]["path"].ToString();
             model.Type = new ModelType();
             model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
-            model.ParaNum = (int)ds.Tables[0].Rows[0]["paranum"];
+            if (!Convert.IsDBNull( ds.Tables[0].Rows[0]["paranum"]))
+            {
+                model.ParaNum = (int)ds.Tables[0].Rows[0]["paranum"];
+            }
             return model;
         }
         #region 得到系统自带Model信息，返回DataSet
@@ -222,6 +225,17 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
 
             SqlParameter[] para = new SqlParameter[] { sp1 };
+            return SqlHelper.ExecuteNonQuery(sql, para);
+        }
+        public int deleteValue0Item(Model p_model,FDataSet p_dataSet,string p_value0)
+        {
+            string sql = "delete from value0 where dsname =@dsname  and modelname=@modelname  and value0=@value0 ";
+
+            SqlParameter sp1 = new SqlParameter("@dsname", p_dataSet.Name);
+            SqlParameter sp2 = new SqlParameter("@modelname", p_model.Name);
+            SqlParameter sp3 = new SqlParameter("@value0", p_value0);
+
+            SqlParameter[] para = new SqlParameter[] { sp1,sp2,sp3 };
             return SqlHelper.ExecuteNonQuery(sql, para);
         }
     }

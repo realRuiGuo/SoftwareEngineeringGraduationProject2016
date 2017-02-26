@@ -30,7 +30,10 @@ namespace SRGMFormsApplication.DAL
             dataSet.Path = ds.Tables[0].Rows[0]["path"].ToString();
             dataSet.Type = new FDataSetType();
             dataSet.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
-            dataSet.Cp = (int)ds.Tables[0].Rows[0]["cp"];
+            if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["cp"]))
+            {
+                dataSet.Cp = (int)ds.Tables[0].Rows[0]["cp"];
+            }
             return dataSet;
         }
         #region 得到系统自带FDataSet信息，返回DataSet
@@ -82,7 +85,7 @@ namespace SRGMFormsApplication.DAL
             {
                 FDataSet FDataSet = new FDataSet();
                 FDataSet.Name = dr["dsname"].ToString();
-
+                FDataSet.Path = dr["path"].ToString();
                 list.Add(FDataSet);
             }
             return list;
@@ -110,7 +113,7 @@ namespace SRGMFormsApplication.DAL
             {
                 FDataSet FDataSet = new FDataSet();
                 FDataSet.Name = dr["dsname"].ToString();
-                
+                FDataSet.Path = dr["path"].ToString();
                 list.Add(FDataSet);
             }
             return list;

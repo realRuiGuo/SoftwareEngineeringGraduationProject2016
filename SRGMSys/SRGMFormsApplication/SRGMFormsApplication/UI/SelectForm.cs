@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.BLL;
+using SRGMFormsApplication.DAL;
 using SRGMFormsApplication.Entity;
 using MathWorks.MATLAB.NET.Arrays;
 using MathWorks.MATLAB.NET.Utility;
 using Matlab;
+using System.Threading;
 
 namespace SRGMFormsApplication.UI
 {
@@ -218,7 +220,8 @@ namespace SRGMFormsApplication.UI
                     string value0 = mc.getValue0(dataSet, model);
                     if (value0 == null)
                     {
-
+                        MessageBox.Show("未设置模型" + model.Name + "在数据集" + dataSet.Name + "上的初值！", "提示",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {

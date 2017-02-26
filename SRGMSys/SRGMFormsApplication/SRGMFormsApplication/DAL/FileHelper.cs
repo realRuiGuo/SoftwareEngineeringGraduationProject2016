@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;  
 
-namespace SRGMFormsApplication.BLL
+namespace SRGMFormsApplication.DAL
 {
     public static class FileHelper
     {

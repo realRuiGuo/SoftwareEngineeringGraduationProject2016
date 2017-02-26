@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using SRGMFormsApplication.DAL;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
 
@@ -154,7 +153,7 @@ namespace SRGMFormsApplication.UI
                 {
                     MessageBox.Show("用户名不存在！！", "提示",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cancelButton_Click(sender,e);
+                    //cancelButton_Click(sender,e);
                 }
                 else
                 {
@@ -162,7 +161,7 @@ namespace SRGMFormsApplication.UI
                     {
                         MessageBox.Show("密码错误！！", "提示",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cancelButton_Click(sender, e);
+                        //cancelButton_Click(sender, e);
                     }
                     else
                     {

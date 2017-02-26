@@ -109,8 +109,6 @@ namespace SRGMFormsApplication.Entity
             get { return m_cp; }
             set { m_cp = value; }
         }
-
-
     }
 
 }

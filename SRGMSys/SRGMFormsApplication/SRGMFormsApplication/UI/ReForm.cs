@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.Entity;
-using SRGMFormsApplication.BLL;
+using SRGMFormsApplication.DAL;
 
 namespace SRGMFormsApplication.UI
 {
@@ -101,7 +101,11 @@ namespace SRGMFormsApplication.UI
                 {
                     //显示图片
                     string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
-                    this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
+                    if (FileHelper.IsExistFile(imagePath))
+                    {
+                        this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
+                    }
+                    
                     //显示文本
                     string filePath = System.Environment.CurrentDirectory +
                         "\\Result\\" + dataSetName + "_" + modelName + "_RERes.txt";
@@ -113,6 +117,11 @@ namespace SRGMFormsApplication.UI
             }
         }
 
+        /// <summary>
+        /// 删除当前实例
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
