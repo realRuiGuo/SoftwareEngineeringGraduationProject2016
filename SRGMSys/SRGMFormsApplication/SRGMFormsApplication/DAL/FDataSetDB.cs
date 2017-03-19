@@ -30,7 +30,7 @@ namespace SRGMFormsApplication.DAL
             dataSet.Path = ds.Tables[0].Rows[0]["path"].ToString();
             dataSet.Type = new FDataSetType();
             dataSet.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
-            if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["cp"]))
+            if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["cp"]))//数据库返回值不为空
             {
                 dataSet.Cp = (int)ds.Tables[0].Rows[0]["cp"];
             }
@@ -133,8 +133,8 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp2 = new SqlParameter("@path", p_dataSet.Path);
             SqlParameter sp3 = new SqlParameter("@source", p_dataSet.Source);
             SqlParameter sp4 = new SqlParameter("@date", p_dataSet.PostDate);
-            SqlParameter sp5 = new SqlParameter("@permission", Convert.ToInt32(0));
-            SqlParameter sp6 = new SqlParameter("@username", (object)DBNull.Value);
+            SqlParameter sp5 = new SqlParameter("@permission", Convert.ToInt32(0));//0
+            SqlParameter sp6 = new SqlParameter("@username", (object)DBNull.Value);//null
             SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type.TypeID);
             SqlParameter sp8 = new SqlParameter("@cp", p_dataSet.Cp);
 

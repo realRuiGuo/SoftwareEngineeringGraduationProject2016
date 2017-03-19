@@ -33,11 +33,11 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.modelcomboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.rePictureBox = new System.Windows.Forms.PictureBox();
             this.OKButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.rePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.rePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,15 +84,6 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "RE曲线：";
             // 
-            // rePictureBox
-            // 
-            this.rePictureBox.Location = new System.Drawing.Point(71, 45);
-            this.rePictureBox.Name = "rePictureBox";
-            this.rePictureBox.Size = new System.Drawing.Size(527, 330);
-            this.rePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rePictureBox.TabIndex = 26;
-            this.rePictureBox.TabStop = false;
-            // 
             // OKButton
             // 
             this.OKButton.Location = new System.Drawing.Point(408, 4);
@@ -130,16 +121,25 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "注：点击重置后，再点击左侧功能按钮，可进行（显示）新的验证。";
             // 
+            // rePictureBox
+            // 
+            this.rePictureBox.Location = new System.Drawing.Point(59, 45);
+            this.rePictureBox.Name = "rePictureBox";
+            this.rePictureBox.Size = new System.Drawing.Size(539, 331);
+            this.rePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rePictureBox.TabIndex = 31;
+            this.rePictureBox.TabStop = false;
+            // 
             // ReForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(610, 596);
+            this.Controls.Add(this.rePictureBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.OKButton);
-            this.Controls.Add(this.rePictureBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataSetLabel);
             this.Controls.Add(this.modelLabel);
@@ -162,10 +162,10 @@
         private System.Windows.Forms.ComboBox dataSetcomboBox;
         private System.Windows.Forms.ComboBox modelcomboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox rePictureBox;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox rePictureBox;
     }
 }

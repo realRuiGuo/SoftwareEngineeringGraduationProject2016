@@ -89,12 +89,19 @@ namespace SRGMFormsApplication.UI
                         }
                     }
                     //显示图片
-                    string imagePath_mt = "\\Picture\\" + dataSetName + "_" + mt + "_Mt.png";
-                    this.fitPictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_mt, false);
+                    string imagePath_mt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + mt + "_Mt.png";
+                    if(FileHelper.IsExistFile(imagePath_mt))
+                    {
+                        this.fitPictureBox.Image = Image.FromFile(imagePath_mt, false);
+                    }
 
-                    string imagePath_wt = "\\Picture\\" + dataSetName + "_" + wt + "_Wt.png";
+                    string imagePath_wt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + wt + "_Wt.png";
                     this.pictureBox1.Visible = true;
-                    this.pictureBox1.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_wt, false);
+                    if (FileHelper.IsExistFile(imagePath_wt))
+                    {
+                        this.pictureBox1.Image = Image.FromFile(imagePath_wt, false);
+                    }
+
                     //显示文本
                     string filePath = System.Environment.CurrentDirectory +
                         "\\Result\\" + dataSetName + "_" + mt + "_FitRes.txt";
@@ -106,10 +113,10 @@ namespace SRGMFormsApplication.UI
                 else
                 {
                     //显示图片
-                    string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_Mt.png";
+                    string imagePath = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + modelName + "_Mt.png";
                     if (FileHelper.IsExistFile(imagePath))
                     {
-                        this.fitPictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
+                        this.fitPictureBox.Image = Image.FromFile(imagePath, false);
                     }
                     
                     //显示文本

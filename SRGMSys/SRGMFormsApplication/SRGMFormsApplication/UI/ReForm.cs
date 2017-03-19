@@ -83,10 +83,10 @@ namespace SRGMFormsApplication.UI
                         }
                     }
                     //显示图片
-                    string imagePath_mt = "\\Picture\\" + dataSetName + "_" + mt + "_RE.png";
+                    string imagePath_mt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + mt + "_RE.png";
                     if (FileHelper.IsExistFile(imagePath_mt))
                     {
-                        this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath_mt, false);
+                        this.rePictureBox.Image = Image.FromFile(imagePath_mt, false);
                     }
                 
                     //显示文本
@@ -100,10 +100,10 @@ namespace SRGMFormsApplication.UI
                 else
                 {
                     //显示图片
-                    string imagePath = "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
+                    string imagePath = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
                     if (FileHelper.IsExistFile(imagePath))
                     {
-                        this.rePictureBox.Image = Image.FromFile(System.Environment.CurrentDirectory + imagePath, false);
+                        this.rePictureBox.Image = Image.FromFile(imagePath, false);
                     }
                     
                     //显示文本

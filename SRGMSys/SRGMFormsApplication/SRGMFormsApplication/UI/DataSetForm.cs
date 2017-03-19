@@ -153,15 +153,15 @@ namespace SRGMFormsApplication.UI
                             string filePath = fileDialog.FileName;
                             string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(filePath);// 没有扩展名的文件名
                             MessageBox.Show("已选择文件:" + filePath, "选择文件提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            dataset.Name = this.Account.UserName + this.UserType.ToString() + "_" + fileNameWithoutExtension;
-
+                         
                             if (0 == this.UserType)
                             {
+                                dataset.Name = fileNameWithoutExtension;
                                 dc.addDataSetstoSystem(dataset, filePath);
                             }
                             else
                             {
+                                dataset.Name = this.Account.UserName + this.UserType.ToString() + "_" + fileNameWithoutExtension;
                                 dc.addDataSetsforUser(dataset, this.Account, this.UserType, filePath);
                             }
                             updateGridView();

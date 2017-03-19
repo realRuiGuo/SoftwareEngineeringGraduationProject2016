@@ -21,6 +21,7 @@ namespace SRGMFormsApplication.UI
         private static SelectForm instance = null;
         static ModelController mc = new ModelController();
         static DataSetController dc = new DataSetController();
+        static DisplayController disc = new DisplayController();
         Account account;
         int userType;
         List<Model> modelList = new List<Model>();
@@ -206,75 +207,38 @@ namespace SRGMFormsApplication.UI
         /// <param name="e"></param>
         private void startButton_Click(object sender, EventArgs e)
         {
-            MnDSn t1 = new MnDSn();
+            ProcessOperator process = new ProcessOperator();
+            process.MessageInfo = "正在进行拟合，请稍等……";
+            process.BackgroundWork = this.Do;
+            process.BackgroundWorkerCompleted += new EventHandler<BackgroundWorkerEventArgs>(process_BackgroundWorkerCompleted);
+            process.Start();
 
-            foreach (FDataSet dataSet in this.DataSetList)
-            {
-                foreach (Model model in this.ModelList)
-                {
-
-                    MWCharArray modelName = model.Name.Trim();
-                    MWCharArray dataSetName = dataSet.Name.Trim();
-
-                    //取初值字符串
-                    string value0 = mc.getValue0(dataSet, model);
-                    if (value0 == null)
-                    {
-                        MessageBox.Show("未设置模型" + model.Name + "在数据集" + dataSet.Name + "上的初值！", "提示",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        //判断匹配（数据集）类型，调用相应的方法                
-                        if (1 == model.Type.TypeID || 2 == model.Type.TypeID)//完美和ID模型
-                        {
-                            if (1 == dataSet.Type.TypeID)
-                            {
-                                MWCharArray xmd0 = value0;
-                                t1.T1MnDSn(modelName, dataSetName, xmd0);
-                            }
-                        }
-                        else if (3 == model.Type.TypeID || 4 == model.Type.TypeID || 5 == model.Type.TypeID)
-                        {
-                            string[] name = model.Name.Split(';');
-                            string wt = null;
-                            string mt = null;
-                            foreach (string item in name)
-                            {
-                                if (item.IndexOf("wt") > -1)
-                                {
-                                    wt = item;
-                                }
-                                if (item.IndexOf("mt") > -1)
-                                {
-                                    mt = item;
-                                }
-                            }
-                            MWCharArray modelwtName = wt.Trim();
-                            MWCharArray modelmtName = mt.Trim();
-                            string[] xmd = value0.Split(';');
-                            MWCharArray xmd0wtString = xmd[0];
-                            MWCharArray xmd0mtString = xmd[1];
-                            MWArray paraNum = model.ParaNum;
-                            if (2 == dataSet.Type.TypeID)
-                            {
-                                t1.T2MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum);
-                            }
-                            else if (3 == dataSet.Type.TypeID)
-                            {
-                                MWArray cp = dataSet.Cp;
-                                t1.T3MnDSn(modelwtName, modelmtName, dataSetName, xmd0wtString, xmd0mtString, paraNum,cp);
-                            }
-                        }
-                    }
-                }
-            }
+            //disc.choose(this.ModelList,this.DataSetList);
 
             //打开拟合窗口
-            DisplayForm frmDisplay = (DisplayForm)this.Owner;
-            frmDisplay.fitLabel_Click(sender, e);
+            //DisplayForm frmDisplay = (DisplayForm)this.Owner;
+            //frmDisplay.fitLabel_Click(sender, e);
         }
 
+        void Do()
+        {
+            disc.choose(this.ModelList, this.DataSetList);
+        }
+
+        void process_BackgroundWorkerCompleted(object sender, BackgroundWorkerEventArgs e)
+        {
+            if (e.BackGroundException == null)
+            {
+                //MessageBox.Show("执行完毕");
+                //打开拟合窗口
+                DisplayForm frmDisplay = (DisplayForm)this.Owner;
+                frmDisplay.fitLabel_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("异常:" + e.BackGroundException.Message);
+            }
+        }
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
@@ -323,5 +287,7 @@ namespace SRGMFormsApplication.UI
                 }
             }
         }
+
     }
+
 }

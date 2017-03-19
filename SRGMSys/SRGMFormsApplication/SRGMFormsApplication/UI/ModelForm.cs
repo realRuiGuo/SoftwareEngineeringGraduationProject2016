@@ -122,7 +122,6 @@ namespace SRGMFormsApplication.UI
                 modeldataGridView.DataSource = mc.getModelsforUser(this.Account, this.UserType).Tables[0];
             }
             //modeldataGridView.Rows[modeldataGridView.Rows.Count - 1].Selected = true;//光标锁定最后一行
-            modeldataGridView.Rows[modeldataGridView.Rows.Count - 1].Cells[0].Value = "请输入";
         }
         private void addbutton_Click(object sender, EventArgs e)
         {
@@ -228,11 +227,11 @@ namespace SRGMFormsApplication.UI
                     if (dataSetcomboBox.SelectedIndex != 0)
                     {
                         dataSet.Name = this.dataSetcomboBox.SelectedItem.ToString();
-                    }
-                    if (this.value0TextBox.Text.ToString() != "")
-                    {
-                        string value0 = this.value0TextBox.Text.ToString().Trim();
-                        mc.addValue0(model, dataSet, value0);
+                        if (this.value0TextBox.Text.ToString() != "")
+                        {
+                            string value0 = this.value0TextBox.Text.ToString().Trim();
+                            mc.addValue0(model, dataSet, value0);
+                        }
                     }
                 }
             }
