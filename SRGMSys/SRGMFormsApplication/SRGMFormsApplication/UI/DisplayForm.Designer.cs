@@ -33,6 +33,7 @@
             this.fitLabel = new System.Windows.Forms.ToolStripLabel();
             this.reLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.compareLabel = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             // selectLabel
             // 
             this.selectLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.selectLabel.IsLink = true;
             this.selectLabel.Name = "selectLabel";
             this.selectLabel.Size = new System.Drawing.Size(48, 25);
             this.selectLabel.Text = "选择";
@@ -55,6 +57,7 @@
             // fitLabel
             // 
             this.fitLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.fitLabel.IsLink = true;
             this.fitLabel.Name = "fitLabel";
             this.fitLabel.Size = new System.Drawing.Size(48, 25);
             this.fitLabel.Text = "拟合";
@@ -63,6 +66,7 @@
             // reLabel
             // 
             this.reLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.reLabel.IsLink = true;
             this.reLabel.Name = "reLabel";
             this.reLabel.Size = new System.Drawing.Size(48, 25);
             this.reLabel.Text = "预测";
@@ -75,12 +79,22 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectLabel,
             this.fitLabel,
-            this.reLabel});
+            this.reLabel,
+            this.compareLabel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(51, 342);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // compareLabel
+            // 
+            this.compareLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
+            this.compareLabel.IsLink = true;
+            this.compareLabel.Name = "compareLabel";
+            this.compareLabel.Size = new System.Drawing.Size(48, 25);
+            this.compareLabel.Text = "比较";
+            this.compareLabel.Click += new System.EventHandler(this.compareLabel_Click);
             // 
             // DisplayForm
             // 
@@ -107,5 +121,6 @@
         private System.Windows.Forms.ToolStripLabel fitLabel;
         private System.Windows.Forms.ToolStripLabel reLabel;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel compareLabel;
     }
 }

@@ -167,17 +167,20 @@ namespace SRGMFormsApplication.UI
             //Button设为不可用
             //this.addModelbutton.Enabled = false;
             //this.delModelbutton.Enabled = false;
-
-            //设置modelList（含属性值）
-            foreach (string modelName in modellistBox.Items)
+            if (MessageBox.Show("确定所选模型？", "提示",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)//点击确认
             {
-                Model modelItem = new Model();
-                modelItem = mc.getModelByid(modelName);
-                this.modelList.Add(modelItem);
+                //设置modelList（含属性值）
+                foreach (string modelName in modellistBox.Items)
+                {
+                    Model modelItem = new Model();
+                    modelItem = mc.getModelByid(modelName);
+                    this.modelList.Add(modelItem);
+                }
+                //传递modelList到父窗口
+                DisplayForm frmDisplay = (DisplayForm)this.Owner;
+                frmDisplay.ModelList = this.ModelList;
             }
-            //传递modelList到父窗口
-            DisplayForm frmDisplay = (DisplayForm)this.Owner;
-            frmDisplay.ModelList = this.ModelList;
         }
 
         /// <summary>
@@ -187,17 +190,21 @@ namespace SRGMFormsApplication.UI
         /// <param name="e"></param>
         private void dataSetbutton_Click(object sender, EventArgs e)
         {
-            //设置dataSetList
-            foreach (string dataSetName in datasetlistBox.Items)
+            if (MessageBox.Show("确定所选数据集？", "提示",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
-                FDataSet dataSetItem = new FDataSet();
-                //从数据库中取得dataSet,目的是设置type属性
-                dataSetItem = dc.getDataSetByid(dataSetName);
-                this.dataSetList.Add(dataSetItem);
+                //设置dataSetList
+                foreach (string dataSetName in datasetlistBox.Items)
+                {
+                    FDataSet dataSetItem = new FDataSet();
+                    //从数据库中取得dataSet,目的是设置type属性
+                    dataSetItem = dc.getDataSetByid(dataSetName);
+                    this.dataSetList.Add(dataSetItem);
+                }
+                //传递dataSetList到父窗口
+                DisplayForm frmDisplay = (DisplayForm)this.Owner;
+                frmDisplay.DataSetList = this.DataSetList;
             }
-            //传递dataSetList到父窗口
-            DisplayForm frmDisplay = (DisplayForm)this.Owner;
-            frmDisplay.DataSetList = this.DataSetList;
         }
 
         /// <summary>

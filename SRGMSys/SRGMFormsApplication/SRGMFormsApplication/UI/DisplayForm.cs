@@ -22,6 +22,7 @@ namespace SRGMFormsApplication.UI
         SelectForm frmSelect;
         FitForm frmFit;
         ReForm frmRe;
+        CompareForm frmCom;
 
         public static DisplayForm Instance//单例
         {
@@ -64,6 +65,10 @@ namespace SRGMFormsApplication.UI
         {
             InitializeComponent();
             instance = this;
+        }
+        private void DisplayForm_Load(object sender, System.EventArgs e)
+        {
+
         }
 
         private void selectLabel_Click(object sender, EventArgs e)
@@ -114,9 +119,17 @@ namespace SRGMFormsApplication.UI
             frmRe.Show();
         }
 
-        private void DisplayForm_Load(object sender, System.EventArgs e)
+        private void compareLabel_Click(object sender, EventArgs e)
         {
-
+            frmCom = CompareForm.Instance;
+            frmCom.TopLevel = false;
+            frmCom.FormBorderStyle = FormBorderStyle.None;
+            frmCom.Dock = DockStyle.Fill;
+            this.panel1.Controls.Clear();
+            this.panel1.Controls.Add(frmCom);
+            frmCom.ModelList = this.ModelList;
+            frmCom.DataSetList = this.DataSetList;
+            frmCom.Show();
         }
 
     }

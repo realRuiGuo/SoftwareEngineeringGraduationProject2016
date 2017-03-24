@@ -68,77 +68,79 @@ namespace SRGMFormsApplication.UI
         /// <param name="e"></param>
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            string modelName = this.modelcomboBox.SelectedItem.ToString();
-            string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
-            if ("" != modelName && "" != dataSetName && null != modelName && null != dataSetName)
+            if (this.modelcomboBox.SelectedItem != null)
             {
-                if(modelName.IndexOf(";") > -1)
+                string modelName = this.modelcomboBox.SelectedItem.ToString();
+                if (this.dataSetcomboBox.SelectedItem != null)
                 {
-                    string[] name = modelName.Split(';');
-                    string wt = null;
-                    string mt = null;
-                    foreach (string item in name)
-                    {
-                        if (item.IndexOf("wt") > -1)
-                        {
-                            wt = item;
-                        }
-                        if (item.IndexOf("mt") > -1)
-                        {
-                            mt = item;
-                        }
-                    }
-                    //显示图片
-                    string imagePath_mt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + mt + "_Mt.png";
-                    if(FileHelper.IsExistFile(imagePath_mt))
-                    {
-                        this.fitPictureBox.Image = Image.FromFile(imagePath_mt, false);
-                    }
+                    string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
 
-                    string imagePath_wt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + wt + "_Wt.png";
-                    this.pictureBox1.Visible = true;
-                    if (FileHelper.IsExistFile(imagePath_wt))
+                    if ("" != modelName && "" != dataSetName && null != modelName && null != dataSetName)
                     {
-                        this.pictureBox1.Image = Image.FromFile(imagePath_wt, false);
-                    }
+                        if (modelName.IndexOf(";") > -1)
+                        {
+                            string[] name = modelName.Split(';');
+                            string wt = null;
+                            string mt = null;
+                            foreach (string item in name)
+                            {
+                                if (item.IndexOf("wt") > -1)
+                                {
+                                    wt = item;
+                                }
+                                if (item.IndexOf("mt") > -1)
+                                {
+                                    mt = item;
+                                }
+                            }
+                            //显示图片
+                            string imagePath_mt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + mt + "_Mt.png";
+                            if (FileHelper.IsExistFile(imagePath_mt))
+                            {
+                                this.fitPictureBox.Image = Image.FromFile(imagePath_mt, false);
+                            }
 
-                    //显示文本
-                    string filePath = System.Environment.CurrentDirectory +
-                        "\\Result\\" + dataSetName + "_" + mt + "_FitRes.txt";
-                    if (FileHelper.IsExistFile(filePath))
-                    {
-                        this.richTextBox1.Text = FileHelper.FileToString(filePath);
-                    }  
+                            string imagePath_wt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + wt + "_Wt.png";
+                            this.pictureBox1.Visible = true;
+                            if (FileHelper.IsExistFile(imagePath_wt))
+                            {
+                                this.pictureBox1.Image = Image.FromFile(imagePath_wt, false);
+                            }
+
+                            //显示文本
+                            string filePath = System.Environment.CurrentDirectory +
+                                "\\Result\\" + dataSetName + "_" + mt + "_FitRes.txt";
+                            if (FileHelper.IsExistFile(filePath))
+                            {
+                                this.richTextBox1.Text = FileHelper.FileToString(filePath);
+                            }
+                        }
+                        else
+                        {
+                            //显示图片
+                            string imagePath = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + modelName + "_Mt.png";
+                            if (FileHelper.IsExistFile(imagePath))
+                            {
+                                this.fitPictureBox.Image = Image.FromFile(imagePath, false);
+                            }
+
+                            //显示文本
+                            string filePath = System.Environment.CurrentDirectory +
+                                "\\Result\\" + dataSetName + "_" + modelName + "_FitRes.txt";
+                            if (FileHelper.IsExistFile(filePath))
+                            {
+                                this.richTextBox1.Text = FileHelper.FileToString(filePath);
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    //显示图片
-                    string imagePath = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + modelName + "_Mt.png";
-                    if (FileHelper.IsExistFile(imagePath))
-                    {
-                        this.fitPictureBox.Image = Image.FromFile(imagePath, false);
-                    }
-                    
-                    //显示文本
-                    string filePath = System.Environment.CurrentDirectory +
-                        "\\Result\\" + dataSetName + "_" + modelName + "_FitRes.txt";
-                    if (FileHelper.IsExistFile(filePath))
-                    {
-                        this.richTextBox1.Text = FileHelper.FileToString(filePath);
-                    }  
-                }          
             }
-
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             instance = null;
         }
-
-
-
-
 
     }
 }

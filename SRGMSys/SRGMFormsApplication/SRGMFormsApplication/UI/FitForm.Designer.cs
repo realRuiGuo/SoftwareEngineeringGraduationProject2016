@@ -98,9 +98,9 @@
             // 
             // fitPictureBox
             // 
-            this.fitPictureBox.Location = new System.Drawing.Point(71, 65);
+            this.fitPictureBox.Location = new System.Drawing.Point(59, 52);
             this.fitPictureBox.Name = "fitPictureBox";
-            this.fitPictureBox.Size = new System.Drawing.Size(295, 263);
+            this.fitPictureBox.Size = new System.Drawing.Size(480, 375);
             this.fitPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fitPictureBox.TabIndex = 18;
             this.fitPictureBox.TabStop = false;
@@ -145,9 +145,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(372, 65);
+            this.pictureBox1.Location = new System.Drawing.Point(557, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 263);
+            this.pictureBox1.Size = new System.Drawing.Size(480, 375);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 644);
+            this.ClientSize = new System.Drawing.Size(1047, 644);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox1);

@@ -157,5 +157,80 @@ namespace SRGMFormsApplication.BLL
             }
         }
 
+        public List<string> mixDraw(List<Model> p_model, FDataSet p_dataSet)
+        {
+            List<string> fullmodelName = new List<string>();
+            string dataSetName = p_dataSet.Name.Trim();
+            MWCharArray dataSetName_MW = dataSetName.Trim();
+            if (p_dataSet.Type.TypeID == 1)//通过T1MnDSnMixD处理
+            {
+                string modelNames = "";
+                string ymdpaths = "";
+                foreach (Model model in p_model)//获得modelNames和ymdpaths
+                {
+                    modelNames += model.Name + " ";
+                    //设置ymdpath
+                    string ymdpath = System.Environment.CurrentDirectory +
+                    "\\Result\\" + dataSetName + "_" + model.Name + "_ymd"; //设置ymmtdpath
+                    ymdpaths += ymdpath + " ";
+                }
+                if (modelNames != string.Empty && ymdpaths != string.Empty)
+                {
+                    MWCharArray modelNames_MW = modelNames.Trim();
+                    MWCharArray ymdpaths_MW = ymdpaths.Trim();
+                    t1.T1MnDSnMixD(modelNames_MW, ymdpaths_MW, dataSetName_MW);
+                    fullmodelName.Add(modelNames);
+                }
+            }
+            if (p_dataSet.Type.TypeID == 2 || p_dataSet.Type.TypeID == 3)//通过T2MnDSnMixD处理
+            {
+                string modelwtNames = "";
+                string modelmtNames = "";
+                string ymwtdpaths = "";
+                string ymmtdpaths = "";
+                foreach (Model model in p_model)//获得modelwtNames、modelmtNames和ymwtdpaths、ymmtdpaths
+                {
+                    string[] name = model.Name.Split(';');
+                    string wt = null;
+                    string mt = null;
+                    foreach (string item in name)
+                    {
+                        if (item.IndexOf("wt") > -1)
+                        {
+                            wt = item;
+                        }
+                        if (item.IndexOf("mt") > -1)
+                        {
+                            mt = item;
+                        }
+                    }
+                    string modelwtName = wt.Trim();
+                    string ymwtdpath = System.Environment.CurrentDirectory +
+                    "\\Result\\" + dataSetName + "_" + modelwtName + "_ymwtd"; //设置ymwtdpath                       
+                    modelwtNames += modelwtName + " ";
+                    ymwtdpaths += ymwtdpath + " ";
+
+                    string modelmtName = mt.Trim();
+                    string ymmtdpath = System.Environment.CurrentDirectory +
+                    "\\Result\\" + dataSetName + "_" + modelmtName + "_ymmtd"; //设置ymmtdpath
+                    modelmtNames += modelmtName + " ";
+                    ymmtdpaths += ymmtdpath + " ";
+                }
+                //
+                if (modelwtNames != string.Empty && modelmtNames != string.Empty
+                    && ymwtdpaths != string.Empty && ymmtdpaths != string.Empty)
+                {
+                    MWCharArray modelwtNames_MW = modelwtNames.Trim();
+                    MWCharArray modelmtNames_MW = modelmtNames.Trim();
+                    MWCharArray ymwtdpaths_MW = ymwtdpaths.Trim();
+                    MWCharArray ymmtdpaths_MW = ymmtdpaths.Trim();
+                    t1.T2MnDSnMixD(modelwtNames_MW, modelmtNames_MW, ymwtdpaths_MW, ymmtdpaths_MW, dataSetName_MW);
+                    fullmodelName.Add(modelwtNames);
+                    fullmodelName.Add(modelmtNames);
+                }
+            }
+            return fullmodelName;
+        }
+
     }
 }

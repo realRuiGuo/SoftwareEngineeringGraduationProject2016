@@ -106,7 +106,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(71, 390);
+            this.richTextBox1.Location = new System.Drawing.Point(59, 426);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(527, 162);
             this.richTextBox1.TabIndex = 29;
@@ -115,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 575);
+            this.label2.Location = new System.Drawing.Point(57, 591);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(365, 12);
             this.label2.TabIndex = 30;
@@ -125,7 +125,7 @@
             // 
             this.rePictureBox.Location = new System.Drawing.Point(59, 45);
             this.rePictureBox.Name = "rePictureBox";
-            this.rePictureBox.Size = new System.Drawing.Size(539, 331);
+            this.rePictureBox.Size = new System.Drawing.Size(480, 375);
             this.rePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rePictureBox.TabIndex = 31;
             this.rePictureBox.TabStop = false;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 596);
+            this.ClientSize = new System.Drawing.Size(617, 614);
             this.Controls.Add(this.rePictureBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);

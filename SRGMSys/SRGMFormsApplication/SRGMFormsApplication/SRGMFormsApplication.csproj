@@ -58,6 +58,12 @@
     <Compile Include="BLL\AccountController.cs" />
     <Compile Include="BLL\DataSetController.cs" />
     <Compile Include="BLL\DisplayController.cs" />
+    <Compile Include="UI\CompareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CompareForm.Designer.cs">
+      <DependentUpon>CompareForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ProcessOperator.cs" />
     <Compile Include="DAL\FileHelper.cs" />
     <Compile Include="BLL\ModelController.cs" />
@@ -144,6 +150,9 @@
     <Compile Include="UI\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\CompareForm.resx">
+      <DependentUpon>CompareForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\DisplayForm.resx">
       <DependentUpon>DisplayForm.cs</DependentUpon>
     </EmbeddedResource>
