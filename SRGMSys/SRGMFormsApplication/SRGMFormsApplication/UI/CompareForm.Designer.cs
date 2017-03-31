@@ -35,6 +35,7 @@
             this.comPictureBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picturePrintButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.comPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -103,11 +104,22 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
+            // picturePrintButton
+            // 
+            this.picturePrintButton.Location = new System.Drawing.Point(734, 9);
+            this.picturePrintButton.Name = "picturePrintButton";
+            this.picturePrintButton.Size = new System.Drawing.Size(75, 24);
+            this.picturePrintButton.TabIndex = 34;
+            this.picturePrintButton.Text = "打印图片";
+            this.picturePrintButton.UseVisualStyleBackColor = true;
+            this.picturePrintButton.Click += new System.EventHandler(this.picturePrintButton_Click);
+            // 
             // CompareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 555);
+            this.Controls.Add(this.picturePrintButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comPictureBox);
             this.Controls.Add(this.label2);
@@ -134,5 +146,6 @@
         private System.Windows.Forms.PictureBox comPictureBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button picturePrintButton;
     }
 }

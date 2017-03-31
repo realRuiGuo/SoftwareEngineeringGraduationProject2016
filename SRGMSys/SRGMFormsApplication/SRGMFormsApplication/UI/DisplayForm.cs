@@ -71,7 +71,7 @@ namespace SRGMFormsApplication.UI
 
         }
 
-        private void selectLabel_Click(object sender, EventArgs e)
+        public void selectLabel_Click(object sender, EventArgs e)
         {
             frmSelect = SelectForm.Instance;
             frmSelect.Owner = this;

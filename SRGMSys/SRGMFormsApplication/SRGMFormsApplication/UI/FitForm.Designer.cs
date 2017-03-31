@@ -40,6 +40,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picturePrintButton = new System.Windows.Forms.Button();
+            this.txtPrintButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -152,11 +154,33 @@
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
+            // picturePrintButton
+            // 
+            this.picturePrintButton.Location = new System.Drawing.Point(723, 443);
+            this.picturePrintButton.Name = "picturePrintButton";
+            this.picturePrintButton.Size = new System.Drawing.Size(75, 33);
+            this.picturePrintButton.TabIndex = 33;
+            this.picturePrintButton.Text = "打印图片";
+            this.picturePrintButton.UseVisualStyleBackColor = true;
+            this.picturePrintButton.Click += new System.EventHandler(this.picturePrintButton_Click);
+            // 
+            // txtPrintButton
+            // 
+            this.txtPrintButton.Location = new System.Drawing.Point(867, 443);
+            this.txtPrintButton.Name = "txtPrintButton";
+            this.txtPrintButton.Size = new System.Drawing.Size(75, 33);
+            this.txtPrintButton.TabIndex = 34;
+            this.txtPrintButton.Text = "打印文本";
+            this.txtPrintButton.UseVisualStyleBackColor = true;
+            this.txtPrintButton.Click += new System.EventHandler(this.txtPrintButton_Click);
+            // 
             // FitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 644);
+            this.Controls.Add(this.txtPrintButton);
+            this.Controls.Add(this.picturePrintButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox1);
@@ -171,7 +195,6 @@
             this.Controls.Add(this.modelcomboBox);
             this.Name = "FitForm";
             this.Text = "FitForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FitForm_FormClosed);
             this.Load += new System.EventHandler(this.FitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -194,5 +217,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button picturePrintButton;
+        private System.Windows.Forms.Button txtPrintButton;
     }
 }

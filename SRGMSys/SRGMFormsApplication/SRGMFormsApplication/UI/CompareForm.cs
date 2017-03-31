@@ -19,6 +19,26 @@ namespace SRGMFormsApplication.UI
         List<FDataSet> dataSetList = new List<FDataSet>();
         static DataSetController dc = new DataSetController();
         static DisplayController disc = new DisplayController();
+        private string m_imagePath;
+        private string m_imagePath_mt;
+        private string m_imagePath_wt;
+
+        public string ImagePath_wt
+        {
+            get { return m_imagePath_wt; }
+            set { m_imagePath_wt = value; }
+        }
+        public string ImagePath_mt
+        {
+            get { return m_imagePath_mt; }
+            set { m_imagePath_mt = value; }
+        }
+        public string ImagePath
+        {
+            get { return m_imagePath; }
+            set { m_imagePath = value; }
+        }
+
         public List<Model> ModelList
         {
             get { return modelList; }
@@ -70,6 +90,7 @@ namespace SRGMFormsApplication.UI
                 {
                     string picturePath = System.Environment.CurrentDirectory +
                         "\\Picture\\T1" + fullmodelName[0] + dataSetName + "_Mt.png";
+                    this.m_imagePath = picturePath;
                     if(FileHelper.IsExistFile(picturePath))
                     {
                         this.comPictureBox.Image = Image.FromFile(picturePath, false);
@@ -79,6 +100,7 @@ namespace SRGMFormsApplication.UI
                 {
                     string picturewtPath = System.Environment.CurrentDirectory +
                         "\\Picture\\T2" + fullmodelName[0] + dataSetName + "_Wt.png";
+                    this.m_imagePath_wt = picturewtPath;
                     if (FileHelper.IsExistFile(picturewtPath))
                     {
                         this.comPictureBox.Image = Image.FromFile(picturewtPath, false);
@@ -86,6 +108,7 @@ namespace SRGMFormsApplication.UI
 
                     string picturemtPath = System.Environment.CurrentDirectory +
                         "\\Picture\\T2" + fullmodelName[1] + dataSetName + "_Mt.png";
+                    this.m_imagePath_mt = picturemtPath;
                     if (FileHelper.IsExistFile(picturemtPath))
                     {
                         this.pictureBox1.Image = Image.FromFile(picturemtPath, false);
@@ -97,6 +120,23 @@ namespace SRGMFormsApplication.UI
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
+            this.Close();
+        }
+
+        private void picturePrintButton_Click(object sender, EventArgs e)
+        {
+            if (this.comPictureBox.Image != null)
+            {
+                if (this.pictureBox1.Image == null)
+                {
+                    Print picture = new Print(this.m_imagePath, "image");
+                }
+                else
+                {
+                    Print picture_mt = new Print(this.m_imagePath_mt, "image");
+                    Print picture_wt = new Print(this.m_imagePath_wt, "image");
+                }
+            }
         }
 
     }

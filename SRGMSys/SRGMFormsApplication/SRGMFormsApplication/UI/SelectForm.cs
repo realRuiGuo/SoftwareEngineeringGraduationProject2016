@@ -39,10 +39,7 @@ namespace SRGMFormsApplication.UI
                 return instance;
             }
         }
-        private void SelectForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            instance = null;
-        }
+
         public Account Account
         {
             get { return account; }
@@ -249,6 +246,7 @@ namespace SRGMFormsApplication.UI
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
+            this.Close();
         }
         /// <summary>
         /// 显示模型文件
@@ -257,7 +255,7 @@ namespace SRGMFormsApplication.UI
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            this.modelrichTextBox.Text = null;
+            this.modelrichTextBox.Text = null;//防止无限+=赋值
             if (null != modeldataGridView.CurrentRow)
             {
                 int row = modeldataGridView.CurrentRow.Index;

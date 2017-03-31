@@ -16,6 +16,20 @@ namespace SRGMFormsApplication.UI
         private static ReForm instance = null;
         List<Model> modelList = new List<Model>();
         List<FDataSet> dataSetList = new List<FDataSet>();
+        private string m_filePath;
+
+        public string FilePath
+        {
+            get { return m_filePath; }
+            set { m_filePath = value; }
+        }
+        private string m_imagePath;
+
+        public string ImagePath
+        {
+            get { return m_imagePath; }
+            set { m_imagePath = value; }
+        }
         public static ReForm Instance//单例
         {
             set { }
@@ -28,10 +42,7 @@ namespace SRGMFormsApplication.UI
                 return instance;
             }
         }
-        private void ReForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            instance = null;
-        }
+
         public List<Model> ModelList
         {
             get { return modelList; }
@@ -84,6 +95,7 @@ namespace SRGMFormsApplication.UI
                     }
                     //显示图片
                     string imagePath_mt = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + mt + "_RE.png";
+                    this.m_imagePath = imagePath_mt;
                     if (FileHelper.IsExistFile(imagePath_mt))
                     {
                         this.rePictureBox.Image = Image.FromFile(imagePath_mt, false);
@@ -92,6 +104,7 @@ namespace SRGMFormsApplication.UI
                     //显示文本
                     string filePath = System.Environment.CurrentDirectory +
                         "\\Result\\" + dataSetName + "_" + mt + "_RERes.txt";
+                    this.m_filePath = filePath;
                     if (FileHelper.IsExistFile(filePath))
                     {
                         this.richTextBox1.Text = FileHelper.FileToString(filePath);
@@ -101,6 +114,7 @@ namespace SRGMFormsApplication.UI
                 {
                     //显示图片
                     string imagePath = System.Environment.CurrentDirectory + "\\Picture\\" + dataSetName + "_" + modelName + "_RE.png";
+                    this.m_imagePath = imagePath;
                     if (FileHelper.IsExistFile(imagePath))
                     {
                         this.rePictureBox.Image = Image.FromFile(imagePath, false);
@@ -109,6 +123,7 @@ namespace SRGMFormsApplication.UI
                     //显示文本
                     string filePath = System.Environment.CurrentDirectory +
                         "\\Result\\" + dataSetName + "_" + modelName + "_RERes.txt";
+                    this.m_filePath = filePath;
                     if (FileHelper.IsExistFile(filePath))
                     {
                         this.richTextBox1.Text = FileHelper.FileToString(filePath);
@@ -125,6 +140,23 @@ namespace SRGMFormsApplication.UI
         private void resetButton_Click(object sender, EventArgs e)
         {
             instance = null;
+            this.Close();
+        }
+
+        private void picturePrintButton_Click(object sender, EventArgs e)
+        {
+            if(this.rePictureBox != null)
+            {
+                Print picture = new Print(this.m_imagePath,"image");
+            }
+        }
+
+        private void txtPrintButton_Click(object sender, EventArgs e)
+        {
+            if(this.richTextBox1.Text != string.Empty)
+            {
+                Print txt = new Print(this.m_filePath,"txt");
+            }
         }
 
 

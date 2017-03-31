@@ -42,12 +42,12 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.startButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataSetrichTextBox = new System.Windows.Forms.RichTextBox();
+            this.modelrichTextBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
-            this.modelrichTextBox = new System.Windows.Forms.RichTextBox();
-            this.dataSetrichTextBox = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -224,6 +224,44 @@
             this.panel1.Size = new System.Drawing.Size(724, 690);
             this.panel1.TabIndex = 15;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(364, 214);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "显示数据集信息";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(14, 214);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "显示模型信息";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataSetrichTextBox
+            // 
+            this.dataSetrichTextBox.Location = new System.Drawing.Point(364, 250);
+            this.dataSetrichTextBox.Name = "dataSetrichTextBox";
+            this.dataSetrichTextBox.ReadOnly = true;
+            this.dataSetrichTextBox.Size = new System.Drawing.Size(330, 132);
+            this.dataSetrichTextBox.TabIndex = 33;
+            this.dataSetrichTextBox.Text = "";
+            // 
+            // modelrichTextBox
+            // 
+            this.modelrichTextBox.Location = new System.Drawing.Point(12, 250);
+            this.modelrichTextBox.Name = "modelrichTextBox";
+            this.modelrichTextBox.ReadOnly = true;
+            this.modelrichTextBox.Size = new System.Drawing.Size(339, 132);
+            this.modelrichTextBox.TabIndex = 32;
+            this.modelrichTextBox.Text = "";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -243,44 +281,6 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // modelrichTextBox
-            // 
-            this.modelrichTextBox.Location = new System.Drawing.Point(12, 250);
-            this.modelrichTextBox.Name = "modelrichTextBox";
-            this.modelrichTextBox.ReadOnly = true;
-            this.modelrichTextBox.Size = new System.Drawing.Size(339, 132);
-            this.modelrichTextBox.TabIndex = 32;
-            this.modelrichTextBox.Text = "";
-            // 
-            // dataSetrichTextBox
-            // 
-            this.dataSetrichTextBox.Location = new System.Drawing.Point(364, 250);
-            this.dataSetrichTextBox.Name = "dataSetrichTextBox";
-            this.dataSetrichTextBox.ReadOnly = true;
-            this.dataSetrichTextBox.Size = new System.Drawing.Size(330, 132);
-            this.dataSetrichTextBox.TabIndex = 33;
-            this.dataSetrichTextBox.Text = "";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(14, 214);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "显示模型信息";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(364, 214);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "显示数据集信息";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -289,7 +289,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "SelectForm";
             this.Text = "SelectForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectForm_FormClosed);
             this.Load += new System.EventHandler(this.SelectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).EndInit();
