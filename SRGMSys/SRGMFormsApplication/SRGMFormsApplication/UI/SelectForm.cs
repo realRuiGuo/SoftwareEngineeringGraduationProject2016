@@ -84,6 +84,7 @@ namespace SRGMFormsApplication.UI
             this.dataSetcomboBox.Text = "系统数据集";
             this.modelcomboBox_SelectedIndexChanged(sender, e);
             this.dataSetcomboBox_SelectedIndexChanged(sender, e);
+            this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
         }
 
         private void modelcomboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -226,7 +227,7 @@ namespace SRGMFormsApplication.UI
 
         void Do()
         {
-            disc.choose(this.ModelList, this.DataSetList);
+                disc.choose(this.ModelList, this.DataSetList);
         }
 
         void process_BackgroundWorkerCompleted(object sender, BackgroundWorkerEventArgs e)

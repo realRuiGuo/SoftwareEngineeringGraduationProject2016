@@ -79,39 +79,42 @@ namespace SRGMFormsApplication.UI
         //混合绘图并显示图片
         private void OKButton_Click(object sender, EventArgs e)
         {
-            string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
-            FDataSet selectedDataSet = dc.getDataSetByid(dataSetName);
-            //混合绘图（调用Matlab）
-            List<string> fullmodelName = disc.mixDraw(this.ModelList,selectedDataSet);
-            //显示混合拟合图           
-            if ( "" != dataSetName && null != dataSetName)
+            if(this.dataSetcomboBox.SelectedItem != null)
             {
-                if(selectedDataSet.Type.TypeID == 1)
+                string dataSetName = this.dataSetcomboBox.SelectedItem.ToString();
+                FDataSet selectedDataSet = dc.getDataSetByid(dataSetName);
+                //混合绘图（调用Matlab）
+                List<string> fullmodelName = disc.mixDraw(this.ModelList, selectedDataSet);
+                //显示混合拟合图           
+                if ("" != dataSetName && null != dataSetName)
                 {
-                    string picturePath = System.Environment.CurrentDirectory +
-                        "\\Picture\\T1" + fullmodelName[0] + dataSetName + "_Mt.png";
-                    this.m_imagePath = picturePath;
-                    if(FileHelper.IsExistFile(picturePath))
+                    if (selectedDataSet.Type.TypeID == 1)
                     {
-                        this.comPictureBox.Image = Image.FromFile(picturePath, false);
+                        string picturePath = System.Environment.CurrentDirectory +
+                            "\\Picture\\T1" + fullmodelName[0] + dataSetName + "_Mt.png";
+                        this.m_imagePath = picturePath;
+                        if (FileHelper.IsExistFile(picturePath))
+                        {
+                            this.comPictureBox.Image = Image.FromFile(picturePath, false);
+                        }
                     }
-                }
-                if (selectedDataSet.Type.TypeID == 2 || selectedDataSet.Type.TypeID == 3)
-                {
-                    string picturewtPath = System.Environment.CurrentDirectory +
-                        "\\Picture\\T2" + fullmodelName[0] + dataSetName + "_Wt.png";
-                    this.m_imagePath_wt = picturewtPath;
-                    if (FileHelper.IsExistFile(picturewtPath))
+                    if (selectedDataSet.Type.TypeID == 2 || selectedDataSet.Type.TypeID == 3)
                     {
-                        this.comPictureBox.Image = Image.FromFile(picturewtPath, false);
-                    }
+                        string picturewtPath = System.Environment.CurrentDirectory +
+                            "\\Picture\\T2" + fullmodelName[0] + dataSetName + "_Wt.png";
+                        this.m_imagePath_wt = picturewtPath;
+                        if (FileHelper.IsExistFile(picturewtPath))
+                        {
+                            this.comPictureBox.Image = Image.FromFile(picturewtPath, false);
+                        }
 
-                    string picturemtPath = System.Environment.CurrentDirectory +
-                        "\\Picture\\T2" + fullmodelName[1] + dataSetName + "_Mt.png";
-                    this.m_imagePath_mt = picturemtPath;
-                    if (FileHelper.IsExistFile(picturemtPath))
-                    {
-                        this.pictureBox1.Image = Image.FromFile(picturemtPath, false);
+                        string picturemtPath = System.Environment.CurrentDirectory +
+                            "\\Picture\\T2" + fullmodelName[1] + dataSetName + "_Mt.png";
+                        this.m_imagePath_mt = picturemtPath;
+                        if (FileHelper.IsExistFile(picturemtPath))
+                        {
+                            this.pictureBox1.Image = Image.FromFile(picturemtPath, false);
+                        }
                     }
                 }
             }

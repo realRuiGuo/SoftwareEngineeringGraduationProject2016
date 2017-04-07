@@ -85,13 +85,33 @@ namespace SRGMFormsApplication.BLL
         /// <param name="p_account"></param>
         /// <param name="p_userType"></param>
         /// <returns></returns>
-        public int addModelsforUser(Model p_model, Account p_account, int p_userType, String p_filePath)
+        public int addModelsforUser(Model p_model, Account p_account, int p_userType, List<string> p_filePath)
         {
             //设置导入后模型的路径
-            p_model.Path = "\\Model\\" + p_account.UserName + p_userType.ToString() + "\\" + p_model.Name + ".m";
-            //复制文件到指定目录
-            FileHelper.Copy(p_filePath,
-                System.Environment.CurrentDirectory + p_model.Path);
+            if (p_model.Name.IndexOf(";") > -1)//多文件模型
+            {
+                string[] name = p_model.Name.Split(';');
+                int i = 0;
+                foreach (string modelName in name)
+                {
+                    string pathtemp = "\\Model\\" + modelName + ".m ";
+                    p_model.Path += pathtemp;//存入DB的累加路径
+                    //复制文件到指定目录
+                    FileHelper.Copy(p_filePath[i],
+                        System.Environment.CurrentDirectory + pathtemp);
+                    i++;
+                }
+            }
+            else
+            {
+                p_model.Path = "\\Model\\" + p_model.Name + ".m";
+                //复制文件到指定目录
+                foreach (string path in p_filePath)
+                {
+                    FileHelper.Copy(path,
+                    System.Environment.CurrentDirectory + p_model.Path);
+                }
+            }
             return modelDB.addModelsforUser(p_model, p_account, p_userType);
         }
         /// <summary>
@@ -116,6 +136,8 @@ namespace SRGMFormsApplication.BLL
         {
             //删除相应目录下的m文件
             FileHelper.DeleteFile(System.Environment.CurrentDirectory + p_model.Path);
+            //删除相应目录下的dll文件
+            FileHelper.DeleteFile(System.Environment.CurrentDirectory + "\\" + p_model.Name + ".dll");
             return modelDB.deleteModelsforUser(p_model, p_account, p_userType);
         }
 

@@ -147,6 +147,7 @@
     <Compile Include="UI\SelectForm.Designer.cs">
       <DependentUpon>SelectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Test.cs" />
     <Compile Include="UI\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>

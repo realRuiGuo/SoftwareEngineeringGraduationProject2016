@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SRGMFormsApplication.DAL;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
 
@@ -91,6 +92,7 @@ namespace SRGMFormsApplication.UI
             if (0 == this.UserType)
             {
                 this.label1.Text = "系统模型";
+                this.dlladdutton.Visible = false;
             }
             else
             {
@@ -162,7 +164,7 @@ namespace SRGMFormsApplication.UI
                                 }
                                 else
                                 {
-                                    //mc.addModelsforUser(model, this.Account, this.UserType, fullPath);
+                                    mc.addModelsforUser(model, this.Account, this.UserType, fullPath);
                                 }
                                 updateGridView();
                             }
@@ -251,6 +253,24 @@ namespace SRGMFormsApplication.UI
                 string value0 = this.value0dataGridView.Rows[row].Cells[2].Value.ToString();
                 mc.deleteValue0Item(model, dataSet, value0);
                 this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
+            }
+        }
+        /// <summary>
+        /// 添加新模型的DLL文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dlladdutton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = true;
+            fileDialog.Title = "请选择文件";
+            fileDialog.Filter = "(*.dll)|*.dll";
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileNameWithoutExtension = System.IO.Path.GetFileNameWithoutExtension(fileDialog.FileName);// 没有扩展名的文件名
+                //复制文件到当前目录
+                FileHelper.Copy(fileDialog.FileName, System.Environment.CurrentDirectory + "\\" +fileNameWithoutExtension + ".dll");
             }
         }
     }

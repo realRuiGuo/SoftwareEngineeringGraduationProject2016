@@ -157,7 +157,10 @@ namespace SRGMFormsApplication.UI
 
         private void 模型管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ModelForm modelForm = ModelForm.Instance;
+            modelForm.Account = this.Account;
+            modelForm.UserType = this.UserType;
+            modelForm.Show();
         }
 
         private void 数据集管理ToolStripMenuItem_Click(object sender, EventArgs e)

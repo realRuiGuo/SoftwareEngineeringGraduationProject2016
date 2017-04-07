@@ -44,7 +44,7 @@ namespace SRGMFormsApplication.UI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.radioButton2.Visible = false;
+
         }
 
         /// <summary>

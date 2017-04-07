@@ -42,6 +42,7 @@
             this.value0dataGridView = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.delValue0Button = new System.Windows.Forms.Button();
+            this.dlladdutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).BeginInit();
@@ -188,11 +189,25 @@
             this.delValue0Button.UseVisualStyleBackColor = true;
             this.delValue0Button.Click += new System.EventHandler(this.delValue0Button_Click);
             // 
+            // dlladdutton
+            // 
+            this.dlladdutton.Image = global::SRGMFormsApplication.Properties.Resources.添加;
+            this.dlladdutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dlladdutton.Location = new System.Drawing.Point(107, 279);
+            this.dlladdutton.Name = "dlladdutton";
+            this.dlladdutton.Size = new System.Drawing.Size(77, 29);
+            this.dlladdutton.TabIndex = 35;
+            this.dlladdutton.Text = "添加DLL";
+            this.dlladdutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dlladdutton.UseVisualStyleBackColor = true;
+            this.dlladdutton.Click += new System.EventHandler(this.dlladdutton_Click);
+            // 
             // ModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 571);
+            this.ClientSize = new System.Drawing.Size(604, 571);
+            this.Controls.Add(this.dlladdutton);
             this.Controls.Add(this.delValue0Button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.value0dataGridView);
@@ -236,5 +251,6 @@
         private System.Windows.Forms.DataGridView value0dataGridView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button delValue0Button;
+        private System.Windows.Forms.Button dlladdutton;
     }
 }

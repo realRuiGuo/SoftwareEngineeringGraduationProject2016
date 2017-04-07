@@ -27,6 +27,7 @@ namespace SRGMFormsApplication.UI
         public Print()
         {
             InitializeComponent();
+            i = 0;
         }
         private int linesPrinted;
 
@@ -192,26 +193,26 @@ namespace SRGMFormsApplication.UI
 
                     System.Drawing.Rectangle destRect = new System.Drawing.Rectangle(topMargin, leftMargin, width, height);
                     //向画布写入图片  
-                    for (; i < Convert.ToInt32(Math.Floor((double)image.Height / 820)) + 1; i++)
-                    {
-                        e.Graphics.DrawImage(image, destRect, i * 820, i * 1170, image.Width, image.Height, System.Drawing.GraphicsUnit.Pixel);
+                    //for (; i < Convert.ToInt32(Math.Floor((double)image.Height / 820)) + 1; i++)
+                    //{
+                        e.Graphics.DrawImage(image, destRect, 0 * 820, 0 * 1170, image.Width, image.Height, System.Drawing.GraphicsUnit.Pixel);
                         //e.Graphics.DrawImage(image, 35, 35);
                         
-                        //走纸换页  
-                        if (i * 1170 >= e.PageBounds.Height - 60)//页面累加的高度大于页面高度。根据自己需要，可以适当调整  
-                        {
-                            //如果大于设定的高  
-                            e.HasMorePages = true;
-                            printPreviewControl1.Rows += 1;//窗体的打印预览窗口页面自动加1  
-                            /* 
-                            * PrintPageEventArgs类的HaeMorePages属性为True时，通知控件器，必须再次調用OnPrintPage()方法，打印一个页面。 
-                            * PrintLoopI()有一个用於每个要打印的页面的序例。如果HasMorePages是False，PrintLoop()就会停止。 
-                            */
-                            i += 1;
-                            //System.Diagnostics.Debug.WriteLine("aaaa"+i);
-                            return;
-                        }
-                    }
+                    //    //走纸换页  
+                    //    if (i * 1170 >= e.PageBounds.Height - 60)//页面累加的高度大于页面高度。根据自己需要，可以适当调整  
+                    //    {
+                    //        //如果大于设定的高  
+                    //        e.HasMorePages = true;
+                    //        printPreviewControl1.Rows += 1;//窗体的打印预览窗口页面自动加1  
+                    //        /* 
+                    //        * PrintPageEventArgs类的HaeMorePages属性为True时，通知控件器，必须再次調用OnPrintPage()方法，打印一个页面。 
+                    //        * PrintLoopI()有一个用於每个要打印的页面的序例。如果HasMorePages是False，PrintLoop()就会停止。 
+                    //        */
+                    //        i += 1;
+                    //        //System.Diagnostics.Debug.WriteLine("aaaa"+i);
+                    //        return;
+                    //    }
+                    //}
                     break;
             }
             //打印完毕后，画线条，且注明打印日期  

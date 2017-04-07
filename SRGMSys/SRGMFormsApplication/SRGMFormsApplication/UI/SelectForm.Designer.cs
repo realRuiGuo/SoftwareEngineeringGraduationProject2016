@@ -42,15 +42,19 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.startButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.value0Label = new System.Windows.Forms.Label();
+            this.value0dataGridView = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataSetrichTextBox = new System.Windows.Forms.RichTextBox();
             this.modelrichTextBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
+            this.waringLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // modeldataGridView
@@ -199,6 +203,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.waringLabel);
+            this.panel1.Controls.Add(this.value0Label);
+            this.panel1.Controls.Add(this.value0dataGridView);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dataSetrichTextBox);
@@ -221,8 +228,26 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(724, 690);
+            this.panel1.Size = new System.Drawing.Size(1126, 690);
             this.panel1.TabIndex = 15;
+            // 
+            // value0Label
+            // 
+            this.value0Label.AutoSize = true;
+            this.value0Label.Location = new System.Drawing.Point(721, 32);
+            this.value0Label.Name = "value0Label";
+            this.value0Label.Size = new System.Drawing.Size(53, 12);
+            this.value0Label.TabIndex = 37;
+            this.value0Label.Text = "初值表：";
+            // 
+            // value0dataGridView
+            // 
+            this.value0dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.value0dataGridView.Location = new System.Drawing.Point(723, 47);
+            this.value0dataGridView.Name = "value0dataGridView";
+            this.value0dataGridView.RowTemplate.Height = 23;
+            this.value0dataGridView.Size = new System.Drawing.Size(388, 161);
+            this.value0dataGridView.TabIndex = 36;
             // 
             // button2
             // 
@@ -281,11 +306,21 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // waringLabel
+            // 
+            this.waringLabel.AutoSize = true;
+            this.waringLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.waringLabel.Location = new System.Drawing.Point(720, 11);
+            this.waringLabel.Name = "waringLabel";
+            this.waringLabel.Size = new System.Drawing.Size(296, 16);
+            this.waringLabel.TabIndex = 38;
+            this.waringLabel.Text = "请参照初值表来选择模型和失效数据集！";
+            // 
             // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 690);
+            this.ClientSize = new System.Drawing.Size(1126, 690);
             this.Controls.Add(this.panel1);
             this.Name = "SelectForm";
             this.Text = "SelectForm";
@@ -294,6 +329,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +355,8 @@
         private System.Windows.Forms.RichTextBox modelrichTextBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView value0dataGridView;
+        private System.Windows.Forms.Label value0Label;
+        private System.Windows.Forms.Label waringLabel;
     }
 }

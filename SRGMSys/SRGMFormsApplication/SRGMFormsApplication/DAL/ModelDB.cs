@@ -33,6 +33,7 @@ namespace SRGMFormsApplication.DAL
             SqlParameter[] para = new SqlParameter[] { sp1 };
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
             model.Path = ds.Tables[0].Rows[0]["path"].ToString();
+            model.Owner = (int)ds.Tables[0].Rows[0]["permission"];
             model.Type = new ModelType();
             model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
             if (!Convert.IsDBNull( ds.Tables[0].Rows[0]["paranum"]))
@@ -128,17 +129,18 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public int addModelsforUser(Model p_model, Account p_account, int p_userType)
         {
-            string sql = "insert into model values(@modelname,@path,@permission,@username,@shape,@typeID,@parameters)";
+            string sql = "insert into model values(@modelname,@path,@permission,@username,@shape,@typeID,@parameters,@paranum)";
 
             SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
             SqlParameter sp2 = new SqlParameter("@path", p_model.Path);
             SqlParameter sp3 = new SqlParameter("@permission", p_userType);
             SqlParameter sp4 = new SqlParameter("@username", p_account.UserName);
-            SqlParameter sp5 = new SqlParameter("@shape", p_model.Shape);
+            SqlParameter sp5 = new SqlParameter("@shape", (object)DBNull.Value);
             SqlParameter sp6 = new SqlParameter("@typeID", p_model.Type.TypeID);
             SqlParameter sp7 = new SqlParameter("@parameters", (object)DBNull.Value);
+            SqlParameter sp8 = new SqlParameter("@paranum", p_model.ParaNum);
 
-            SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6,sp7 };
+            SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6,sp7,sp8 };
 
             return SqlHelper.ExecuteNonQuery(sql, para);
         }
@@ -174,6 +176,8 @@ namespace SRGMFormsApplication.DAL
         /// <returns></returns>
         public int deleteModelsforUser(Model p_model, Account p_account, int p_userType)
         {
+            //删除初值记录
+            deleteValue0forModel(p_model);
             string sql = "delete from model where modelname=@modelname and username=@username and permission=@permission";
             SqlParameter sp1 = new SqlParameter("@modelname", p_model.Name);
             SqlParameter sp2 = new SqlParameter("@username", p_account.UserName);
