@@ -12412,7 +12412,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="3h9lIEG/mkqAhjUkAjkCNgAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="D1b/XC9RU0CD+Dv7zMSMjwAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">DataSetController</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">FDataSetController</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="cK+sX0wfuUSCD53HHc24kAAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -17924,7 +17924,7 @@
 <XPD:REF name="Instances[2]">LgU73hxwAE2dkWcdiVzS8gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[24]" type="UMLClass" guid="IG1HbT581ESSZtRl1G8SaAAA">
-<XPD:ATTR name="Name" type="string">DataSetController</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">FDataSetController</XPD:ATTR>
 <XPD:REF name="Namespace">WODzyWjvl0S2qp4uyEWoBQAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">0zw09vZSm0+55NufH7ut4QAA</XPD:REF>
