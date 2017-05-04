@@ -19,39 +19,39 @@ namespace SRGMFormsApplication.UI
         static DataSetController dc = new DataSetController();
         Account account;
         int userType;
-        private float X;
-        private float Y;
+        //private float X;
+        //private float Y;
 
-        private void setTag(Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
-                if (con.Controls.Count > 0)
-                    setTag(con);
-            }
-        }
-        private void setControls(float newx, float newy, Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
-                float a = Convert.ToSingle(mytag[0]) * newx;
-                con.Width = (int)a;
-                a = Convert.ToSingle(mytag[1]) * newy;
-                con.Height = (int)(a);
-                a = Convert.ToSingle(mytag[2]) * newx;
-                con.Left = (int)(a);
-                a = Convert.ToSingle(mytag[3]) * newy;
-                con.Top = (int)(a);
-                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
-                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
-                if (con.Controls.Count > 0)
-                {
-                    setControls(newx, newy, con);
-                }
-            }
-        }
+        //private void setTag(Control cons)
+        //{
+        //    foreach (Control con in cons.Controls)
+        //    {
+        //        con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+        //        if (con.Controls.Count > 0)
+        //            setTag(con);
+        //    }
+        //}
+        //private void setControls(float newx, float newy, Control cons)
+        //{
+        //    foreach (Control con in cons.Controls)
+        //    {
+        //        string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+        //        float a = Convert.ToSingle(mytag[0]) * newx;
+        //        con.Width = (int)a;
+        //        a = Convert.ToSingle(mytag[1]) * newy;
+        //        con.Height = (int)(a);
+        //        a = Convert.ToSingle(mytag[2]) * newx;
+        //        con.Left = (int)(a);
+        //        a = Convert.ToSingle(mytag[3]) * newy;
+        //        con.Top = (int)(a);
+        //        Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+        //        con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+        //        if (con.Controls.Count > 0)
+        //        {
+        //            setControls(newx, newy, con);
+        //        }
+        //    }
+        //}
         public Account Account
         {
             get { return account; }
@@ -82,13 +82,13 @@ namespace SRGMFormsApplication.UI
         {
             InitializeComponent();
             instance = this;
-            X = this.Width;
-            Y = this.Height;
+            //X = this.Width;
+            //Y = this.Height;
         }
         private void ModelForm_Load(object sender, EventArgs e)
         {
-            this.Resize += new EventHandler(ModelForm_Resize);
-            setTag(this);
+            //this.Resize += new EventHandler(ModelForm_Resize);
+            //setTag(this);
             if (0 == this.UserType)
             {
                 this.label1.Text = "系统模型";
@@ -208,12 +208,12 @@ namespace SRGMFormsApplication.UI
             }
         }
 
-        private void ModelForm_Resize(object sender, EventArgs e)
-        {
-            float newx = (this.Width) / X;
-            float newy = this.Height / Y;
-            setControls(newx, newy, this);
-        }
+        //private void ModelForm_Resize(object sender, EventArgs e)
+        //{
+        //    float newx = (this.Width) / X;
+        //    float newy = this.Height / Y;
+        //    setControls(newx, newy, this);
+        //}
 
         private void OKButton_Click(object sender, EventArgs e)
         {

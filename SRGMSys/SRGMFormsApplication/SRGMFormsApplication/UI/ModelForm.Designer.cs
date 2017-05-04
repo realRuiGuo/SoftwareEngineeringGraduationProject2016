@@ -226,7 +226,7 @@
             this.Text = "ModelForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModelForm_FormClosed);
             this.Load += new System.EventHandler(this.ModelForm_Load);
-            this.Resize += new System.EventHandler(this.ModelForm_Resize);
+            //this.Resize += new System.EventHandler(this.ModelForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelTypedataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).EndInit();

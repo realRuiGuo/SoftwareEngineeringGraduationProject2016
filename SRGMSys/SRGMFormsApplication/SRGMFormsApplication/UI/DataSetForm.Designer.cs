@@ -215,7 +215,7 @@
             this.Text = "数据集管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DataSetForm_FormClosed);
             this.Load += new System.EventHandler(this.DataSetForm_Load);
-            this.Resize += new System.EventHandler(this.DataSetForm_Resize);
+           //this.Resize += new System.EventHandler(this.DataSetForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.typeDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.value0dataGridView)).EndInit();

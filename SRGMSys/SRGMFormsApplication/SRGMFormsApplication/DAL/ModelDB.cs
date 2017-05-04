@@ -32,15 +32,22 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp1 = new SqlParameter("@modelname", p_modelName);
             SqlParameter[] para = new SqlParameter[] { sp1 };
             DataSet ds = SqlHelper.ExecuteReaderDataSet(sql, para);
-            model.Path = ds.Tables[0].Rows[0]["path"].ToString();
-            model.Owner = (int)ds.Tables[0].Rows[0]["permission"];
-            model.Type = new ModelType();
-            model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
-            if (!Convert.IsDBNull( ds.Tables[0].Rows[0]["paranum"]))
+            if (ds == null || ds.Tables.Count == 0 || (ds.Tables.Count == 1 && ds.Tables[0].Rows.Count == 0))
             {
-                model.ParaNum = (int)ds.Tables[0].Rows[0]["paranum"];
+                return null;
             }
-            return model;
+            else
+            {
+                model.Path = ds.Tables[0].Rows[0]["path"].ToString();
+                model.Owner = (int)ds.Tables[0].Rows[0]["permission"];
+                model.Type = new ModelType();
+                model.Type.TypeID = (int)ds.Tables[0].Rows[0]["typeID"];
+                if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["paranum"]))
+                {
+                    model.ParaNum = (int)ds.Tables[0].Rows[0]["paranum"];
+                }
+                return model;
+            }
         }
         #region 得到系统自带Model信息，返回DataSet
         /// <summary>

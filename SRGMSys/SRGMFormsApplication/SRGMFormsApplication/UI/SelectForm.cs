@@ -79,7 +79,7 @@ namespace SRGMFormsApplication.UI
                     modelcomboBox.Items.Add("用户模型");
                 }
             }
-
+            this.DStitlelabel.Text = ""; 
             this.modelcomboBox.Text = "系统模型";
             this.dataSetcomboBox.Text = "系统数据集";
             this.modelcomboBox_SelectedIndexChanged(sender, e);
@@ -289,6 +289,14 @@ namespace SRGMFormsApplication.UI
                 String dataSetFilePath = System.Environment.CurrentDirectory + dataSet.Path;
                 if (FileHelper.IsExistFile(dataSetFilePath))
                 {
+                    if(dataSet.Type.TypeID == 1)
+                    {
+                        this.DStitlelabel.Text = "累计失效时间    累计失效个数";
+                    }
+                    else if (dataSet.Type.TypeID == 2 || dataSet.Type.TypeID == 3)
+                    {
+                        this.DStitlelabel.Text = "累计失效时间    测试工作量    累计失效个数";
+                    }
                     this.dataSetrichTextBox.Text = FileHelper.FileToString(dataSetFilePath);
                 }
             }

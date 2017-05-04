@@ -18,39 +18,41 @@ namespace SRGMFormsApplication.UI
         static ModelController mc = new ModelController();
         Account account;
         int userType;
-        private float X;
-        private float Y;
+        //private float X;
+        //private float Y;
 
-        private void setTag(Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
-                if (con.Controls.Count > 0)
-                    setTag(con);
-            }
-        }
-        private void setControls(float newx, float newy, Control cons)
-        {
-            foreach (Control con in cons.Controls)
-            {
-                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
-                float a = Convert.ToSingle(mytag[0]) * newx;
-                con.Width = (int)a;
-                a = Convert.ToSingle(mytag[1]) * newy;
-                con.Height = (int)(a);
-                a = Convert.ToSingle(mytag[2]) * newx;
-                con.Left = (int)(a);
-                a = Convert.ToSingle(mytag[3]) * newy;
-                con.Top = (int)(a);
-                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
-                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
-                if (con.Controls.Count > 0)
-                {
-                    setControls(newx, newy, con);
-                }
-            }
-        }
+        //private void setTag(Control cons)
+        //{
+        //    foreach (Control con in cons.Controls)
+        //    {
+        //        con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+        //        if (con.Controls.Count > 0)
+        //            setTag(con);
+        //    }
+        //}
+        //private void setControls(float newx, float newy, Control cons)
+        //{
+        //    foreach (Control con in cons.Controls)
+        //    {
+        //        if (con.Tag == null || con.Tag.ToString() == "") 
+        //            continue;
+        //        string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+        //        float a = Convert.ToSingle(mytag[0]) * newx;
+        //        con.Width = (int)a;
+        //        a = Convert.ToSingle(mytag[1]) * newy;
+        //        con.Height = (int)(a);
+        //        a = Convert.ToSingle(mytag[2]) * newx;
+        //        con.Left = (int)(a);
+        //        a = Convert.ToSingle(mytag[3]) * newy;
+        //        con.Top = (int)(a);
+        //        Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+        //        con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+        //        if (con.Controls.Count > 0)
+        //        {
+        //            setControls(newx, newy, con);
+        //        }
+        //    }
+        //}
         public static DataSetForm Instance//单例
         {
             set { }
@@ -82,14 +84,14 @@ namespace SRGMFormsApplication.UI
         {
             InitializeComponent();
             instance = this;
-            X = this.Width;
-            Y = this.Height;
+            //X = this.Width;
+            //Y = this.Height;
         }
 
         private void DataSetForm_Load(object sender, EventArgs e)
         {
-            this.Resize += new EventHandler(DataSetForm_Resize);
-            setTag(this);
+            //this.Resize += new EventHandler(DataSetForm_Resize);
+            //setTag(this);
             //DataSetForm_Resize(new object(), new EventArgs());//x,y可在实例化时赋值,最后这句是新加的，在MDI时有用
             this.typeDataGridView.DataSource = dc.getDataSetType().Tables[0];
             this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
@@ -205,13 +207,13 @@ namespace SRGMFormsApplication.UI
             }
         }
 
-        private void DataSetForm_Resize(object sender, EventArgs e)
-        {
-            float newx = (this.Width) / X;
-            float newy = this.Height / Y;
-            setControls(newx, newy, this);
-            //this.Text = this.Width.ToString() + " " + this.Height.ToString();
-        }
+        //private void DataSetForm_Resize(object sender, EventArgs e)
+        //{
+        //    float newx = (this.Width) / X;
+        //    float newy = this.Height / Y;
+        //    setControls(newx, newy, this);
+        //    //this.Text = this.Width.ToString() + " " + this.Height.ToString();
+        //}
 
         private void OKButton_Click(object sender, EventArgs e)
         {

@@ -76,7 +76,14 @@ namespace SRGMFormsApplication.BLL
                     System.Environment.CurrentDirectory + p_model.Path);
                 }
             }
-            return modelDB.addDataSetsforSystem(p_model);
+            if (null == modelDB.getModelByid(p_model.Name))//避免重复插入
+            {
+                return modelDB.addDataSetsforSystem(p_model);
+            }
+            else
+            {
+                return 1;
+            }
         }
         /// <summary>
         /// 当前用户导入模型

@@ -68,7 +68,7 @@ namespace SRGMFormsApplication.UI
         }
         private void DisplayForm_Load(object sender, System.EventArgs e)
         {
-
+            this.selectLabel_Click(sender,e);
         }
 
         public void selectLabel_Click(object sender, EventArgs e)

@@ -160,7 +160,7 @@ namespace SRGMFormsApplication.DAL
             SqlParameter sp5 = new SqlParameter("@permission", p_userType);
             SqlParameter sp6 = new SqlParameter("@username", p_account.UserName);
             SqlParameter sp7 = new SqlParameter("@typeID", p_dataSet.Type.TypeID);
-            SqlParameter sp8 = new SqlParameter("@cp", p_dataSet.Type.TypeID);
+            SqlParameter sp8 = new SqlParameter("@cp", p_dataSet.Cp);
 
             SqlParameter[] para = new SqlParameter[] { sp1, sp2, sp3, sp4, sp5, sp6, sp7,sp8 };
 

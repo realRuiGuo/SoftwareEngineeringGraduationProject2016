@@ -42,6 +42,8 @@
             this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
             this.startButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DStitlelabel = new System.Windows.Forms.Label();
+            this.waringLabel = new System.Windows.Forms.Label();
             this.value0Label = new System.Windows.Forms.Label();
             this.value0dataGridView = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
@@ -50,7 +52,6 @@
             this.modelrichTextBox = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
-            this.waringLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modeldataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetdataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -85,7 +86,7 @@
             // 
             this.modellistBox.FormattingEnabled = true;
             this.modellistBox.ItemHeight = 12;
-            this.modellistBox.Location = new System.Drawing.Point(12, 423);
+            this.modellistBox.Location = new System.Drawing.Point(12, 466);
             this.modellistBox.Name = "modellistBox";
             this.modellistBox.Size = new System.Drawing.Size(330, 124);
             this.modellistBox.TabIndex = 4;
@@ -94,7 +95,7 @@
             // 
             this.datasetlistBox.FormattingEnabled = true;
             this.datasetlistBox.ItemHeight = 12;
-            this.datasetlistBox.Location = new System.Drawing.Point(364, 423);
+            this.datasetlistBox.Location = new System.Drawing.Point(359, 466);
             this.datasetlistBox.Name = "datasetlistBox";
             this.datasetlistBox.Size = new System.Drawing.Size(330, 124);
             this.datasetlistBox.TabIndex = 5;
@@ -102,7 +103,7 @@
             // dataSetbutton
             // 
             this.dataSetbutton.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.menu_bt;
-            this.dataSetbutton.Location = new System.Drawing.Point(593, 553);
+            this.dataSetbutton.Location = new System.Drawing.Point(588, 596);
             this.dataSetbutton.Name = "dataSetbutton";
             this.dataSetbutton.Size = new System.Drawing.Size(101, 29);
             this.dataSetbutton.TabIndex = 11;
@@ -113,7 +114,7 @@
             // modelbutton
             // 
             this.modelbutton.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.menu_bt;
-            this.modelbutton.Location = new System.Drawing.Point(241, 553);
+            this.modelbutton.Location = new System.Drawing.Point(241, 596);
             this.modelbutton.Name = "modelbutton";
             this.modelbutton.Size = new System.Drawing.Size(101, 29);
             this.modelbutton.TabIndex = 10;
@@ -125,7 +126,7 @@
             // 
             this.delDataSetbutton.Image = global::SRGMFormsApplication.Properties.Resources.删除;
             this.delDataSetbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delDataSetbutton.Location = new System.Drawing.Point(364, 553);
+            this.delDataSetbutton.Location = new System.Drawing.Point(359, 596);
             this.delDataSetbutton.Name = "delDataSetbutton";
             this.delDataSetbutton.Size = new System.Drawing.Size(53, 29);
             this.delDataSetbutton.TabIndex = 9;
@@ -138,7 +139,7 @@
             // 
             this.delModelbutton.Image = global::SRGMFormsApplication.Properties.Resources.删除;
             this.delModelbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.delModelbutton.Location = new System.Drawing.Point(12, 553);
+            this.delModelbutton.Location = new System.Drawing.Point(12, 596);
             this.delModelbutton.Name = "delModelbutton";
             this.delModelbutton.Size = new System.Drawing.Size(53, 29);
             this.delModelbutton.TabIndex = 8;
@@ -151,7 +152,7 @@
             // 
             this.addDataSetbutton.Image = global::SRGMFormsApplication.Properties.Resources.添加;
             this.addDataSetbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addDataSetbutton.Location = new System.Drawing.Point(364, 388);
+            this.addDataSetbutton.Location = new System.Drawing.Point(359, 431);
             this.addDataSetbutton.Name = "addDataSetbutton";
             this.addDataSetbutton.Size = new System.Drawing.Size(53, 29);
             this.addDataSetbutton.TabIndex = 7;
@@ -164,7 +165,7 @@
             // 
             this.addModelbutton.Image = global::SRGMFormsApplication.Properties.Resources.添加;
             this.addModelbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addModelbutton.Location = new System.Drawing.Point(12, 388);
+            this.addModelbutton.Location = new System.Drawing.Point(12, 431);
             this.addModelbutton.Name = "addModelbutton";
             this.addModelbutton.Size = new System.Drawing.Size(53, 29);
             this.addModelbutton.TabIndex = 6;
@@ -193,7 +194,7 @@
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(309, 614);
+            this.startButton.Location = new System.Drawing.Point(303, 631);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(96, 28);
             this.startButton.TabIndex = 14;
@@ -203,6 +204,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.DStitlelabel);
             this.panel1.Controls.Add(this.waringLabel);
             this.panel1.Controls.Add(this.value0Label);
             this.panel1.Controls.Add(this.value0dataGridView);
@@ -228,8 +230,27 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1126, 690);
+            this.panel1.Size = new System.Drawing.Size(1126, 677);
             this.panel1.TabIndex = 15;
+            // 
+            // DStitlelabel
+            // 
+            this.DStitlelabel.AutoSize = true;
+            this.DStitlelabel.Location = new System.Drawing.Point(362, 240);
+            this.DStitlelabel.Name = "DStitlelabel";
+            this.DStitlelabel.Size = new System.Drawing.Size(77, 12);
+            this.DStitlelabel.TabIndex = 39;
+            this.DStitlelabel.Text = "DStitlelabel";
+            // 
+            // waringLabel
+            // 
+            this.waringLabel.AutoSize = true;
+            this.waringLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.waringLabel.Location = new System.Drawing.Point(720, 11);
+            this.waringLabel.Name = "waringLabel";
+            this.waringLabel.Size = new System.Drawing.Size(296, 16);
+            this.waringLabel.TabIndex = 38;
+            this.waringLabel.Text = "请参照初值表来选择模型和失效数据集！";
             // 
             // value0Label
             // 
@@ -242,11 +263,14 @@
             // 
             // value0dataGridView
             // 
+            this.value0dataGridView.AllowUserToAddRows = false;
+            this.value0dataGridView.AllowUserToDeleteRows = false;
             this.value0dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.value0dataGridView.Location = new System.Drawing.Point(723, 47);
             this.value0dataGridView.Name = "value0dataGridView";
+            this.value0dataGridView.ReadOnly = true;
             this.value0dataGridView.RowTemplate.Height = 23;
-            this.value0dataGridView.Size = new System.Drawing.Size(388, 161);
+            this.value0dataGridView.Size = new System.Drawing.Size(388, 581);
             this.value0dataGridView.TabIndex = 36;
             // 
             // button2
@@ -271,26 +295,26 @@
             // 
             // dataSetrichTextBox
             // 
-            this.dataSetrichTextBox.Location = new System.Drawing.Point(364, 250);
+            this.dataSetrichTextBox.Location = new System.Drawing.Point(359, 255);
             this.dataSetrichTextBox.Name = "dataSetrichTextBox";
             this.dataSetrichTextBox.ReadOnly = true;
-            this.dataSetrichTextBox.Size = new System.Drawing.Size(330, 132);
+            this.dataSetrichTextBox.Size = new System.Drawing.Size(330, 170);
             this.dataSetrichTextBox.TabIndex = 33;
             this.dataSetrichTextBox.Text = "";
             // 
             // modelrichTextBox
             // 
-            this.modelrichTextBox.Location = new System.Drawing.Point(12, 250);
+            this.modelrichTextBox.Location = new System.Drawing.Point(12, 255);
             this.modelrichTextBox.Name = "modelrichTextBox";
             this.modelrichTextBox.ReadOnly = true;
-            this.modelrichTextBox.Size = new System.Drawing.Size(339, 132);
+            this.modelrichTextBox.Size = new System.Drawing.Size(339, 170);
             this.modelrichTextBox.TabIndex = 32;
             this.modelrichTextBox.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 669);
+            this.label2.Location = new System.Drawing.Point(10, 662);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(365, 12);
             this.label2.TabIndex = 31;
@@ -298,7 +322,7 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(12, 617);
+            this.resetButton.Location = new System.Drawing.Point(614, 634);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(75, 23);
             this.resetButton.TabIndex = 15;
@@ -306,21 +330,11 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // waringLabel
-            // 
-            this.waringLabel.AutoSize = true;
-            this.waringLabel.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.waringLabel.Location = new System.Drawing.Point(720, 11);
-            this.waringLabel.Name = "waringLabel";
-            this.waringLabel.Size = new System.Drawing.Size(296, 16);
-            this.waringLabel.TabIndex = 38;
-            this.waringLabel.Text = "请参照初值表来选择模型和失效数据集！";
-            // 
             // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 690);
+            this.ClientSize = new System.Drawing.Size(1126, 677);
             this.Controls.Add(this.panel1);
             this.Name = "SelectForm";
             this.Text = "SelectForm";
@@ -358,5 +372,6 @@
         private System.Windows.Forms.DataGridView value0dataGridView;
         private System.Windows.Forms.Label value0Label;
         private System.Windows.Forms.Label waringLabel;
+        private System.Windows.Forms.Label DStitlelabel;
     }
 }

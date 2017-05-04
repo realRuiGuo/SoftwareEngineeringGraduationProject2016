@@ -111,6 +111,7 @@ namespace SRGMFormsApplication.BLL
                         {
                             MessageBox.Show("未设置模型" + model.Name + "在数据集" + dataSet.Name + "上的初值！", "提示",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            continue;
                         }
                         else
                         {
