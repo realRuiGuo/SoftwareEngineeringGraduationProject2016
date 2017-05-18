@@ -11,10 +11,11 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : CCSkinMain
     {
         Account account;
         int userType = 3;//初学者
@@ -108,28 +109,23 @@ namespace SRGMFormsApplication.UI
         }
 
         /// <summary>
-        ///  清除容器里面某些控件的值 
+        ///  清除groupBox里面某些控件的值 
         /// </summary>
-        /// <param name="parContainer"></param>
-        public void ClearCntrValue(Control parContainer)
+        /// <param name="p_groupBox"></param>
+        public void ClearCntrValue(CCWin.SkinControl.SkinGroupBox p_groupBox)
         {
-            for (int index = 0; index < parContainer.Controls.Count; index++)
+            for (int index = 0; index < p_groupBox.Controls.Count; index++)
             {
-                // 如果是容器类控件，递归调用自己
-                if (parContainer.Controls[index].HasChildren)
-                { ClearCntrValue(parContainer.Controls[index]); }
-                else
-                {
-                    switch (parContainer.Controls[index].GetType().Name)
+                switch (p_groupBox.Controls[index].GetType().Name)
                     {
-                        case "TextBox": parContainer.Controls[index].Text = ""; break;
-                        case "RadioButton": ((RadioButton)(parContainer.Controls[index])).Checked = false; break;
-                        case "CheckBox": ((CheckBox)(parContainer.Controls[index])).Checked = false; break;
-                        case "ComboBox": ((ComboBox)(parContainer.Controls[index])).Text = ""; break;
+                        //case "TextBox": p_groupBox.Controls[index].Text = ""; break;
+                        case "SkinRadioButton": ((CCWin.SkinControl.SkinRadioButton)(p_groupBox.Controls[index])).Checked = false; break;
+                        //case "CheckBox": ((CheckBox)(p_groupBox.Controls[index])).Checked = false; break;
+                        //case "ComboBox": ((ComboBox)(p_groupBox.Controls[index])).Text = ""; break;
                     }
-                }
             }
         }
+
         private void loginButton_Click(object sender, EventArgs e)
         {
             loginTime = DateTime.Now.ToString();

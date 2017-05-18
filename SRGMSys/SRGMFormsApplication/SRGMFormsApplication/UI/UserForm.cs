@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
-    public partial class UserForm : Form
+    public partial class UserForm : CCSkinMain
     {
         private static UserForm instance = null;
         public AccountController ac = new AccountController();

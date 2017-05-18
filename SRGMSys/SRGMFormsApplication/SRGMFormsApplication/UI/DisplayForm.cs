@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
 
-    public partial class DisplayForm : Form
+    public partial class DisplayForm : CCSkinMain
     {
         private static DisplayForm instance = null;
         Account account;
@@ -122,14 +123,22 @@ namespace SRGMFormsApplication.UI
         private void compareLabel_Click(object sender, EventArgs e)
         {
             frmCom = CompareForm.Instance;
-            frmCom.TopLevel = false;
-            frmCom.FormBorderStyle = FormBorderStyle.None;
-            frmCom.Dock = DockStyle.Fill;
-            this.panel1.Controls.Clear();
-            this.panel1.Controls.Add(frmCom);
-            frmCom.ModelList = this.ModelList;
-            frmCom.DataSetList = this.DataSetList;
-            frmCom.Show();
+            if (frmCom != null)
+            {
+                frmCom.TopLevel = false;
+                frmCom.FormBorderStyle = FormBorderStyle.None;
+                frmCom.Dock = DockStyle.Fill;
+                this.panel1.Controls.Clear();
+                this.panel1.Controls.Add(frmCom);
+                frmCom.ModelList = this.ModelList;
+                frmCom.DataSetList = this.DataSetList;
+                frmCom.Show();
+            }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
     }

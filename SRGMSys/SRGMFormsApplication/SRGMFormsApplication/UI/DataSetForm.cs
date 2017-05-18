@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
-    public partial class DataSetForm : Form
+    public partial class DataSetForm : CCSkinMain
     {
         private static DataSetForm instance = null;
         static DataSetController dc = new DataSetController();

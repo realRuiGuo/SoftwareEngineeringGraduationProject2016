@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.msUser = new System.Windows.Forms.MenuStrip();
+            this.msUser = new CCWin.SkinControl.SkinMenuStrip();
             this.模型评测演示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.模型管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.数据集管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.msAdmin = new System.Windows.Forms.MenuStrip();
+            this.msAdmin = new CCWin.SkinControl.SkinMenuStrip();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统模型管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.系统数据集管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,17 +57,54 @@
             // 
             // msUser
             // 
+            this.msUser.Arrow = System.Drawing.Color.Black;
+            this.msUser.Back = System.Drawing.Color.White;
+            this.msUser.BackColor = System.Drawing.Color.Transparent;
+            this.msUser.BackRadius = 4;
+            this.msUser.BackRectangle = new System.Drawing.Rectangle(10, 10, 10, 10);
+            this.msUser.Base = System.Drawing.Color.Transparent;
+            this.msUser.BaseFore = System.Drawing.Color.Black;
+            this.msUser.BaseForeAnamorphosis = false;
+            this.msUser.BaseForeAnamorphosisBorder = 4;
+            this.msUser.BaseForeAnamorphosisColor = System.Drawing.Color.White;
+            this.msUser.BaseHoverFore = System.Drawing.Color.White;
+            this.msUser.BaseItemAnamorphosis = true;
+            this.msUser.BaseItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.BaseItemBorderShow = true;
+            this.msUser.BaseItemDown = ((System.Drawing.Image)(resources.GetObject("msUser.BaseItemDown")));
+            this.msUser.BaseItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.BaseItemMouse = ((System.Drawing.Image)(resources.GetObject("msUser.BaseItemMouse")));
+            this.msUser.BaseItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.BaseItemRadius = 4;
+            this.msUser.BaseItemRadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.msUser.BaseItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.DropDownImageSeparator = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.msUser.Fore = System.Drawing.Color.Black;
+            this.msUser.HoverFore = System.Drawing.Color.White;
+            this.msUser.ItemAnamorphosis = true;
+            this.msUser.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.ItemBorderShow = true;
+            this.msUser.ItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.ItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msUser.ItemRadius = 4;
+            this.msUser.ItemRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             this.msUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.模型评测演示ToolStripMenuItem,
             this.模型管理ToolStripMenuItem,
             this.数据集管理ToolStripMenuItem,
             this.退出系统ToolStripMenuItem,
             this.toolStripMenuItem1});
-            this.msUser.Location = new System.Drawing.Point(0, 0);
+            this.msUser.Location = new System.Drawing.Point(4, 28);
             this.msUser.Name = "msUser";
-            this.msUser.Size = new System.Drawing.Size(584, 25);
+            this.msUser.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.msUser.Size = new System.Drawing.Size(576, 25);
+            this.msUser.SkinAllColor = true;
             this.msUser.TabIndex = 1;
             this.msUser.Text = "msUser";
+            this.msUser.TitleAnamorphosis = true;
+            this.msUser.TitleColor = System.Drawing.Color.Transparent;
+            this.msUser.TitleRadius = 4;
+            this.msUser.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             // 
             // 模型评测演示ToolStripMenuItem
             // 
@@ -104,17 +141,54 @@
             // 
             // msAdmin
             // 
+            this.msAdmin.Arrow = System.Drawing.Color.Black;
+            this.msAdmin.Back = System.Drawing.Color.White;
+            this.msAdmin.BackColor = System.Drawing.Color.Transparent;
+            this.msAdmin.BackRadius = 4;
+            this.msAdmin.BackRectangle = new System.Drawing.Rectangle(10, 10, 10, 10);
+            this.msAdmin.Base = System.Drawing.Color.Transparent;
+            this.msAdmin.BaseFore = System.Drawing.Color.Black;
+            this.msAdmin.BaseForeAnamorphosis = false;
+            this.msAdmin.BaseForeAnamorphosisBorder = 4;
+            this.msAdmin.BaseForeAnamorphosisColor = System.Drawing.Color.White;
+            this.msAdmin.BaseHoverFore = System.Drawing.Color.White;
+            this.msAdmin.BaseItemAnamorphosis = true;
+            this.msAdmin.BaseItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.BaseItemBorderShow = true;
+            this.msAdmin.BaseItemDown = ((System.Drawing.Image)(resources.GetObject("msAdmin.BaseItemDown")));
+            this.msAdmin.BaseItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.BaseItemMouse = ((System.Drawing.Image)(resources.GetObject("msAdmin.BaseItemMouse")));
+            this.msAdmin.BaseItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.BaseItemRadius = 4;
+            this.msAdmin.BaseItemRadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.msAdmin.BaseItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.DropDownImageSeparator = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.msAdmin.Fore = System.Drawing.Color.Black;
+            this.msAdmin.HoverFore = System.Drawing.Color.White;
+            this.msAdmin.ItemAnamorphosis = true;
+            this.msAdmin.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.ItemBorderShow = true;
+            this.msAdmin.ItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.ItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.msAdmin.ItemRadius = 4;
+            this.msAdmin.ItemRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             this.msAdmin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.用户管理ToolStripMenuItem,
             this.系统模型管理ToolStripMenuItem,
             this.系统数据集管理ToolStripMenuItem,
             this.退出系统ToolStripMenuItem1,
             this.toolStripMenuItem2});
-            this.msAdmin.Location = new System.Drawing.Point(0, 25);
+            this.msAdmin.Location = new System.Drawing.Point(4, 53);
             this.msAdmin.Name = "msAdmin";
-            this.msAdmin.Size = new System.Drawing.Size(584, 25);
+            this.msAdmin.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.msAdmin.Size = new System.Drawing.Size(576, 25);
+            this.msAdmin.SkinAllColor = true;
             this.msAdmin.TabIndex = 0;
             this.msAdmin.Text = "msAdmin";
+            this.msAdmin.TitleAnamorphosis = true;
+            this.msAdmin.TitleColor = System.Drawing.Color.Transparent;
+            this.msAdmin.TitleRadius = 4;
+            this.msAdmin.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
             // 
             // 用户管理ToolStripMenuItem
             // 
@@ -151,6 +225,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
@@ -158,9 +233,9 @@
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel6});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 340);
+            this.statusStrip1.Location = new System.Drawing.Point(4, 336);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(584, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(576, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -231,8 +306,8 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip msUser;
-        private System.Windows.Forms.MenuStrip msAdmin;
+        private CCWin.SkinControl.SkinMenuStrip msUser;
+        private CCWin.SkinControl.SkinMenuStrip msAdmin;
         private System.Windows.Forms.ToolStripMenuItem 模型评测演示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 模型管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据集管理ToolStripMenuItem;

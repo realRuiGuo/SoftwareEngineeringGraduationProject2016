@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
-    public partial class MainForm : Form
+    public partial class MainForm : CCSkinMain
     {
         Account account;
         int userType;

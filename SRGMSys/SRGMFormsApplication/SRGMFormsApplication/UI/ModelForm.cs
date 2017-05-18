@@ -9,10 +9,11 @@ using System.Windows.Forms;
 using SRGMFormsApplication.DAL;
 using SRGMFormsApplication.BLL;
 using SRGMFormsApplication.Entity;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
-    public partial class ModelForm : Form
+    public partial class ModelForm : CCSkinMain
     {
         private static ModelForm instance = null;
         static ModelController mc = new ModelController();

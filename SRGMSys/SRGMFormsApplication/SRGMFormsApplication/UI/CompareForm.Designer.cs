@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.resetButton = new System.Windows.Forms.Button();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.dataSetLabel = new System.Windows.Forms.Label();
-            this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
-            this.comPictureBox = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picturePrintButton = new System.Windows.Forms.Button();
+            this.resetButton = new CCWin.SkinControl.SkinButton();
+            this.OKButton = new CCWin.SkinControl.SkinButton();
+            this.dataSetLabel = new CCWin.SkinControl.SkinLabel();
+            this.dataSetcomboBox = new CCWin.SkinControl.SkinComboBox();
+            this.comPictureBox = new CCWin.SkinControl.SkinPictureBox();
+            this.label2 = new CCWin.SkinControl.SkinLabel();
+            this.pictureBox1 = new CCWin.SkinControl.SkinPictureBox();
+            this.picturePrintButton = new CCWin.SkinControl.SkinButton();
             ((System.ComponentModel.ISupportInitialize)(this.comPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -118,6 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1047, 555);
             this.Controls.Add(this.picturePrintButton);
             this.Controls.Add(this.pictureBox1);
@@ -139,13 +140,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button resetButton;
-        private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.Label dataSetLabel;
-        private System.Windows.Forms.ComboBox dataSetcomboBox;
-        private System.Windows.Forms.PictureBox comPictureBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button picturePrintButton;
+        private CCWin.SkinControl.SkinButton resetButton;
+        private CCWin.SkinControl.SkinButton OKButton;
+        private CCWin.SkinControl.SkinLabel dataSetLabel;
+        private CCWin.SkinControl.SkinComboBox dataSetcomboBox;
+        private CCWin.SkinControl.SkinPictureBox comPictureBox;
+        private CCWin.SkinControl.SkinLabel label2;
+        private CCWin.SkinControl.SkinPictureBox pictureBox1;
+        private CCWin.SkinControl.SkinButton picturePrintButton;
     }
 }

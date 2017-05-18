@@ -13,6 +13,7 @@ using MathWorks.MATLAB.NET.Arrays;
 using MathWorks.MATLAB.NET.Utility;
 using Matlab;
 using System.Threading;
+using CCWin;
 
 namespace SRGMFormsApplication.UI
 {
@@ -71,7 +72,7 @@ namespace SRGMFormsApplication.UI
             //根据用户配置comboBox
             modelcomboBox.Items.Add("系统模型");
             dataSetcomboBox.Items.Add("系统数据集");
-            if (3 != this.UserType)
+            if (3 != this.UserType)//
             {
                 dataSetcomboBox.Items.Add("用户数据集");
                 if (2 == this.UserType)
@@ -79,7 +80,7 @@ namespace SRGMFormsApplication.UI
                     modelcomboBox.Items.Add("用户模型");
                 }
             }
-            this.DStitlelabel.Text = ""; 
+            this.DStitlelabel.Text = "";
             this.modelcomboBox.Text = "系统模型";
             this.dataSetcomboBox.Text = "系统数据集";
             this.modelcomboBox_SelectedIndexChanged(sender, e);
@@ -227,7 +228,7 @@ namespace SRGMFormsApplication.UI
 
         void Do()
         {
-                disc.choose(this.ModelList, this.DataSetList);
+            disc.choose(this.ModelList, this.DataSetList);
         }
 
         void process_BackgroundWorkerCompleted(object sender, BackgroundWorkerEventArgs e)
@@ -289,7 +290,7 @@ namespace SRGMFormsApplication.UI
                 String dataSetFilePath = System.Environment.CurrentDirectory + dataSet.Path;
                 if (FileHelper.IsExistFile(dataSetFilePath))
                 {
-                    if(dataSet.Type.TypeID == 1)
+                    if (dataSet.Type.TypeID == 1)
                     {
                         this.DStitlelabel.Text = "累计失效时间    累计失效个数";
                     }
@@ -298,6 +299,59 @@ namespace SRGMFormsApplication.UI
                         this.DStitlelabel.Text = "累计失效时间    测试工作量    累计失效个数";
                     }
                     this.dataSetrichTextBox.Text = FileHelper.FileToString(dataSetFilePath);
+                }
+            }
+        }
+
+        private void SelectForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            instance = null;
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            Model model = new Model();
+            FDataSet dataSet = new FDataSet();
+            if (null != this.modeldataGridView.CurrentRow && null != this.dataSetdataGridView.CurrentRow)
+            {
+                int rowModel = this.modeldataGridView.CurrentRow.Index;
+                int rowDataSet = this.dataSetdataGridView.CurrentRow.Index;
+                if (rowModel >= 0 && rowDataSet >= 0)
+                {
+                    string modelName = this.modeldataGridView.Rows[rowModel].Cells[0].Value.ToString();
+                    model.Name = modelName;
+                    string dataSetName = this.dataSetdataGridView.Rows[rowDataSet].Cells[0].Value.ToString();
+                    dataSet.Name = dataSetName;
+                    if (this.value0TextBox.Text.ToString() != "")
+                    {
+                        string value0 = this.value0TextBox.Text.ToString().Trim();
+                        mc.addValue0(model, dataSet, value0);
+                    }
+                }
+            }
+            this.value0dataGridView.DataSource = mc.getAllValue0().Tables[0];
+        }
+
+        private void modeldataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (null != this.modeldataGridView.CurrentRow)
+            {
+                int row = this.modeldataGridView.CurrentRow.Index;
+                if (row >= 0)
+                {
+                    selectedModel.Text = this.modeldataGridView.Rows[row].Cells[0].Value.ToString();
+                }
+            }
+        }
+
+        private void dataSetdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (null != this.dataSetdataGridView.CurrentRow)
+            {
+                int row = this.dataSetdataGridView.CurrentRow.Index;
+                if (row >= 0)
+                {
+                    selectedDS.Text = this.dataSetdataGridView.Rows[row].Cells[0].Value.ToString();
                 }
             }
         }

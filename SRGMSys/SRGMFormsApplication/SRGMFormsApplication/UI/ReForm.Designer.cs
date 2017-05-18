@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataSetLabel = new System.Windows.Forms.Label();
-            this.modelLabel = new System.Windows.Forms.Label();
-            this.dataSetcomboBox = new System.Windows.Forms.ComboBox();
-            this.modelcomboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.resetButton = new System.Windows.Forms.Button();
+            this.dataSetLabel = new CCWin.SkinControl.SkinLabel();
+            this.modelLabel = new CCWin.SkinControl.SkinLabel();
+            this.dataSetcomboBox = new CCWin.SkinControl.SkinComboBox();
+            this.modelcomboBox = new CCWin.SkinControl.SkinComboBox();
+            this.label1 = new CCWin.SkinControl.SkinLabel();
+            this.OKButton = new CCWin.SkinControl.SkinButton();
+            this.resetButton = new CCWin.SkinControl.SkinButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rePictureBox = new System.Windows.Forms.PictureBox();
-            this.picturePrintButton = new System.Windows.Forms.Button();
-            this.txtPrintButton = new System.Windows.Forms.Button();
+            this.label2 = new CCWin.SkinControl.SkinLabel();
+            this.rePictureBox = new CCWin.SkinControl.SkinPictureBox();
+            this.picturePrintButton = new CCWin.SkinControl.SkinButton();
+            this.txtPrintButton = new CCWin.SkinControl.SkinButton();
             ((System.ComponentModel.ISupportInitialize)(this.rePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,6 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(755, 614);
             this.Controls.Add(this.txtPrintButton);
             this.Controls.Add(this.picturePrintButton);
@@ -180,17 +181,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label dataSetLabel;
-        private System.Windows.Forms.Label modelLabel;
-        private System.Windows.Forms.ComboBox dataSetcomboBox;
-        private System.Windows.Forms.ComboBox modelcomboBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.Button resetButton;
+        private CCWin.SkinControl.SkinLabel dataSetLabel;
+        private CCWin.SkinControl.SkinLabel modelLabel;
+        private CCWin.SkinControl.SkinComboBox dataSetcomboBox;
+        private CCWin.SkinControl.SkinComboBox modelcomboBox;
+        private CCWin.SkinControl.SkinLabel label1;
+        private CCWin.SkinControl.SkinButton OKButton;
+        private CCWin.SkinControl.SkinButton resetButton;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox rePictureBox;
-        private System.Windows.Forms.Button picturePrintButton;
-        private System.Windows.Forms.Button txtPrintButton;
+        private CCWin.SkinControl.SkinLabel label2;
+        private CCWin.SkinControl.SkinPictureBox rePictureBox;
+        private CCWin.SkinControl.SkinButton picturePrintButton;
+        private CCWin.SkinControl.SkinButton txtPrintButton;
     }
 }

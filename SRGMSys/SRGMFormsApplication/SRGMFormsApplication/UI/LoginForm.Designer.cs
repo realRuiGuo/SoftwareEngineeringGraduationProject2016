@@ -28,147 +28,275 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.loginButton = new System.Windows.Forms.Button();
-            this.radioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton0 = new System.Windows.Forms.RadioButton();
-            this.signinButton = new System.Windows.Forms.Button();
-            this.usergroupBox = new System.Windows.Forms.GroupBox();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.signinButton = new CCWin.SkinControl.SkinButton();
+            this.usergroupBox = new CCWin.SkinControl.SkinGroupBox();
+            this.radioButton = new CCWin.SkinControl.SkinRadioButton();
+            this.radioButton1 = new CCWin.SkinControl.SkinRadioButton();
+            this.radioButton2 = new CCWin.SkinControl.SkinRadioButton();
+            this.radioButton0 = new CCWin.SkinControl.SkinRadioButton();
+            this.nameLabel = new CCWin.SkinControl.SkinLabel();
+            this.passworkLabel = new CCWin.SkinControl.SkinLabel();
+            this.nameTextBox = new CCWin.SkinControl.SkinTextBox();
+            this.passwordTextBox = new CCWin.SkinControl.SkinTextBox();
+            this.loginButton = new CCWin.SkinControl.SkinButton();
+            this.cancelButton = new CCWin.SkinControl.SkinButton();
             this.usergroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.nameLabel.Location = new System.Drawing.Point(42, 39);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(53, 12);
-            this.nameLabel.TabIndex = 0;
-            this.nameLabel.Text = "用户名：";
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.passwordLabel.Location = new System.Drawing.Point(42, 100);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(41, 12);
-            this.passwordLabel.TabIndex = 1;
-            this.passwordLabel.Text = "密码：";
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(101, 36);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(116, 21);
-            this.nameTextBox.TabIndex = 2;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Location = new System.Drawing.Point(101, 97);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(116, 21);
-            this.passwordTextBox.TabIndex = 3;
-            // 
-            // loginButton
-            // 
-            this.loginButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.loginButton.Location = new System.Drawing.Point(183, 168);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 34);
-            this.loginButton.TabIndex = 4;
-            this.loginButton.Text = "登录";
-            this.loginButton.UseVisualStyleBackColor = false;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
-            // 
-            // radioButton
-            // 
-            this.radioButton.AutoSize = true;
-            this.radioButton.Location = new System.Drawing.Point(6, 20);
-            this.radioButton.Name = "radioButton";
-            this.radioButton.Size = new System.Drawing.Size(59, 16);
-            this.radioButton.TabIndex = 5;
-            this.radioButton.TabStop = true;
-            this.radioButton.Text = "初学者";
-            this.radioButton.UseVisualStyleBackColor = true;
-            this.radioButton.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 16);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "软件工程师";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 64);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(95, 16);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "SRGM研究人员";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton0
-            // 
-            this.radioButton0.AutoSize = true;
-            this.radioButton0.Location = new System.Drawing.Point(6, 86);
-            this.radioButton0.Name = "radioButton0";
-            this.radioButton0.Size = new System.Drawing.Size(83, 16);
-            this.radioButton0.TabIndex = 8;
-            this.radioButton0.TabStop = true;
-            this.radioButton0.Text = "系统管理员";
-            this.radioButton0.UseVisualStyleBackColor = true;
-            this.radioButton0.CheckedChanged += new System.EventHandler(this.radioButton0_CheckedChanged);
-            // 
             // signinButton
             // 
-            this.signinButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.signinButton.Location = new System.Drawing.Point(55, 168);
+            this.signinButton.BackColor = System.Drawing.Color.Transparent;
+            this.signinButton.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.signinButton.DownBack = null;
+            this.signinButton.Location = new System.Drawing.Point(42, 182);
+            this.signinButton.MouseBack = null;
             this.signinButton.Name = "signinButton";
-            this.signinButton.Size = new System.Drawing.Size(75, 34);
-            this.signinButton.TabIndex = 10;
+            this.signinButton.NormlBack = null;
+            this.signinButton.Size = new System.Drawing.Size(71, 30);
+            this.signinButton.TabIndex = 13;
             this.signinButton.Text = "注册";
             this.signinButton.UseVisualStyleBackColor = false;
             this.signinButton.Click += new System.EventHandler(this.signinButton_Click);
             // 
             // usergroupBox
             // 
-            this.usergroupBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.usergroupBox.Controls.Add(this.radioButton);
-            this.usergroupBox.Controls.Add(this.radioButton1);
-            this.usergroupBox.Controls.Add(this.radioButton2);
+            this.usergroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.usergroupBox.BorderColor = System.Drawing.Color.Transparent;
             this.usergroupBox.Controls.Add(this.radioButton0);
-            this.usergroupBox.Location = new System.Drawing.Point(283, 12);
+            this.usergroupBox.Controls.Add(this.radioButton2);
+            this.usergroupBox.Controls.Add(this.radioButton1);
+            this.usergroupBox.Controls.Add(this.radioButton);
+            this.usergroupBox.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.usergroupBox.Location = new System.Drawing.Point(269, 31);
             this.usergroupBox.Name = "usergroupBox";
-            this.usergroupBox.Size = new System.Drawing.Size(112, 113);
-            this.usergroupBox.TabIndex = 11;
+            this.usergroupBox.RectBackColor = System.Drawing.Color.Transparent;
+            this.usergroupBox.RoundStyle = CCWin.SkinClass.RoundStyle.All;
+            this.usergroupBox.Size = new System.Drawing.Size(138, 102);
+            this.usergroupBox.TabIndex = 14;
             this.usergroupBox.TabStop = false;
-            this.usergroupBox.Text = "选择用户类别：";
+            this.usergroupBox.Text = "用户类别：";
+            this.usergroupBox.TitleBorderColor = System.Drawing.Color.Transparent;
+            this.usergroupBox.TitleRectBackColor = System.Drawing.Color.Transparent;
+            this.usergroupBox.TitleRoundStyle = CCWin.SkinClass.RoundStyle.All;
+            // 
+            // radioButton
+            // 
+            this.radioButton.AutoSize = true;
+            this.radioButton.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.radioButton.DownBack = null;
+            this.radioButton.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton.Location = new System.Drawing.Point(6, 20);
+            this.radioButton.MouseBack = null;
+            this.radioButton.Name = "radioButton";
+            this.radioButton.NormlBack = null;
+            this.radioButton.SelectedDownBack = null;
+            this.radioButton.SelectedMouseBack = null;
+            this.radioButton.SelectedNormlBack = null;
+            this.radioButton.Size = new System.Drawing.Size(62, 21);
+            this.radioButton.TabIndex = 0;
+            this.radioButton.TabStop = true;
+            this.radioButton.Text = "初学者";
+            this.radioButton.UseVisualStyleBackColor = false;
+            this.radioButton.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.radioButton1.DownBack = null;
+            this.radioButton1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton1.Location = new System.Drawing.Point(6, 40);
+            this.radioButton1.MouseBack = null;
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.NormlBack = null;
+            this.radioButton1.SelectedDownBack = null;
+            this.radioButton1.SelectedMouseBack = null;
+            this.radioButton1.SelectedNormlBack = null;
+            this.radioButton1.Size = new System.Drawing.Size(86, 21);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "软件工程师";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton2.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.radioButton2.DownBack = null;
+            this.radioButton2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton2.Location = new System.Drawing.Point(6, 61);
+            this.radioButton2.MouseBack = null;
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.NormlBack = null;
+            this.radioButton2.SelectedDownBack = null;
+            this.radioButton2.SelectedMouseBack = null;
+            this.radioButton2.SelectedNormlBack = null;
+            this.radioButton2.Size = new System.Drawing.Size(110, 21);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "SRGM研究人员";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton0
+            // 
+            this.radioButton0.AutoSize = true;
+            this.radioButton0.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton0.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.radioButton0.DownBack = null;
+            this.radioButton0.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton0.Location = new System.Drawing.Point(6, 81);
+            this.radioButton0.MouseBack = null;
+            this.radioButton0.Name = "radioButton0";
+            this.radioButton0.NormlBack = null;
+            this.radioButton0.SelectedDownBack = null;
+            this.radioButton0.SelectedMouseBack = null;
+            this.radioButton0.SelectedNormlBack = null;
+            this.radioButton0.Size = new System.Drawing.Size(86, 21);
+            this.radioButton0.TabIndex = 3;
+            this.radioButton0.TabStop = true;
+            this.radioButton0.Text = "系统管理员";
+            this.radioButton0.UseVisualStyleBackColor = false;
+            this.radioButton0.CheckedChanged += new System.EventHandler(this.radioButton0_CheckedChanged);
+            // 
+            // nameLabel
+            // 
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.nameLabel.BorderColor = System.Drawing.Color.White;
+            this.nameLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.nameLabel.Location = new System.Drawing.Point(39, 53);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(56, 17);
+            this.nameLabel.TabIndex = 15;
+            this.nameLabel.Text = "用户名：";
+            // 
+            // passworkLabel
+            // 
+            this.passworkLabel.AutoSize = true;
+            this.passworkLabel.BackColor = System.Drawing.Color.Transparent;
+            this.passworkLabel.BorderColor = System.Drawing.Color.White;
+            this.passworkLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.passworkLabel.Location = new System.Drawing.Point(39, 114);
+            this.passworkLabel.Name = "passworkLabel";
+            this.passworkLabel.Size = new System.Drawing.Size(44, 17);
+            this.passworkLabel.TabIndex = 16;
+            this.passworkLabel.Text = "密码：";
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.nameTextBox.DownBack = null;
+            this.nameTextBox.Icon = null;
+            this.nameTextBox.IconIsButton = false;
+            this.nameTextBox.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.nameTextBox.IsPasswordChat = '\0';
+            this.nameTextBox.IsSystemPasswordChar = false;
+            this.nameTextBox.Lines = new string[0];
+            this.nameTextBox.Location = new System.Drawing.Point(98, 44);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.nameTextBox.MaxLength = 32767;
+            this.nameTextBox.MinimumSize = new System.Drawing.Size(28, 28);
+            this.nameTextBox.MouseBack = null;
+            this.nameTextBox.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.nameTextBox.Multiline = false;
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.NormlBack = null;
+            this.nameTextBox.Padding = new System.Windows.Forms.Padding(5);
+            this.nameTextBox.ReadOnly = false;
+            this.nameTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.nameTextBox.Size = new System.Drawing.Size(116, 28);
+            // 
+            // 
+            // 
+            this.nameTextBox.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nameTextBox.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nameTextBox.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.nameTextBox.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.nameTextBox.SkinTxt.Name = "BaseText";
+            this.nameTextBox.SkinTxt.Size = new System.Drawing.Size(106, 18);
+            this.nameTextBox.SkinTxt.TabIndex = 0;
+            this.nameTextBox.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.nameTextBox.SkinTxt.WaterText = "";
+            this.nameTextBox.TabIndex = 17;
+            this.nameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nameTextBox.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.nameTextBox.WaterText = "";
+            this.nameTextBox.WordWrap = true;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.passwordTextBox.DownBack = null;
+            this.passwordTextBox.Icon = null;
+            this.passwordTextBox.IconIsButton = false;
+            this.passwordTextBox.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.passwordTextBox.IsPasswordChat = '\0';
+            this.passwordTextBox.IsSystemPasswordChar = false;
+            this.passwordTextBox.Lines = new string[0];
+            this.passwordTextBox.Location = new System.Drawing.Point(98, 105);
+            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.passwordTextBox.MaxLength = 32767;
+            this.passwordTextBox.MinimumSize = new System.Drawing.Size(28, 28);
+            this.passwordTextBox.MouseBack = null;
+            this.passwordTextBox.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.passwordTextBox.Multiline = false;
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.NormlBack = null;
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(5);
+            this.passwordTextBox.ReadOnly = false;
+            this.passwordTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.passwordTextBox.Size = new System.Drawing.Size(116, 28);
+            // 
+            // 
+            // 
+            this.passwordTextBox.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordTextBox.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordTextBox.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.passwordTextBox.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.passwordTextBox.SkinTxt.Name = "BaseText";
+            this.passwordTextBox.SkinTxt.Size = new System.Drawing.Size(106, 18);
+            this.passwordTextBox.SkinTxt.TabIndex = 0;
+            this.passwordTextBox.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.passwordTextBox.SkinTxt.WaterText = "";
+            this.passwordTextBox.TabIndex = 18;
+            this.passwordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.passwordTextBox.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.passwordTextBox.WaterText = "";
+            this.passwordTextBox.WordWrap = true;
+            // 
+            // loginButton
+            // 
+            this.loginButton.BackColor = System.Drawing.Color.Transparent;
+            this.loginButton.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.loginButton.DownBack = null;
+            this.loginButton.Location = new System.Drawing.Point(183, 182);
+            this.loginButton.MouseBack = null;
+            this.loginButton.Name = "loginButton";
+            this.loginButton.NormlBack = null;
+            this.loginButton.Size = new System.Drawing.Size(71, 30);
+            this.loginButton.TabIndex = 19;
+            this.loginButton.Text = "登录";
+            this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelButton.Location = new System.Drawing.Point(320, 168);
+            this.cancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.cancelButton.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.cancelButton.DownBack = null;
+            this.cancelButton.Location = new System.Drawing.Point(320, 182);
+            this.cancelButton.MouseBack = null;
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 34);
-            this.cancelButton.TabIndex = 12;
+            this.cancelButton.NormlBack = null;
+            this.cancelButton.Size = new System.Drawing.Size(71, 30);
+            this.cancelButton.TabIndex = 20;
             this.cancelButton.Text = "清空";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -180,13 +308,13 @@
             this.BackgroundImage = global::SRGMFormsApplication.Properties.Resources.bj;
             this.ClientSize = new System.Drawing.Size(461, 248);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.usergroupBox);
-            this.Controls.Add(this.signinButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.passworkLabel);
             this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.usergroupBox);
+            this.Controls.Add(this.signinButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
@@ -202,18 +330,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.RadioButton radioButton;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton0;
-        private System.Windows.Forms.Button signinButton;
-        private System.Windows.Forms.GroupBox usergroupBox;
-        private System.Windows.Forms.Button cancelButton;
+        private CCWin.SkinControl.SkinButton signinButton;
+        private CCWin.SkinControl.SkinGroupBox usergroupBox;
+        private CCWin.SkinControl.SkinRadioButton radioButton0;
+        private CCWin.SkinControl.SkinRadioButton radioButton2;
+        private CCWin.SkinControl.SkinRadioButton radioButton1;
+        private CCWin.SkinControl.SkinRadioButton radioButton;
+        private CCWin.SkinControl.SkinLabel nameLabel;
+        private CCWin.SkinControl.SkinLabel passworkLabel;
+        private CCWin.SkinControl.SkinTextBox nameTextBox;
+        private CCWin.SkinControl.SkinTextBox passwordTextBox;
+        private CCWin.SkinControl.SkinButton loginButton;
+        private CCWin.SkinControl.SkinButton cancelButton;
 
 
     }
